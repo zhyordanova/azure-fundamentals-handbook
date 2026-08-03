@@ -14,7 +14,7 @@
 
 6. [Scalability](6-scalability.md)
 
-7. Elasticity
+7. [Elasticity](7-elasticity.md)
 
 8. Geo-distribution
 
