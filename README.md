@@ -21,7 +21,7 @@ This handbook aims to:
 - Explain Azure services using practical examples and clear comparisons.
 - Create a long-term learning resource that can support future Azure certifications.
 
-# Repository Structure
+## Repository Structure
 
 ```text
 azure-fundamentals-handbook
@@ -73,7 +73,7 @@ The `exam` directory focuses on Microsoft AZ-900 certification preparation.
 
 Unlike the documentation chapters, these files are optimized specifically for certification preparation.
 
-# Learning Philosophy
+## Learning Philosophy
 
 This repository is built around understanding concepts rather than memorizing answers.
 
@@ -87,3 +87,7 @@ Each topic follows the same learning approach:
 - Reinforce knowledge through mock exam questions.
 
 The objective is to build long-term understanding instead of short-term memorization.
+
+## License
+
+This project is licensed under the MIT License.
