@@ -12,10 +12,12 @@
 
 5. [High Availability](5-high-availability.md)
 
-6. Scalability
+6. [Scalability](6-scalability.md)
 
 7. Elasticity
 
 8. Geo-distribution
 
 9. CapEx vs OpEx
+
+[6-scalability.md]: 6-scalability.md
