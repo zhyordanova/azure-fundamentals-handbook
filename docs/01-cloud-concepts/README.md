@@ -18,6 +18,4 @@
 
 8. [Geo-distribution](8-geo-distribution.md)
 
-9. CapEx vs OpEx
-
-[6-scalability.md]: 6-scalability.md
+9. [CapEx vs OpEx](9-capex-vs-opex.md)
