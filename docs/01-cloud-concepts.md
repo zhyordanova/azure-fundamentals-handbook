@@ -1,7 +1,5 @@
 # Cloud Concepts
 
-> Azure Fundamentals Handbook
-
 ## Learning Objectives
 
 After completing this chapter, you will be able to:
