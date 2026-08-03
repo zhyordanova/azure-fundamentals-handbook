@@ -1,4 +1,4 @@
-# 2. Public Cloud
+# Public Cloud
 
 ## Definition
 

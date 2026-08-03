@@ -1,4 +1,4 @@
-# 4. Hybrid Cloud
+# Hybrid Cloud
 
 ## Definition
 

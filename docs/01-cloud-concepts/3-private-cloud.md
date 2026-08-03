@@ -1,4 +1,4 @@
-# 3. Private Cloud
+# Private Cloud
 
 ## Definition
 

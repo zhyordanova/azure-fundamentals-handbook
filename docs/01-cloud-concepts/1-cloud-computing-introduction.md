@@ -10,7 +10,7 @@ After completing this chapter, you will be able to:
 - Explain the core benefits of cloud computing.
 - Recognize how Microsoft tests cloud concepts in the AZ-900 exam.
 
-# 1. What is Cloud Computing?
+# What is Cloud Computing?
 
 Cloud computing is the delivery of computing services over the Internet.
 
