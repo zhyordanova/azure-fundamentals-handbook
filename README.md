@@ -47,8 +47,8 @@ The `docs` directory contains the core learning material organized by topic. Eac
 
 | Chapter | Topic |
 |----------|-------|
-| 01 | [Cloud Concepts](docs/01-cloud-concepts.md) |
-| 02 | [Azure Architecture](docs/02-azure-architecture.md) |
+| 01 | [Cloud Concepts](docs/01-cloud-concepts/) |
+| 02 | [Azure Architecture](docs/02-azure-architecture/) |
 | 03 | [Compute](docs/03-compute.md) |
 | 04 | [Networking](docs/04-networking.md) |
 | 05 | [Storage](docs/05-storage.md) |
