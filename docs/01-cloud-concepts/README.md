@@ -16,7 +16,7 @@
 
 7. [Elasticity](7-elasticity.md)
 
-8. Geo-distribution
+8. [Geo-distribution](8-geo-distribution.md)
 
 9. CapEx vs OpEx
 
