@@ -49,7 +49,6 @@ flowchart TD
 
     style RG fill:#0078D4,color:#ffffff
 ```
-```
 
 A Resource Group is the level where related Azure resources are organized.
 
