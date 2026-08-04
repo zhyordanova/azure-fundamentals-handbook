@@ -24,14 +24,14 @@ For example:
 
 ```mermaid
 flowchart TD
-    Portal(Azure Portal)
-    ARM(Azure Resource Manager<br/>(ARM))
-    VM(Virtual Machine)
+    Portal["Azure Portal"]
+    ARM["Azure Resource Manager (ARM)"]
+    VM["Virtual Machine"]
 
     Portal --> ARM
     ARM --> VM
 
-    style ARM fill:#0078D4,color:#fff
+    style ARM fill:#0078D4,color:#ffffff
 ```
 
 The same process applies when using:
