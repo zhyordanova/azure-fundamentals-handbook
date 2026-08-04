@@ -26,22 +26,18 @@ Management Groups provide a centralized way to organize subscriptions and apply 
 
 Management Groups are the highest level in the Azure resource hierarchy.
 
-```
+```mermaid
+flowchart TD
+    MG[Management Group]
+    SUB[Subscription]
+    RG[Resource Group]
+    RES[Resource]
 
-Management Group
+    MG --> SUB
+    SUB --> RG
+    RG --> RES
 
-↓
-
-Subscription
-
-↓
-
-Resource Group
-
-↓
-
-Resource
-
+    style MG fill:#0078D4,color:#ffffff
 ```
 
 Policies and permissions assigned at a higher level can be inherited by lower levels.
