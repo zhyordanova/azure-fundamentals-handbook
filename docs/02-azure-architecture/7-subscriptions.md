@@ -40,22 +40,18 @@ Multiple subscriptions can belong to the same Management Group.
 
 ## Azure Resource Hierarchy
 
-```
+```mermaid
+flowchart TD
+    MG[Management Group]
+    SUB[Subscription]
+    RG[Resource Group]
+    RES[Resource]
 
-Management Group
+    MG --> SUB
+    SUB --> RG
+    RG --> RES
 
-↓
-
-Subscription
-
-↓
-
-Resource Group
-
-↓
-
-Resource
-
+    style SUB fill:#0078D4,color:#ffffff
 ```
 
 A subscription sits between Management Groups and Resource Groups.
