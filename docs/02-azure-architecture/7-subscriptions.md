@@ -42,16 +42,12 @@ Multiple subscriptions can belong to the same Management Group.
 
 ```mermaid
 flowchart TD
-    MG[Management Group]
-    SUB[Subscription]
-    RG[Resource Group]
-    RES[Resource]
+    MG["Management Group"]
+    SUB["Subscription ⭐"]
+    RG["Resource Group"]
+    RES["Resource"]
 
-    MG --> SUB
-    SUB --> RG
-    RG --> RES
-
-    style SUB fill:#0078D4,color:#ffffff
+    MG --> SUB --> RG --> RES
 ```
 
 A subscription sits between Management Groups and Resource Groups.

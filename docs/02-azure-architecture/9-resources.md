@@ -29,16 +29,12 @@ Resources are the building blocks of every Azure solution.
 
 ```mermaid
 flowchart TD
-    MG[Management Group]
-    SUB[Subscription]
-    RG[Resource Group]
-    RES[Resource]
+    MG["Management Group"]
+    SUB["Subscription"]
+    RG["Resource Group"]
+    RES["Resource ⭐"]
 
-    MG --> SUB
-    SUB --> RG
-    RG --> RES
-
-    style RES fill:#0078D4,color:#ffffff
+    MG --> SUB --> RG --> RES
 ```
 
 Every resource:

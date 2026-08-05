@@ -38,16 +38,12 @@ A Resource Group:
 
 ```mermaid
 flowchart TD
-    MG[Management Group]
-    SUB[Subscription]
-    RG[Resource Group]
-    RES[Resource]
+    MG["Management Group"]
+    SUB["Subscription"]
+    RG["Resource Group ⭐"]
+    RES["Resource"]
 
-    MG --> SUB
-    SUB --> RG
-    RG --> RES
-
-    style RG fill:#0078D4,color:#ffffff
+    MG --> SUB --> RG --> RES
 ```
 
 A Resource Group is the level where related Azure resources are organized.
