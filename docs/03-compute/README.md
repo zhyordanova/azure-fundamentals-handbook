@@ -1,6 +1,4 @@
-# Compute
-
-## Concepts
+# Concepts
 
 1. [Virtual Machines](1-virtual-machines.md)
 

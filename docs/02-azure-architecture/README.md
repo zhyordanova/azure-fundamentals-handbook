@@ -1,4 +1,4 @@
-## Concepts
+# Concepts
 
 1. [Azure Global Infrastructure](1-global-infrastructure.md)
 

@@ -1,4 +1,4 @@
-## Concepts
+# Concepts
 
 1. [What is Cloud Computing?](1-cloud-computing-introduction.md)
 
