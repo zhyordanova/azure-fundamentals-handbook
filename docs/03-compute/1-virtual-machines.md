@@ -1,0 +1,125 @@
+# Virtual Machines
+
+## Definition
+
+An Azure Virtual Machine (VM) is a software emulation of a physical computer.
+
+It provides virtualized compute resources, including:
+
+- Virtual processor (vCPU)
+- Memory (RAM)
+- Storage
+- Networking
+
+Each virtual machine runs its own operating system, allowing organizations to install and manage applications just as they would on a physical server.
+
+## Why Virtual Machines Exist
+
+Not every application can run on a managed cloud service.
+
+Some workloads require:
+
+- Full administrative control
+- Custom operating system configuration
+- Installation of third-party software
+- Legacy applications
+- Specific runtime environments
+
+Azure Virtual Machines provide this flexibility while eliminating the need to purchase physical hardware.
+
+## Characteristics
+
+Virtual Machines provide:
+
+- Full operating system control
+- Administrative access
+- Support for Windows and Linux
+- Flexible sizing
+- Ability to install any supported software
+
+Because customers manage the operating system, Virtual Machines are classified as **Infrastructure as a Service (IaaS)**.
+
+## Common Use Cases
+
+Azure Virtual Machines are commonly used for:
+
+- Migrating existing on-premises servers
+- Hosting custom business applications
+- Running development and testing environments
+- Running applications that require full operating system control
+
+## Customer Responsibilities
+
+When using Azure Virtual Machines, the customer is responsible for:
+
+- Operating system updates
+- Security patches
+- Installed applications
+- Runtime
+- Application data
+
+Microsoft manages:
+
+- Physical servers
+- Storage infrastructure
+- Networking infrastructure
+- Hypervisor
+
+## Microsoft Trigger Words
+
+If a question contains words such as:
+
+- virtual processor
+- memory
+- operating system
+- full control
+- install software
+- manage the OS
+- software emulation of a physical computer
+
+Think:
+
+> Azure Virtual Machine
+
+## Common Exam Questions
+
+Microsoft frequently asks questions such as:
+
+- Which Azure service provides a software emulation of a physical computer?
+- Which service gives the customer full control over the operating system?
+- Which Azure compute service belongs to IaaS?
+- Which Azure service should be used for legacy applications?
+
+## Common Mistakes
+
+❌ Thinking Virtual Machines are Platform as a Service (PaaS).
+
+Virtual Machines are **Infrastructure as a Service (IaaS)** because the customer manages the operating system.
+
+❌ Thinking Microsoft installs and updates the operating system.
+
+With Azure Virtual Machines, operating system management remains the customer's responsibility.
+
+## Compare With
+
+| Virtual Machines | Azure App Service |
+|------------------|-------------------|
+| IaaS | PaaS |
+| Customer manages the OS | Microsoft manages the OS |
+| Full administrative control | Focus on application deployment |
+| Supports any supported software | Optimized for web applications and APIs |
+
+## Exam Tip
+
+This is one of the most frequently tested Azure services.
+
+Look for phrases such as:
+
+- software emulation of a physical computer
+- manage the operating system
+- install custom software
+- full administrative control
+
+These phrases almost always indicate:
+
+> **Azure Virtual Machines**
