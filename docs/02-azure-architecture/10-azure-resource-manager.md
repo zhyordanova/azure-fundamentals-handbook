@@ -28,7 +28,7 @@ flowchart TD
     ARM["Azure Resource Manager (ARM) ⭐"]
     VM["Virtual Machine"]
 
-    Portal --> ARM --> ARM --> VM
+    Portal --> ARM --> VM
 ```
 
 The same process applies when using:
