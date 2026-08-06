@@ -42,7 +42,7 @@ flowchart TD
     OnPrem["On-premises Network"]
     AzureVNet["Azure Virtual Network"]
 
-    OnPrem -->|Encrypted VPN Tunnel| AzureVNet
+    OnPrem -->| Encrypted VPN Tunnel | AzureVNet
 ```
 
 Used for permanent connectivity between an organization and Azure.
@@ -57,7 +57,7 @@ flowchart TD
     IU["Individual User"]
     AzureVNet["Azure Virtual Network"]
 
-    IU -->|VPN| AzureVNet
+    IU -->| VPN | AzureVNet
 ```
 
 Used when individual users need secure remote access.
@@ -71,7 +71,7 @@ flowchart TD
     AzureVNetA["Azure VNet A"]
     AzureVNetB["Azure VNet B"]
 
-    AzureVNetA -->|VPN| AzureVNetB
+    AzureVNetA -->| VPN | AzureVNetB
 ```
 
 Although possible, Microsoft generally expects **Virtual Network Peering** as the preferred answer for Azure-to-Azure connectivity in AZ-900 unless VPN is explicitly mentioned.
