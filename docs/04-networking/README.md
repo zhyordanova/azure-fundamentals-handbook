@@ -13,3 +13,7 @@
 6. [Azure Bastion](6-azure-bastion.md)
 
 7. [Local Network Gateway](7-local-network-gateway.md)
+
+## Related Diagram
+
+- [Azure Networking Overview](../../diagrams/azure-networking-overview.md)
