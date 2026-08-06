@@ -105,16 +105,24 @@ Azure Bastion provides secure management access to Virtual Machines.
 
 ## Exam Tip
 
-Microsoft often uses phrases such as:
+Azure Bastion is an administrative access service.
+
+Before choosing Azure Bastion, ask yourself:
+
+"Is the question about connecting networks or about connecting to a Virtual Machine?"
+
+If the goal is:
 
 - secure RDP
 - secure SSH
-- Azure Portal
-- browser-based access
-- no public IP
+- browser-based administration
 
-These phrases almost always indicate:
+→ Azure Bastion
 
-> **Azure Bastion**
+If the goal is:
 
-If the question is about connecting networks, Azure Bastion is **not** the correct answer.
+- connect networks
+- hybrid connectivity
+- VPN
+
+→ Azure VPN Gateway or ExpressRoute
