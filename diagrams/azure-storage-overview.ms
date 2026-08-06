@@ -1,13 +1,27 @@
 ```mermaid
 flowchart TD
 
-    SA["Storage Account"]
-    SA --> B["Blob Storage"]
-    SA --> F["Azure Files"]
-    SA --> Q["Queue Storage"]
-    SA --> T["Table Storage"]
-    VM["Virtual Machine"]
-    VM --> D["Managed Disks"]
+    subgraph Azure Storage
 
-    B --> BT["Hot / Cool / Cold / Archive"]
+        SA["Storage Account"]
+
+        B["Blob Storage"]
+        F["Azure Files"]
+        Q["Queue Storage"]
+        T["Table Storage"]
+
+        MD["Managed Disks"]
+
+        SA --> B
+        SA --> F
+        SA --> Q
+        SA --> T
+
+        B --> BT["Hot / Cool / Cold / Archive"]
+
+    end
+
+    VM["Virtual Machine"]
+
+    VM -. uses .-> MD
 ```
