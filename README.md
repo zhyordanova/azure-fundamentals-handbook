@@ -49,14 +49,14 @@ The `docs` directory contains the core learning material organized by topic. Eac
 |----------|-------|
 | 01 | [Cloud Concepts](docs/01-cloud-concepts/) |
 | 02 | [Azure Architecture](docs/02-azure-architecture/) |
-| 03 | [Compute](docs/03-compute.md) |
-| 04 | [Networking](docs/04-networking.md) |
-| 05 | [Storage](docs/05-storage.md) |
-| 06 | [Identity](docs/06-identity.md) |
-| 07 | [Governance](docs/07-governance.md) |
-| 08 | [Cost Management](docs/08-cost-management.md) |
-| 09 | [Monitoring](docs/09-monitoring.md) |
-| 10 | [Service Models](docs/10-service-models.md) |
+| 03 | [Compute](docs/03-compute/) |
+| 04 | [Networking](docs/04-networking/) |
+| 05 | [Storage](docs/05-storage/) |
+| 06 | [Identity](docs/06-identity/) |
+| 07 | [Governance](docs/07-governance/) |
+| 08 | [Cost Management](docs/08-monitoring/) |
+| 09 | [Monitoring](docs/09-cost-management/) |
+| 10 | [Service Models](docs/10-service-models/) |
 
 ## Exam Preparation
 
