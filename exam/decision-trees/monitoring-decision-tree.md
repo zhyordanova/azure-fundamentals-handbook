@@ -7,9 +7,11 @@ flowchart TD
 
     B -->|Metrics / Logs / Alerts| C["Azure Monitor"]
 
-    B -->|Recommendations| D["Azure Advisor"]
+    B -->|Query logs / KQL| D["Log Analytics"]
 
-    B -->|Azure outages| E["Azure Service Health"]
+    B -->|Application telemetry| E["Application Insights"]
 
-    B -->|Application telemetry| F["Application Insights"]
+    B -->|Recommendations| F["Azure Advisor"]
+
+    B -->|Azure outages / Maintenance| G["Azure Service Health"]
 ```
