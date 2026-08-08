@@ -99,14 +99,18 @@ Separate VNets require Virtual Network Peering or another connectivity solution.
 
 ## Exam Tip
 
-Microsoft often starts networking questions with:
+Ask:
 
-- "Resources need to communicate..."
-- "Private network..."
-- "Azure Virtual Network..."
+> "Does the requirement need connectivity, traffic filtering, or connectivity between networks?"
 
-This usually indicates that the first concept to consider is:
+If the requirement is about creating a private network for Azure resources:
 
-> **Azure Virtual Network (VNet)**
+→ **Azure Virtual Network**
 
-After identifying the Virtual Network, the next step is determining **how** connectivity or security should be implemented (Peering, VPN Gateway, ExpressRoute, or NSG).
+If it is about filtering traffic:
+
+→ **Network Security Group**
+
+If it is about connecting separate networks:
+
+→ Think about **VNet Peering, VPN Gateway, or ExpressRoute**.

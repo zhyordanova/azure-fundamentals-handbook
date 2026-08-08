@@ -127,21 +127,20 @@ NSGs control traffic after connectivity exists.
 
 ## Exam Tip
 
-Microsoft often includes phrases such as:
+Ask:
 
-- allow or deny traffic
-- inbound rules
-- outbound rules
-- security rules
+> "Do I need to create connectivity or control traffic that already has connectivity?"
 
-These phrases almost always indicate:
+If the requirement is:
 
-> **Network Security Group (NSG)**
+- allow or deny traffic;
+- restrict ports;
+- control inbound or outbound access;
 
-If the question asks how two networks communicate, the correct answer is **not** NSG.
+→ **Network Security Group (NSG)**
 
-Instead, think about:
+If the requirement is to connect two networks:
 
-- Virtual Network Peering
-- VPN Gateway
-- ExpressRoute
+→ **NSG is not the answer.**
+
+Think about VNet Peering, VPN Gateway, or ExpressRoute.

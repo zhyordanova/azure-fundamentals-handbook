@@ -2,11 +2,15 @@
 
 ## Definition
 
-A Local Network Gateway is an Azure resource that represents an on-premises network when configuring a Site-to-Site (S2S) VPN connection.
+A Local Network Gateway is an Azure resource that represents a remote network, typically an on-premises site, when configuring Site-to-Site VPN connectivity.
 
-It stores information about the on-premises VPN device and the address spaces of the local network.
+It stores information such as:
 
-A Local Network Gateway does **not** provide network connectivity by itself. Instead, it is used together with an Azure VPN Gateway.
+- the IP address or FQDN of the remote VPN device;
+- the address prefixes of the remote network;
+- optional BGP configuration.
+
+A Local Network Gateway does not create connectivity by itself. It is used as part of a VPN Gateway connection.
 
 ## Why Local Network Gateway Exists
 
@@ -23,11 +27,11 @@ This information allows Azure VPN Gateway to establish a secure VPN tunnel.
 
 A Local Network Gateway:
 
-- Represents an on-premises network.
-- Stores the public IP address of the VPN device.
-- Stores the address space of the local network.
-- Is used only for VPN connectivity scenarios.
-- Works together with Azure VPN Gateway.
+- Represents a remote network or VPN site
+- Stores the remote VPN endpoint information
+- Stores remote network address prefixes
+- Can include BGP configuration
+- Works with Azure VPN Gateway connections
 
 ## Typical Use Cases
 
@@ -100,15 +104,20 @@ Local Network Gateway represents an on-premises network.
 
 ## Exam Tip
 
-Microsoft usually asks this concept using one specific question:
+Separate the two objects:
 
-> Which Azure object represents the on-premises network in a Site-to-Site VPN?
+**Local Network Gateway**
 
-The correct answer is:
+→ Describes the remote/on-premises side.
+
+**Azure VPN Gateway**
+
+→ Terminates and handles the Azure VPN connectivity.
+
+If the question asks:
+
+> "Which Azure object represents the on-premises site?"
+
+think:
 
 > **Local Network Gateway**
-
-Remember:
-
-- **Local Network Gateway** → Represents the on-premises network.
-- **Azure VPN Gateway** → Creates the secure VPN connection.

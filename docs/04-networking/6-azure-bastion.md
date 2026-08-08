@@ -2,9 +2,11 @@
 
 ## Definition
 
-Azure Bastion is a fully managed Azure service that provides secure Remote Desktop Protocol (RDP) and Secure Shell (SSH) connectivity to Azure Virtual Machines directly through the Azure portal.
+Azure Bastion is a fully managed Azure service that provides secure RDP and SSH connectivity to Azure Virtual Machines by using the VMs' private IP addresses.
 
-Azure Bastion eliminates the need to expose Virtual Machines to the public Internet by removing the requirement for public IP addresses on the VMs.
+Users can connect through the Azure portal, and supported Bastion configurations also allow native RDP or SSH client connections.
+
+The target Virtual Machines do not require public IP addresses for Bastion connectivity.
 
 ## Why Azure Bastion Exists
 
@@ -26,8 +28,10 @@ Azure Bastion provides:
 
 - Secure RDP connectivity
 - Secure SSH connectivity
+- Connectivity to VMs through private IP addresses
 - Browser-based access through the Azure portal
-- No public IP required on Virtual Machines
+- Native client support in supported configurations
+- No public IP required on the target VM
 - Fully managed service
 
 ## Typical Use Cases
@@ -62,10 +66,10 @@ If a question contains words such as:
 
 - secure RDP
 - secure SSH
-- browser
-- no public IP
-- Azure Portal
-- manage Virtual Machines
+- VM administration
+- private IP
+- no public IP on the VM
+- Bastion
 
 Think:
 
@@ -105,24 +109,18 @@ Azure Bastion provides secure management access to Virtual Machines.
 
 ## Exam Tip
 
-Azure Bastion is an administrative access service.
+Ask:
 
-Before choosing Azure Bastion, ask yourself:
+> "Is the requirement about connecting networks or securely administering a Virtual Machine?"
 
-"Is the question about connecting networks or about connecting to a Virtual Machine?"
+Secure RDP or SSH access to a VM:
 
-If the goal is:
+→ **Azure Bastion**
 
-- secure RDP
-- secure SSH
-- browser-based administration
+Connect networks:
 
-→ Azure Bastion
+→ Think about **VPN Gateway, ExpressRoute, or VNet Peering**
 
-If the goal is:
+Remember:
 
-- connect networks
-- hybrid connectivity
-- VPN
-
-→ Azure VPN Gateway or ExpressRoute
+> **Bastion = secure VM administration, not network-to-network connectivity**

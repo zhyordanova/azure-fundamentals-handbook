@@ -2,9 +2,11 @@
 
 ## Definition
 
-Azure VPN Gateway is an Azure networking service that provides secure communication between an on-premises network and an Azure Virtual Network over the public Internet.
+Azure VPN Gateway is an Azure networking service that sends encrypted traffic between Azure Virtual Networks, on-premises networks, and individual client devices.
 
-It creates encrypted VPN tunnels to protect data while it is transmitted between locations.
+For Site-to-Site connectivity between Azure and an on-premises network, VPN Gateway typically establishes an encrypted tunnel over the public Internet.
+
+VPN Gateway can also provide Point-to-Site and VNet-to-VNet connectivity.
 
 ## Why Azure VPN Gateway Exists
 
@@ -140,23 +142,20 @@ VPN Gateway connects Azure with on-premises environments.
 
 ## Exam Tip
 
-Microsoft almost always uses one of these phrases:
+First identify the connection type.
 
-- encrypted tunnel
-- Site-to-Site VPN
-- Point-to-Site VPN
-- over the Internet
-- on-premises
+**On-premises ↔ Azure over the Internet**
 
-These phrases almost always indicate:
+→ **VPN Gateway**
 
-> **Azure VPN Gateway**
+**Individual computer ↔ Azure VNet**
 
-If the question says:
+→ **Point-to-Site VPN**
 
-- private dedicated connection
-- no public Internet
+**Private connectivity that does not traverse the public Internet**
 
-the correct answer is usually:
+→ **ExpressRoute**
 
-> **ExpressRoute**
+The strongest VPN Gateway clue is:
+
+> **encrypted VPN connectivity**

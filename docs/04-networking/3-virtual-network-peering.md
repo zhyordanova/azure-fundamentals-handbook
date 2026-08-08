@@ -21,6 +21,18 @@ Without Virtual Network Peering, these Virtual Networks cannot communicate priva
 
 Peering provides secure, low-latency communication without requiring traffic to traverse the public Internet.
 
+## Virtual Network Peering provides:
+
+- Private communication between Azure Virtual Networks
+- Low-latency connectivity
+- High-bandwidth communication
+- Traffic over the Microsoft backbone network
+- Connectivity without requiring a VPN tunnel
+
+Peering can connect Virtual Networks within the same Azure Region or across different Azure Regions.
+
+VNet Peering is **not transitive** by default. Each peering relationship directly connects the participating networks.
+
 ## Characteristics
 
 Virtual Network Peering provides:
@@ -93,15 +105,22 @@ They do not create connectivity.
 
 ## Exam Tip
 
-Microsoft frequently uses wording such as:
+Ask:
 
-- two Azure Virtual Networks
-- communicate privately
-- Microsoft backbone
-- connect VNets
+> "What exactly needs to be connected?"
 
-These phrases almost always indicate:
+Two Azure Virtual Networks:
 
-> **Virtual Network Peering**
+→ **Virtual Network Peering**
 
-If the question mentions **on-premises**, the answer is usually **VPN Gateway** or **ExpressRoute**, not Virtual Network Peering.
+Azure and an on-premises network over the Internet:
+
+→ **VPN Gateway**
+
+Azure and an on-premises network through private connectivity:
+
+→ **ExpressRoute**
+
+Remember:
+
+> **VNet Peering = direct private VNet-to-VNet connectivity**

@@ -2,11 +2,11 @@
 
 ## Definition
 
-Azure ExpressRoute is an Azure networking service that provides a private, dedicated connection between an on-premises network and Microsoft Azure.
+Azure ExpressRoute is an Azure networking service that extends an on-premises network into the Microsoft cloud over a private connection.
 
-Unlike Azure VPN Gateway, ExpressRoute does not use the public Internet.
+Unlike typical VPN connectivity, ExpressRoute traffic does not traverse the public Internet.
 
-Traffic travels through a private connection provided by an ExpressRoute connectivity provider.
+Connectivity can be provided through an ExpressRoute connectivity provider or through supported direct connectivity options.
 
 ## Why ExpressRoute Exists
 
@@ -26,12 +26,12 @@ Azure ExpressRoute provides a dedicated private connection to Azure.
 
 Azure ExpressRoute provides:
 
-- Private dedicated connectivity
-- No traffic over the public Internet
-- High reliability
-- Low latency
-- High bandwidth
+- Private connectivity to Microsoft cloud services
+- Traffic that does not traverse the public Internet
 - Predictable network performance
+- High-bandwidth connectivity options
+- Consistent latency
+- Built-in connectivity redundancy
 
 ## Typical Use Cases
 
@@ -63,12 +63,12 @@ Microsoft manages:
 
 If a question contains words such as:
 
-- private dedicated connection
-- no public Internet
-- dedicated circuit
-- low latency
-- high reliability
-- ExpressRoute
+- private connection
+- does not use the public Internet
+- ExpressRoute circuit
+- connectivity provider
+- predictable latency
+- high bandwidth
 
 Think:
 
@@ -78,10 +78,9 @@ Think:
 
 Microsoft frequently asks questions such as:
 
-- Which Azure service provides a private dedicated connection?
-- Which Azure service does not use the public Internet?
-- Which Azure networking service provides the highest reliability?
-- Which Azure networking service requires an ExpressRoute provider?
+- Which Azure service provides private connectivity to Microsoft cloud services?
+- Which Azure service does not send traffic over the public Internet?
+- Which Azure connectivity option uses an ExpressRoute circuit?
 
 ## Common Mistakes
 
@@ -109,26 +108,16 @@ The difference is **how** they provide connectivity.
 
 ## Exam Tip
 
-This is one of the easiest Azure networking concepts to recognize.
+Ask:
 
-If Microsoft mentions:
+> "Does the connection use the public Internet?"
 
-- private dedicated connection
-- dedicated circuit
-- no public Internet
-- ExpressRoute provider
+Encrypted connection over the public Internet:
 
-the correct answer is almost always:
+→ **Azure VPN Gateway**
 
-> **Azure ExpressRoute**
+Private connectivity that does not traverse the public Internet:
 
-If the question contains:
+→ **Azure ExpressRoute**
 
-- encrypted tunnel
-- Site-to-Site VPN
-- Point-to-Site VPN
-- over the Internet
-
-the correct answer is:
-
-> **Azure VPN Gateway**
+For AZ-900, this is the most important distinction.
