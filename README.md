@@ -54,8 +54,8 @@ The `docs` directory contains the core learning material organized by topic. Eac
 | 05 | [Storage](docs/05-storage/) |
 | 06 | [Identity](docs/06-identity/) |
 | 07 | [Governance](docs/07-governance/) |
-| 08 | [Cost Management](docs/08-monitoring/) |
-| 09 | [Monitoring](docs/09-cost-management/) |
+| 08 | [Monitoring](docs/08-monitoring/) |
+| 09 | [Cost Management](docs/09-cost-management/) |
 | 10 | [Service Models](docs/10-service-models/) |
 
 ## Exam Preparation
