@@ -91,12 +91,15 @@ Many organizations permanently operate hybrid environments because of business o
 
 ## Exam Tip
 
-Microsoft usually tests Hybrid Cloud through scenarios instead of definitions.
+Hybrid Cloud requires **both environments**.
 
-Look for phrases such as:
+If an organization:
 
-- "some servers remain on-premises"
-- "migrate a few workloads"
-- "combine local datacenter with Azure"
+- keeps some workloads on-premises or in a private cloud;
+- uses public cloud services at the same time;
 
-These almost always indicate **Hybrid Cloud**.
+think:
+
+> **Hybrid Cloud**
+
+The key is coexistence or integration between private/on-premises infrastructure and public cloud services.

@@ -79,16 +79,14 @@ The defining characteristic of private cloud is dedicated infrastructure, not th
 
 ## Exam Tip
 
-Microsoft usually does not ask directly:
+Private Cloud is about **dedicated infrastructure and organizational control**.
 
-"What is a Private Cloud?"
+Ask:
 
-Instead, look for phrases such as:
+> "Is this cloud environment dedicated to one organization?"
 
-- complete control
-- dedicated infrastructure
-- hardware purchase
-- one organization
-- physical resources
+If yes:
 
-These phrases almost always indicate **Private Cloud**.
+→ **Private Cloud**
+
+Do not confuse this with Hybrid Cloud, where private or on-premises infrastructure is combined with public cloud services.

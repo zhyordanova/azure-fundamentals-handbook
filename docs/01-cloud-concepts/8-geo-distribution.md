@@ -89,13 +89,20 @@ Deploying resources in multiple regions supports disaster recovery, but addition
 
 ## Exam Tip
 
-Microsoft usually tests Geo-distribution through business scenarios.
+Ask:
 
-Look for phrases such as:
+> "Why are resources being deployed in multiple geographic locations?"
 
-- users around the world
-- multiple Azure regions
-- reduce latency
-- regional datacenters
+If the goal is to:
 
-These phrases almost always indicate **Geo-distribution**.
+- serve users around the world;
+- place resources closer to users;
+- reduce geographic latency;
+
+think:
+
+> **Geo-distribution**
+
+Do not automatically interpret every multi-location scenario as High Availability.
+
+Geo-distribution primarily focuses on **geographic placement of workloads and users**.

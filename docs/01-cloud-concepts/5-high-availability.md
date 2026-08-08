@@ -91,13 +91,20 @@ Many Azure services require multiple instances or additional configuration to ac
 
 ## Exam Tip
 
-Microsoft often asks about High Availability indirectly.
+Ask what problem the requirement is trying to solve.
 
-Look for phrases such as:
+If the goal is:
 
-- remain available
-- minimize downtime
-- SLA
-- uptime
+> Keep the service running and minimize downtime
 
-These usually indicate **High Availability**.
+→ **High Availability**
+
+If the goal is:
+
+> Handle increasing workload or demand
+
+→ **Scalability**
+
+High Availability is about **continuity**.
+
+Scalability is about **capacity**.

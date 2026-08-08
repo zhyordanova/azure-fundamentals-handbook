@@ -80,13 +80,18 @@ In a public cloud, the cloud provider owns and operates the physical infrastruct
 
 ## Exam Tip
 
-During AZ-900, Microsoft rarely asks "What is Public Cloud?"
+Ask:
 
-Instead, look for phrases like:
+> "Who owns and operates the cloud infrastructure?"
 
-- third-party provider
-- Internet
-- pay-as-you-go
-- provider-owned infrastructure
+If the infrastructure is owned and operated by a cloud provider and shared across customers:
 
-These almost always indicate **Public Cloud**.
+→ **Public Cloud**
+
+If the infrastructure is dedicated to a single organization:
+
+→ **Private Cloud**
+
+If private or on-premises infrastructure is combined with public cloud services:
+
+→ **Hybrid Cloud**

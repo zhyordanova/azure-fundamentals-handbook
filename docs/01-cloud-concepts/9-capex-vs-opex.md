@@ -114,13 +114,22 @@ Although many cloud services are billed monthly, the defining characteristic of 
 
 ## Exam Tip
 
-Microsoft usually asks CapEx and OpEx through business scenarios rather than definitions.
+Ask how the organization pays for the resource.
 
-Look for phrases such as:
+If the organization:
 
-- hardware purchase
-- upfront investment
-- pay-as-you-go
-- consumption-based pricing
+> Buys and owns infrastructure upfront
 
-These phrases almost always identify the correct financial model.
+→ **CapEx**
+
+If the organization:
+
+> Pays for services as they are consumed
+
+→ **OpEx**
+
+Remember:
+
+**CapEx = ownership and upfront investment**
+
+**OpEx = consumption and ongoing expense**
