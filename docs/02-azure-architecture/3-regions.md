@@ -2,17 +2,11 @@
 
 ## Definition
 
-An Azure Region is a geographic area that contains one or more physically connected datacenters.
+An Azure Region is a geographic area that contains one or more datacenters connected by a high-capacity, low-latency network.
 
-Every Azure resource is deployed into a specific Azure Region.
+Most regional Azure services and resources are deployed to a specific Azure Region.
 
-Examples include:
-
-- West Europe
-- North Europe
-- East US
-- Central US
-- Sweden Central
+Some Azure services are nonregional and are not tied to a single Azure Region.
 
 ## Why Regions Exist
 
@@ -95,14 +89,19 @@ Service availability varies between regions.
 
 ## Exam Tip
 
-Microsoft frequently combines Regions with pricing questions.
+Ask:
 
-Typical examples include:
+> "Is the question asking about a physical Azure deployment location?"
 
-- Which factor affects Azure cost?
-- Which Azure component contains one or more datacenters?
-- Where should Azure resources be deployed?
+If the scenario mentions:
 
-Remember:
+- one or more datacenters;
+- choosing a deployment location;
+- proximity to users;
+- regional service availability;
 
-Resources are always deployed into an **Azure Region**.
+think:
+
+> **Azure Region**
+
+Remember that most Azure services are regional, but some Azure services are nonregional.

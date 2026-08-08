@@ -110,17 +110,18 @@ Subscriptions contain Resource Groups.
 
 ## Exam Tip
 
-This is one of the most frequently tested Azure concepts.
+Ask:
 
-Look for phrases such as:
+> "Do these resources belong together and share a lifecycle?"
 
-- logical container
-- organize Azure resources
-- related resources
-- manage resources together
+If yes:
 
-These phrases almost always indicate:
+→ **Resource Group**
 
-> **Resource Group**
+Remember:
 
-Do not confuse Resource Groups with Subscriptions or Management Groups.
+- Resource Group → organizes related resources.
+- Subscription → broader billing, quota, and governance scope.
+- Management Group → organizes multiple subscriptions.
+
+Resources in the same Resource Group can be located in different Azure Regions.

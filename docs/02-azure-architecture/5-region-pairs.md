@@ -2,16 +2,11 @@
 
 ## Definition
 
-A Region Pair consists of two Azure Regions within the same Azure Geography.
+A Region Pair consists of two Azure Regions that Microsoft associates with each other for specific resiliency capabilities.
 
-Microsoft pairs regions to support disaster recovery and improve the resilience of Azure services.
+Some Azure Regions have a predefined paired region, while other Azure Regions are nonpaired.
 
-Examples include:
-
-- West Europe ↔ North Europe
-- East US ↔ West US
-
-Each Azure Region has a predefined paired region.
+Paired regions are usually located within the same Azure Geography, although exceptions exist.
 
 ## Why Region Pairs Exist
 
@@ -25,11 +20,11 @@ This supports business continuity and disaster recovery planning.
 
 Region Pairs:
 
-- Consist of two Azure Regions.
-- Always belong to the same Azure Geography.
-- Improve disaster recovery capabilities.
-- Support regional resilience.
-- Help Microsoft prioritize recovery during major outages.
+- Consist of two associated Azure Regions.
+- Are used by some Azure services for geo-replication and geo-redundancy.
+- Can support disaster recovery strategies.
+- Can support prioritized recovery and staggered platform updates.
+- Are not available for every Azure Region.
 
 ## Typical Scenario
 
@@ -64,15 +59,19 @@ Microsoft frequently asks questions such as:
 
 ## Common Mistakes
 
+❌ Thinking every Azure Region has a paired region.
+
+Many Azure Regions are nonpaired.
+
+❌ Thinking using a Region Pair automatically provides disaster recovery.
+
+A resilient multi-region solution must still be designed and configured appropriately.
+
 ❌ Thinking Region Pairs and Availability Zones are the same.
 
-Availability Zones protect against **datacenter failures**.
+Availability Zones provide isolation within a Region.
 
-Region Pairs protect against **regional failures**.
-
-❌ Thinking paired regions can belong to different Geographies.
-
-Region Pairs always belong to the **same Azure Geography**.
+Region Pairs involve two associated Azure Regions.
 
 ## Compare With
 
@@ -84,20 +83,22 @@ Region Pairs always belong to the **same Azure Geography**.
 
 ## Exam Tip
 
-Pay close attention to the scope of the failure.
+First identify the scope:
 
-If Microsoft mentions:
-
-- **one datacenter fails**
-- **within a region**
+**Failure within one Region**
 
 → Availability Zones
 
-If Microsoft mentions:
+**Disaster recovery across Regions**
 
-- **entire region**
-- **paired region**
-- **disaster recovery**
-- **same geography**
+→ Multi-region architecture
 
-→ Region Pairs
+If the question specifically mentions:
+
+- paired regions;
+- Microsoft-defined regional pairing;
+- prioritized regional recovery;
+
+→ **Region Pair**
+
+Do not assume that every Azure Region has a pair.

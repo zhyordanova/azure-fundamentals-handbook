@@ -12,7 +12,7 @@ For example:
 - United States
 - Asia Pacific
 
-Each geography contains multiple Azure regions that are connected through Microsoft's global network.
+Each geography contains one or more Azure regions connected through Microsoft's global network.
 
 ## Why Geographies Exist
 
@@ -47,21 +47,11 @@ Regions inside the same geography can work together to provide resiliency and di
 
 ## Region Pairs
 
-One important characteristic of Azure Geographies is that **Region Pairs always belong to the same Geography**.
+Some Azure Regions are paired with another region to support specific resiliency and disaster recovery capabilities.
 
-For example:
+Paired regions are usually located within the same Azure Geography, although exceptions exist.
 
-```text
-Europe Geography
-
-West Europe
-
-↓
-
-North Europe
-```
-
-This is one of the most common questions in the AZ-900 exam.
+Not all Azure Regions have a region pair.
 
 ## Microsoft Trigger Words
 
@@ -90,10 +80,6 @@ Microsoft frequently asks questions such as:
 ❌ Thinking Geography and Region are the same.
 
 A Geography contains multiple Regions.
-
-❌ Thinking Region Pairs can exist across different Geographies.
-
-Azure Region Pairs always belong to the same Geography.
 
 ## Compare With
 

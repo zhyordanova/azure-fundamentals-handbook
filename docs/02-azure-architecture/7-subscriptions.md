@@ -11,8 +11,6 @@ It acts as the primary boundary for:
 - Quotas
 - Governance
 
-Every Azure resource belongs to exactly one subscription.
-
 ## Why Subscriptions Exist
 
 Organizations often separate Azure resources into multiple subscriptions to simplify management and cost tracking.
@@ -54,13 +52,16 @@ A subscription sits between Management Groups and Resource Groups.
 
 ## Billing Boundary
 
-One of the primary purposes of a subscription is cost management.
+Subscriptions provide an important scope for tracking and managing Azure consumption and costs.
 
-By default:
+Organizations can use separate subscriptions to:
 
-- Billing reports are generated per subscription.
-- Azure invoices are generated per subscription.
-- Budgets can be configured per subscription.
+- separate workloads;
+- track costs independently;
+- apply budgets;
+- manage quotas and governance boundaries.
+
+The exact invoice structure depends on the organization's Azure billing agreement.
 
 ## Microsoft Trigger Words
 
@@ -108,15 +109,19 @@ Billing reports and invoices are generated per Subscription.
 
 ## Exam Tip
 
-Microsoft often hides the word **billing** inside longer scenarios.
+Ask what kind of boundary the scenario needs.
 
-Examples include:
+If the requirement involves:
 
-- separate invoice
-- separate billing reports
-- different cost tracking
-- billing boundary
+- separating Azure consumption;
+- quotas;
+- cost tracking;
+- independent workload boundaries;
 
-When you see these phrases, the correct answer is usually:
+think:
 
 > **Azure Subscription**
+
+If the requirement is only about grouping related resources:
+
+> **Resource Group**

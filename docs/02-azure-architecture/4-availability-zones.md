@@ -85,14 +85,16 @@ Region Pairs protect against **regional failures**.
 
 ## Exam Tip
 
-This is one of the most frequently tested Azure Architecture concepts.
+Identify the **scope of the failure**.
 
-If Microsoft mentions:
-
-- physically separate datacenters
-- one datacenter fails
-- within a region
-
-The correct answer is almost always:
+If the requirement protects against a failure within one Azure Region:
 
 > **Availability Zones**
+
+If the requirement is about resilience across multiple Azure Regions:
+
+> Think about a multi-region disaster recovery design.
+
+Remember:
+
+**Availability Zone = datacenter-level isolation within a Region.**
