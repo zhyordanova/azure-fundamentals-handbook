@@ -111,15 +111,19 @@ With Azure Virtual Machines, operating system management remains the customer's 
 
 ## Exam Tip
 
-This is one of the most frequently tested Azure services.
+Ask:
 
-Look for phrases such as:
+> "Does the customer need control of the operating system?"
 
-- software emulation of a physical computer
-- manage the operating system
-- install custom software
-- full administrative control
+If the requirement includes:
 
-These phrases almost always indicate:
+- installing custom software;
+- configuring the operating system;
+- administrative access;
+- running a legacy workload;
+
+think:
 
 > **Azure Virtual Machines**
+
+If Microsoft manages the operating system and the customer primarily deploys application code, think about a **PaaS service such as Azure App Service**.

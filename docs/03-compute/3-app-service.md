@@ -106,17 +106,22 @@ Customers manage only the application and its data.
 
 ## Exam Tip
 
-This is one of the most frequently tested Azure services.
+Ask:
 
-If Microsoft mentions:
+> "Does the customer need to manage the server or only the application?"
 
-- Microsoft manages the operating system
-- developers deploy only application code
-- web application
-- runtime managed by Microsoft
+If the customer needs:
 
-the correct answer is usually:
+- operating system control;
+- custom server configuration;
+- administrative access;
 
-> **Azure App Service**
+→ **Azure Virtual Machines**
 
-If the question mentions **full administrative control**, **custom operating system**, or **installing software**, the correct answer is usually **Azure Virtual Machines**, not App Service.
+If the customer wants to:
+
+- deploy a web application or API;
+- avoid managing the operating system;
+- use a managed application platform;
+
+→ **Azure App Service**

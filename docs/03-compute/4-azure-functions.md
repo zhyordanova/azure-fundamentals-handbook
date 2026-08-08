@@ -27,13 +27,14 @@ Azure Functions execute code only when needed.
 
 Azure Functions provide:
 
-- Serverless execution
-- Event-driven programming
-- Automatic scaling
-- Pay only for execution time
-- No server management
+- Serverless compute
+- Event-driven execution
+- Automatic scaling capabilities
+- Multiple hosting options
+- Integration with many Azure services
+- Minimal server management
 
-Functions automatically scale depending on the number of incoming events.
+Consumption-based hosting plans can dynamically scale and charge based on resource usage and execution.
 
 ## Common Triggers
 
@@ -125,16 +126,25 @@ Customers do not provision or manage servers.
 
 ## Exam Tip
 
-Microsoft often uses phrases such as:
+Ask:
 
-- execute code
-- serverless
-- event-driven
-- trigger
-- no server management
+> "Am I hosting an application or executing code in response to an event?"
 
-These phrases almost always indicate:
+If the requirement is:
 
-> **Azure Functions**
+- host a complete web application or API;
 
-If the question asks about hosting an entire web application, the correct answer is usually **Azure App Service**, not Azure Functions.
+→ **Azure App Service**
+
+If the requirement is:
+
+- execute code when an event occurs;
+- process a queue message;
+- react to a Blob upload;
+- run scheduled code;
+
+→ **Azure Functions**
+
+The strongest clue is:
+
+> **event-driven serverless code**

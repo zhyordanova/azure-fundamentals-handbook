@@ -2,9 +2,11 @@
 
 ## Definition
 
-Azure Virtual Machine Scale Sets (VMSS) is an Azure compute service that allows you to deploy and manage a group of identical virtual machines.
+Azure Virtual Machine Scale Sets (VMSS) is an Azure compute service that allows you to deploy and manage a group of virtual machines as a scalable set.
 
-VM Scale Sets automatically increase or decrease the number of virtual machines based on application demand.
+VM Scale Sets support automatic scaling, allowing the number of virtual machine instances to increase or decrease based on configured rules and application demand.
+
+Depending on the orchestration mode, a scale set can contain identical or mixed virtual machine types.
 
 ## Why VM Scale Sets Exist
 
@@ -22,11 +24,12 @@ VM Scale Sets automate this process, ensuring applications always have the requi
 
 Virtual Machine Scale Sets provide:
 
-- A group of identical virtual machines.
-- Automatic scaling (autoscaling).
-- Integration with Azure Load Balancer.
-- High availability.
-- Simplified management of multiple virtual machines.
+- Management of multiple virtual machines
+- Manual or automatic scaling
+- Integration with Azure Load Balancer
+- High availability capabilities
+- Metrics-based autoscaling
+- Simplified management of VM instances
 
 ## Typical Use Cases
 
@@ -39,31 +42,32 @@ VM Scale Sets are commonly used for:
 
 ## Autoscaling
 
-VM Scale Sets can automatically scale based on Azure Monitor metrics.
+VM Scale Sets can use Azure Monitor autoscale to automatically increase or decrease the number of VM instances.
 
-Common scaling metrics include:
+Scaling rules can use:
 
 - CPU utilization
-- Memory usage
-- Number of requests
+- Disk or network metrics
+- Guest metrics such as memory usage
+- Custom metrics
 - Schedule-based rules
 
 Example:
 
-- CPU > 70% → Add more virtual machines.
-- CPU < 30% → Remove unnecessary virtual machines.
+- High sustained CPU utilization → Add VM instances.
+- Low sustained utilization → Remove VM instances.
 
 ## Microsoft Trigger Words
 
 If a question contains words such as:
 
-- identical virtual machines
+- multiple virtual machines
 - autoscale
 - scale out
 - scale in
-- multiple VMs
+- VM instances
 - demand
-- load balancer
+- scalable VM workload
 
 Think:
 
@@ -101,19 +105,22 @@ VM Scale Sets are built on Azure Virtual Machines and therefore belong to Infras
 
 ## Exam Tip
 
-Microsoft frequently uses phrases such as:
+Ask:
 
-- identical virtual machines
-- automatically scale
-- demand changes
-- load balancer
+> "Do I need one VM or a scalable group of VMs?"
 
-These phrases almost always indicate:
+If the requirement is:
 
-> **Azure Virtual Machine Scale Sets**
+- one independently managed Virtual Machine;
 
-Be careful not to confuse **Availability Sets** with **Virtual Machine Scale Sets**.
+→ **Azure Virtual Machine**
 
-Availability Sets improve availability.
+If the requirement is:
 
-Virtual Machine Scale Sets improve scalability.
+- multiple VM instances;
+- scale out or scale in;
+- autoscaling based on demand;
+
+→ **Virtual Machine Scale Sets**
+
+Do not rely only on the phrase **identical VMs** because modern Flexible orchestration can also support mixed VM types.

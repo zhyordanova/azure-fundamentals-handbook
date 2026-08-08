@@ -32,7 +32,19 @@ Azure Kubernetes Service provides:
 - Rolling updates
 - Self-healing applications
 
-Microsoft manages the Kubernetes control plane while customers manage their applications and worker nodes.
+## Shared Responsibilities
+
+Microsoft manages the Kubernetes control plane and core managed components.
+
+Customers remain responsible for areas such as:
+
+- Container images
+- Kubernetes workloads
+- Application configuration
+- Business logic
+- Workload security and configuration
+
+Responsibility for worker node management depends on the AKS mode and configuration.
 
 ## Typical Use Cases
 
@@ -110,15 +122,20 @@ AKS manages large-scale containerized applications using Kubernetes.
 
 ## Exam Tip
 
-Microsoft usually distinguishes AKS from ACI using one key phrase:
+Ask:
 
-- orchestrate containers
-- Kubernetes
-- container cluster
-- many containers
+> "Does the scenario require Kubernetes orchestration?"
 
-These phrases almost always indicate:
+If yes:
 
-> **Azure Kubernetes Service (AKS)**
+→ **Azure Kubernetes Service (AKS)**
 
-If the question emphasizes **simple container execution without Kubernetes**, the correct answer is usually **Azure Container Instances (ACI)**.
+If the requirement is simply to run containers without managing Kubernetes:
+
+→ **Azure Container Instances (ACI)**
+
+Remember:
+
+**ACI = container execution**
+
+**AKS = Kubernetes orchestration**

@@ -56,16 +56,15 @@ Containers are commonly used for:
 
 If a question contains words such as:
 
-- container
-- lightweight
-- portable
-- package application
-- dependencies
-- Docker
+- run containers
+- no virtual machine management
+- no Kubernetes cluster
+- simple container deployment
+- isolated container workload
 
 Think:
 
-> Containers
+> Azure Container Instances (ACI)
 
 ## Common Exam Questions
 
@@ -97,11 +96,22 @@ Containers and virtual machines solve different problems and are often used toge
 
 ## Exam Tip
 
-Microsoft rarely asks detailed questions about container technology.
+Ask:
 
-Instead, the exam usually asks which Azure service should be used to run containers.
+> "Do I need container execution or container orchestration?"
 
-This concept prepares you for the next two Azure services:
+If the requirement is:
 
-- Azure Container Instances (ACI)
-- Azure Kubernetes Service (AKS)
+- run containers without managing VMs;
+- avoid managing a Kubernetes cluster;
+- use a simple container workload;
+
+→ **Azure Container Instances (ACI)**
+
+If the requirement involves:
+
+- Kubernetes;
+- orchestration;
+- complex containerized applications;
+
+→ **Azure Kubernetes Service (AKS)**
