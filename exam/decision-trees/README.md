@@ -17,3 +17,5 @@
 8. [Monitoring](monitoring-decision-tree.md)
 
 9. [Cost Management](cost-decision-tree.md)
+
+10. [Service Models](service-models-decision-tree.md)
