@@ -2,11 +2,13 @@
 
 ## Definition
 
-Conditional Access is a Microsoft Entra ID security feature that evaluates specific conditions during user sign-in and automatically applies access policies.
+Microsoft Entra Conditional Access is a policy engine that uses identity and access signals to determine whether access should be allowed, blocked, or subject to additional requirements.
 
-It enables organizations to allow, block, or require additional authentication based on predefined rules.
+Conditional Access policies work like if-then statements:
 
-Conditional Access is often described as the "if-then" engine of Microsoft Entra ID.
+> If specific conditions are met, then apply specific access controls.
+
+Conditional Access is evaluated after first-factor authentication.
 
 ## Why Conditional Access Exists
 
@@ -23,20 +25,23 @@ Conditional Access enables organizations to apply different security requirement
 
 ## Characteristics
 
-Conditional Access evaluates conditions such as:
+Conditional Access can evaluate signals such as:
 
 - User or group
-- Application
-- Device compliance
+- Target resource or application
+- Device state or compliance
 - Location
-- Risk level
+- Sign-in risk
+- User risk
 
-Based on the configured policy, Azure can:
+Policies can then apply controls such as:
 
 - Allow access
 - Block access
-- Require Multifactor Authentication (MFA)
+- Require MFA
+- Require an authentication strength
 - Require a compliant device
+- Require a Microsoft Entra hybrid joined device
 
 ## Typical Use Cases
 
@@ -93,16 +98,23 @@ Conditional Access often requires MFA, but the two services have different purpo
 
 ## Exam Tip
 
-Microsoft almost always uses phrases such as:
+Think of Conditional Access as:
 
-- compliant device
-- approved application
-- require MFA
-- location
-- access policy
+> **IF → THEN**
 
-These phrases almost always indicate:
+Example:
 
-> **Conditional Access**
+> IF a user signs in from an untrusted location  
+> THEN require MFA.
 
-If the question asks only for an additional authentication factor, the correct answer is usually **Multifactor Authentication (MFA)**.
+If the question asks:
+
+> "Which feature provides the additional authentication factor?"
+
+→ **MFA**
+
+If it asks:
+
+> "Which feature decides when MFA or another access requirement should apply?"
+
+→ **Conditional Access**

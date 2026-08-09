@@ -86,9 +86,11 @@ MFA provides an additional authentication factor.
 Conditional Access decides **when** MFA is required.
 
 
-❌ Thinking MFA replaces passwords.
+❌ Thinking MFA always requires a password.
 
-MFA supplements passwords by adding additional verification.
+MFA requires two or more authentication factors.
+
+A password can be one factor, but modern authentication can also use passwordless methods.
 
 ## Compare With
 
@@ -100,15 +102,19 @@ MFA supplements passwords by adding additional verification.
 
 ## Exam Tip
 
-Microsoft usually uses phrases such as:
+Ask:
 
-- second factor
-- verification code
-- authenticator app
-- phone notification
+> "Does the requirement need stronger authentication, or does it need a rule that decides when stronger authentication is required?"
 
-These phrases almost always indicate:
+Need multiple authentication factors:
 
-> **Multifactor Authentication (MFA)**
+→ **MFA**
 
-If the question asks **when** MFA should be required, think **Conditional Access**.
+Need MFA only under certain conditions such as location, device, or risk:
+
+→ **Conditional Access**
+
+Remember:
+
+> **MFA = additional identity verification**  
+> **Conditional Access = policy that decides when access controls apply**

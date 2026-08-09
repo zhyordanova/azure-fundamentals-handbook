@@ -72,11 +72,19 @@ Microsoft frequently asks questions such as:
 
 Microsoft Entra ID manages identities.
 
-Azure resources are managed through Azure Resource Manager and secured using Azure RBAC.
+Azure resources are managed through Azure Resource Manager.
+
+Authorization to Azure resources is commonly controlled using Azure RBAC.
 
 ❌ Thinking Microsoft Entra ID is only for Azure.
 
 Microsoft Entra ID also provides identity services for Microsoft 365 and thousands of third-party applications.
+
+❌ Thinking Microsoft Entra roles and Azure RBAC roles are the same.
+
+Microsoft Entra roles manage access to Microsoft Entra resources and administrative capabilities.
+
+Azure RBAC roles manage access to Azure resources.
 
 ## Compare With
 
@@ -88,14 +96,26 @@ Microsoft Entra ID also provides identity services for Microsoft 365 and thousan
 
 ## Exam Tip
 
-Microsoft often asks identity questions using phrases such as:
+First identify whether the question is about **identity** or **resource permissions**.
 
-- sign in
-- authentication
-- users
-- groups
-- Azure AD
+If the requirement is about:
 
-These phrases almost always indicate:
+- users;
+- groups;
+- authentication;
+- sign-in;
+- identities;
 
-> **Microsoft Entra ID**
+→ **Microsoft Entra ID**
+
+If the requirement is about:
+
+- who can manage an Azure resource;
+- permissions on a subscription, resource group, or resource;
+
+→ **Azure RBAC**
+
+Remember:
+
+> **Authentication = Who are you?**  
+> **Authorization = What are you allowed to do?**

@@ -10,7 +10,9 @@ After successful authentication, users can access authorized applications withou
 
 Organizations often use many different applications.
 
-Without SSO, users would need to remember and manage separate credentials for each application.
+Without SSO, users may need to authenticate separately to each application.
+
+Single Sign-On reduces repeated authentication prompts and allows users to access multiple assigned applications after signing in.
 
 Single Sign-On improves:
 
@@ -88,22 +90,19 @@ The two technologies are often used together.
 
 ## Exam Tip
 
-Microsoft frequently uses phrases such as:
+Ask:
 
-- sign in once
-- one login
-- multiple applications
+> "Is the requirement about one sign-in or one identity?"
 
-These phrases almost always indicate:
+One sign-in for multiple applications:
 
-> **Single Sign-On (SSO)**
+→ **Single Sign-On (SSO)**
 
-If the question mentions:
+One identity across on-premises and cloud environments:
 
-- on-premises Active Directory
-- same identity
-- Microsoft Entra ID synchronization
+→ **Hybrid Identity**
 
-the correct answer is usually:
+Remember:
 
-> **Hybrid Identity**
+> **SSO = authentication experience**  
+> **Hybrid Identity = identity integration**

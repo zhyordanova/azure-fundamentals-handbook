@@ -2,9 +2,16 @@
 
 ## Definition
 
-Azure Role-Based Access Control (RBAC) is the Azure authorization service that controls who can perform actions on Azure resources.
+Azure Role-Based Access Control (Azure RBAC) is the Azure authorization system used to manage access to Azure resources.
 
-RBAC uses role assignments to grant users, groups, or applications the permissions they need.
+Azure RBAC grants permissions by assigning roles to security principals at a specific scope.
+
+Security principals can include:
+
+- Users
+- Groups
+- Service principals
+- Managed identities
 
 ## Why Azure RBAC Exists
 
@@ -33,6 +40,14 @@ RBAC determines **who can do what** on Azure resources.
 ## Built-in Roles
 
 Common Azure RBAC roles include:
+
+## Role Assignment
+
+An Azure role assignment combines three elements:
+
+1. Security principal — Who needs access?
+2. Role definition — What are they allowed to do?
+3. Scope — Where does the access apply?
 
 ### Owner
 
@@ -110,20 +125,26 @@ Azure RBAC controls who can perform actions.
 
 ## Exam Tip
 
-Remember one simple rule:
+For Azure RBAC, think:
 
-**Entra ID answers "Who are you?"**
+> **Who + What + Where**
 
-**RBAC answers "What are you allowed to do?"**
+**Who**
 
-If Microsoft mentions:
+→ User, group, service principal, or managed identity
 
-- permissions
-- roles
-- Reader
-- Contributor
-- Owner
+**What**
 
-the correct answer is usually:
+→ Role such as Reader, Contributor, or Owner
 
-> **Azure RBAC**
+**Where**
+
+→ Management Group, Subscription, Resource Group, or Resource
+
+If the question is about **permissions on Azure resources**:
+
+→ **Azure RBAC**
+
+If the question is about enforcing resource configuration rules:
+
+→ **Azure Policy**
