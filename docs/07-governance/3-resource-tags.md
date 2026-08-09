@@ -2,11 +2,11 @@
 
 ## Definition
 
-Azure Resource Tags are name-value pairs that help organize, classify, and manage Azure resources.
+Azure Resource Tags are name-value pairs that help organize, classify, and manage Azure resources, resource groups, and subscriptions.
 
-Tags provide metadata that makes it easier to identify, group, and report on Azure resources across subscriptions and resource groups.
+Tags provide metadata that makes it easier to identify, group, and report on Azure resources.
 
-Tags do not affect how resources operate.
+Tags do not control access or enforce governance rules.
 
 ## Why Resource Tags Exist
 
@@ -118,29 +118,28 @@ Resource Tags themselves do not enforce rules.
 
 ## Exam Tip
 
-Microsoft often uses phrases such as:
+Ask:
 
-- cost tracking
-- department
-- owner
-- environment
-- metadata
-- name-value pair
+> "Is the question about organizing resources, or about enforcing a rule?"
 
-These phrases almost always indicate:
+If the requirement is to:
 
-> **Resource Tags**
+- organize resources;
+- track costs;
+- identify ownership;
+- classify workloads;
 
-If the question says:
+→ **Resource Tags**
 
-- require tags
-- mandatory tags
-- enforce tags
+If the requirement is to:
 
-the correct answer is usually:
+- require tags;
+- enforce tag values;
+- apply tags automatically during deployment;
 
-> **Azure Policy**
+→ **Azure Policy**
 
-Resource Tags identify resources.
+Remember:
 
-Azure Policy enforces the use of tags.
+> **Tags = metadata**  
+> **Policy = enforcement**

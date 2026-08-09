@@ -50,10 +50,8 @@ Resource Locks provide:
 
 - Protection against accidental deletion
 - Protection against accidental modification
-- Resource-level governance
-- Support for Management Groups, Subscriptions, Resource Groups, and individual Resources
-
-Locks are inherited by child resources.
+- Support for Subscription, Resource Group, and individual Resource scopes
+- Inheritance to child resources when applied at a parent scope
 
 ## Typical Use Cases
 
@@ -112,22 +110,22 @@ Resource Locks protect existing resources.
 
 ## Exam Tip
 
-Microsoft almost always uses these phrases:
+Ask:
 
-- prevent accidental deletion
-- read-only
-- protect production resources
+> "Is the requirement to prevent changes to an existing resource?"
 
-These phrases almost always indicate:
+If the goal is to stop accidental deletion:
 
-> **Resource Locks**
+→ **CanNotDelete**
 
-If the requirement is:
+If the goal is to prevent any modifications:
 
-- require tags
-- allow only certain regions
-- enforce standards
+→ **ReadOnly**
 
-the correct answer is usually:
+If the question is about enforcing standards or allowed configurations:
 
-> **Azure Policy**
+→ **Azure Policy**
+
+If the question is about permissions:
+
+→ **Azure RBAC**

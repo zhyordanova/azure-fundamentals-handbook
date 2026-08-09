@@ -96,17 +96,25 @@ Azure Policy enforces governance rules.
 
 ## Exam Tip
 
-One of Microsoft's favorite question patterns is:
+Ask:
 
-> "The company must..."
+> "Is the requirement about who can do something, or what can be deployed?"
 
-Examples include:
+If the requirement is about:
 
-- must use only West Europe
-- must require tags
-- must enforce encryption
-- must allow only approved VM sizes
+- allowed regions;
+- required tags;
+- approved VM sizes;
+- encryption;
+- compliance;
 
-Whenever the requirement describes **what resources are allowed or required**, the correct answer is usually:
+→ **Azure Policy**
 
-> **Azure Policy**
+If the requirement is about permissions on Azure resources:
+
+→ **Azure RBAC**
+
+Remember:
+
+> **Azure Policy = what can be deployed**  
+> **Azure RBAC = who can perform actions**
