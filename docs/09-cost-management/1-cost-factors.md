@@ -127,13 +127,22 @@ Cost depends on multiple factors, including the service, configuration, consumpt
 
 ## Exam Tip
 
-When Microsoft asks what can affect Azure cost, do not look for a single universal factor.
+When Microsoft asks what affects Azure cost, think:
 
-Think about:
+> **What + How Much + Where + Pricing Model**
 
-> **What + How Much + Where + Pricing Option**
+**What**
 
-- **What** resource is being used?
-- **How much** is being consumed?
-- **Where** is it deployed?
-- **Which pricing option** is being used?
+→ Resource type and size
+
+**How Much**
+
+→ Consumption and usage
+
+**Where**
+
+→ Azure Region and data transfer
+
+**Pricing Model**
+
+→ Pay-as-you-go, Reservations, Savings Plans, or Spot pricing

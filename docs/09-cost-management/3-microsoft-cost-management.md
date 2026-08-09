@@ -23,12 +23,13 @@ Microsoft Cost Management provides tools for answering these questions.
 
 Microsoft Cost Management provides:
 
-- Cost analysis
+- Cost Analysis
 - Budgets
 - Cost alerts
+- Anomaly alerts
+- Scheduled alerts
 - Cost allocation
 - Cost reporting
-- Spending trends
 - Cost optimization insights
 
 ## Cost Analysis
@@ -109,17 +110,13 @@ Microsoft frequently asks questions such as:
 
 ## Common Mistakes
 
-❌ Thinking budgets automatically stop resources.
+❌ Thinking reaching an Azure budget automatically stops resources.
 
-Budgets monitor spending and can generate alerts.
+A budget monitors costs and can trigger notifications when configured thresholds are reached.
 
-They do not automatically shut down resources when a threshold is reached.
+The budget itself does not automatically shut down Azure resources.
 
-❌ Thinking Cost Management estimates a future deployment.
-
-The Azure Pricing Calculator estimates expected costs before deployment.
-
-Cost Management analyzes actual spending.
+However, budget notifications can be integrated with automation, such as Action Groups, to trigger additional actions.
 
 ## Compare With
 
@@ -134,16 +131,17 @@ Cost Management analyzes actual spending.
 
 Ask:
 
-> **Is the question about expected cost or actual cost?**
+> "Am I estimating future cost or analyzing real cloud spending?"
 
-Expected future cost:
+Estimate expected Azure cost:
 
 → **Azure Pricing Calculator**
 
-Actual Azure spending:
+Analyze actual costs, budgets, or spending trends:
 
 → **Microsoft Cost Management**
 
-If Microsoft mentions **budgets**, **cost analysis**, or **spending alerts**, think:
+Remember:
 
-> **Microsoft Cost Management**
+> **Estimate = Pricing Calculator**  
+> **Analyze and control = Cost Management**

@@ -59,7 +59,7 @@ This distinction is important for AZ-900.
 | Azure Pricing Calculator | Microsoft Cost Management |
 |--------------------------|---------------------------|
 | Estimate future costs | Analyze actual spending |
-| Used before deployment | Used with deployed resources |
+| Primarily used for planning and estimating future Azure usage | Used with deployed resources |
 | Planning tool | Cost monitoring and management |
 | Expected usage | Actual consumption |
 
