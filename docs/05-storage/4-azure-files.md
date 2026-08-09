@@ -1,9 +1,5 @@
 # Azure Files
 
-> Azure Fundamentals Handbook
-
----
-
 ## Definition
 
 Azure Files is a fully managed file sharing service that provides shared file storage in the cloud.
@@ -14,8 +10,6 @@ Azure Files supports both:
 
 - Server Message Block (SMB)
 - Network File System (NFS)
-
----
 
 ## Why Azure Files Exists
 
@@ -31,8 +25,6 @@ Instead of managing on-premises file servers, Azure Files provides fully managed
 
 Applications can continue using familiar file sharing protocols without modification.
 
----
-
 ## Characteristics
 
 Azure Files provides:
@@ -44,33 +36,28 @@ Azure Files provides:
 - Cloud-based file storage
 - Automatic redundancy options
 
----
-
 ## Supported Protocols
+
+Azure Files supports two primary file-sharing protocols:
 
 ### Server Message Block (SMB)
 
-SMB is the most commonly used protocol for Azure Files.
-
-Typical scenarios:
+Commonly used for:
 
 - Windows file shares
-- Shared drives
-- Corporate file servers
-
----
+- Team shares
+- Home directories
+- Windows-based applications
 
 ### Network File System (NFS)
 
-NFS is primarily used by Linux-based workloads.
+Commonly used for:
 
-Typical scenarios:
+- Linux and UNIX workloads
+- POSIX-style file access
+- Applications requiring NFS file shares
 
-- Linux Virtual Machines
-- High-performance computing
-- Container workloads
-
----
+Protocol support and features depend on the selected Azure Files configuration.
 
 ## Typical Use Cases
 
@@ -81,8 +68,6 @@ Azure Files is commonly used for:
 - User home directories
 - Application configuration files
 - Shared application data
-
----
 
 ## Microsoft Trigger Words
 
@@ -99,8 +84,6 @@ Think:
 
 > Azure Files
 
----
-
 ## Common Exam Questions
 
 Microsoft frequently asks questions such as:
@@ -109,8 +92,6 @@ Microsoft frequently asks questions such as:
 - Which Azure storage service supports SMB?
 - Which Azure storage service supports NFS?
 - Which Azure storage service can be mounted as a network drive?
-
----
 
 ## Common Mistakes
 
@@ -125,15 +106,11 @@ Blob Storage is designed for object storage such as:
 
 Azure Files provides shared file systems.
 
----
-
 ❌ Thinking Azure Files is designed for Virtual Machine disks.
 
 Azure Managed Disks provide storage for Azure Virtual Machines.
 
 Azure Files provides shared file storage.
-
----
 
 ## Compare With
 
@@ -144,29 +121,24 @@ Azure Files provides shared file storage.
 | Mounted as a network drive | Accessed as blobs |
 | Multiple clients access the same files | Stores unstructured data |
 
----
-
 ## Exam Tip
 
-Microsoft almost always uses these phrases:
+Ask:
+
+> "Does the workload need a shared file system that can be mounted by clients?"
+
+If yes:
+
+→ **Azure Files**
+
+Strong clues include:
 
 - SMB
 - NFS
-- shared file share
+- file share
 - mounted drive
-- multiple Virtual Machines
+- shared files
 
-These phrases almost always indicate:
+If the workload needs object storage for images, videos, or backups:
 
-> **Azure Files**
-
-If the question mentions:
-
-- images
-- videos
-- browser access
-- backup
-
-the correct answer is usually:
-
-> **Azure Blob Storage**
+→ **Blob Storage**

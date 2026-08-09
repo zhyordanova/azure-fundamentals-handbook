@@ -27,14 +27,14 @@ Blob Access Tiers allow organizations to reduce storage costs by matching the st
 
 ## Hot Tier
 
-The Hot tier is designed for data that is accessed frequently.
+The Hot tier is an online tier optimized for data that is accessed or modified frequently.
 
 Characteristics:
 
-- Highest storage cost
-- Lowest access cost
-- Fastest read and write performance
-- Immediate access
+- Higher storage cost than cooler tiers
+- Lower access costs
+- Online access
+- Suitable for frequently accessed data
 
 Typical use cases:
 
@@ -45,13 +45,14 @@ Typical use cases:
 
 ## Cool Tier
 
-The Cool tier is designed for data that is accessed infrequently but still requires relatively quick access.
+The Cool tier is an online tier optimized for data that is accessed or modified infrequently.
 
 Characteristics:
 
 - Lower storage cost than Hot
 - Higher access cost than Hot
-- Suitable for data accessed occasionally
+- Online access
+- Recommended minimum storage duration: 30 days
 
 Typical use cases:
 
@@ -61,14 +62,14 @@ Typical use cases:
 
 ## Cold Tier
 
-The Cold tier is intended for data that is accessed very rarely but still requires online availability.
+The Cold tier is an online tier optimized for data that is rarely accessed or modified but still requires immediate online availability.
 
 Characteristics:
 
 - Lower storage cost than Cool
-- Higher retrieval cost
-- Suitable for long-term storage
-- Data remains online
+- Higher access cost than Cool
+- Online access
+- Recommended minimum storage duration: 90 days
 
 Typical use cases:
 
@@ -78,14 +79,15 @@ Typical use cases:
 
 ## Archive Tier
 
-The Archive tier is designed for data that is rarely accessed.
+The Archive tier is an offline tier optimized for data that is rarely accessed and can tolerate retrieval latency measured in hours.
 
 Characteristics:
 
 - Lowest storage cost
 - Highest retrieval cost
-- Retrieval may take several hours
-- Data is stored offline until rehydrated
+- Data cannot be read directly while archived
+- Data must be rehydrated to an online tier before it can be accessed
+- Recommended minimum storage duration: 180 days
 
 Typical use cases:
 
@@ -96,38 +98,40 @@ Typical use cases:
 
 ## Compare With
 
-| Tier | Storage Cost | Access Speed | Typical Access |
-|------|-------------:|-------------|----------------|
-| Hot | Highest | Fastest | Frequent |
-| Cool | Lower | Fast | Infrequent |
-| Cold | Even Lower | Slower | Rare |
-| Archive | Lowest | Several hours (rehydration) | Very rare |
+| Tier | Availability | Storage Cost | Access Cost | Recommended Minimum Duration |
+|------|--------------|--------------|-------------|------------------------------|
+| Hot | Online | Highest | Lowest | No minimum |
+| Cool | Online | Lower | Higher | 30 days |
+| Cold | Online | Lower than Cool | Higher than Cool | 90 days |
+| Archive | Offline | Lowest | Highest | 180 days |
 
 ## Microsoft Trigger Words
 
 ### Hot
 
 - frequently accessed
-- fastest
 - active data
+- frequent reads and writes
 
 ### Cool
 
 - infrequently accessed
-- occasional access
+- online
+- approximately 30 days or longer
 
 ### Cold
 
 - rarely accessed
-- long-term online storage
+- online
+- approximately 90 days or longer
 
 ### Archive
 
-- accessed once per year
+- offline
 - long-term retention
-- lowest storage cost
-- several hours retrieval
-- compliance
+- rehydration
+- retrieval can take hours
+- approximately 180 days or longer
 
 ## Common Exam Questions
 
@@ -150,17 +154,31 @@ The Hot tier has the highest storage cost because it is optimized for frequent a
 
 ## Exam Tip
 
-Microsoft almost always uses these phrases:
+Ask two questions:
 
-- highest storage cost
-- fastest access
+> "How often is the data accessed?"
+
+and
+
+> "Must it remain immediately available online?"
+
+Frequently accessed:
 
 → **Hot**
 
-- accessed once or twice per year
-- retrieval can take several hours
-- long-term retention
+Infrequently accessed but still online:
+
+→ **Cool**
+
+Rarely accessed but still online:
+
+→ **Cold**
+
+Rarely accessed and retrieval can wait for hours:
 
 → **Archive**
 
-This is one of the easiest Azure Storage questions to answer if you identify the key wording first.
+The key distinction is:
+
+> **Hot / Cool / Cold = online**  
+> **Archive = offline**

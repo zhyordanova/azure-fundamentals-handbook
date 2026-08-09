@@ -2,7 +2,7 @@
 
 ## Definition
 
-Azure Table Storage is a NoSQL key-value storage service designed for storing large amounts of structured, non-relational data.
+Azure Table Storage is a NoSQL key/attribute storage service designed for large amounts of structured, non-relational data.
 
 Unlike traditional relational databases, Table Storage stores data as entities without requiring a fixed schema.
 
@@ -107,14 +107,22 @@ Table Storage stores structured entities.
 
 ## Exam Tip
 
-Azure Table Storage is not one of the most frequently tested services in AZ-900.
+Ask:
 
-However, when Microsoft includes it, the questions almost always contain one of these phrases:
+> "Does the workload need relational database features?"
 
-- NoSQL
-- key-value
-- structured non-relational data
+If the requirement is:
 
-These phrases usually indicate:
+- structured NoSQL data;
+- key/attribute entities;
+- flexible schema;
 
-> **Azure Table Storage**
+→ **Azure Table Storage**
+
+If the requirement needs:
+
+- relational tables;
+- joins;
+- SQL queries and relationships;
+
+→ Think about a **relational database service such as Azure SQL Database**.

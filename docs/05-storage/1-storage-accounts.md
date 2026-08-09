@@ -15,19 +15,22 @@ A Storage Account can contain different Azure Storage services, including:
 
 ## Why Storage Accounts Exist
 
-Azure offers multiple storage services designed for different scenarios.
+Azure provides several storage data services for different scenarios.
 
-Instead of creating each storage service independently, Azure groups them inside a Storage Account.
+A Storage Account provides a namespace and management boundary for Azure Storage data services such as:
 
-This simplifies:
+- Blob Storage
+- Azure Files
+- Queue Storage
+- Table Storage
 
-- Storage management
+This helps centralize:
+
+- Storage configuration
 - Security
 - Authentication
 - Billing
 - Monitoring
-
-Every storage service belongs to a Storage Account.
 
 ## Characteristics
 
@@ -110,12 +113,12 @@ A Storage Account can host multiple storage services designed for different work
 
 ## Exam Tip
 
-Microsoft rarely asks detailed questions about Storage Accounts.
+First identify whether the question is asking about the **storage container** or the **type of data being stored**.
 
-Instead, the exam usually asks about one of the storage services inside the account.
+If the question asks which Azure resource provides access to Blob, File, Queue, or Table data:
 
-Remember:
+→ **Storage Account**
 
-Storage Account → Container for Azure Storage services.
+If it asks what type of storage should be used:
 
-Blob Storage, Azure Files, Queue Storage, and Table Storage all exist inside a Storage Account.
+→ Identify the specific service: Blob, Files, Queue, or Table.

@@ -58,12 +58,19 @@ Azure provides several Managed Disk types.
 - Production workloads
 - Business-critical applications
 
+### Premium SSD v2
+
+- High performance
+- Low latency
+- Flexible performance configuration
+- Production and performance-sensitive workloads
+
 ### Ultra Disk
 
-- Highest performance
+- Highest-performance managed disk option
 - Very low latency
-- Enterprise databases
-- Mission-critical applications
+- Designed for I/O-intensive workloads
+- Used as a data disk rather than an OS disk
 
 ## Typical Use Cases
 
@@ -119,23 +126,15 @@ Managed Disks provide storage for Virtual Machines.
 
 ## Exam Tip
 
-Microsoft usually asks this concept by mentioning:
+First identify **what the storage is attached to**.
 
-- operating system disk
-- Virtual Machine storage
-- persistent storage
+If the requirement is persistent block storage for an Azure Virtual Machine:
 
-These phrases almost always indicate:
+→ **Azure Managed Disks**
 
-> **Azure Managed Disks**
+If the requirement is:
 
-If the question mentions:
+- object storage → Blob Storage
+- shared file storage → Azure Files
 
-- images
-- videos
-- backup
-- browser access
-
-the correct answer is usually:
-
-> **Azure Blob Storage**
+For AZ-900, recognizing **VM disk = Managed Disk** is more important than memorizing detailed disk performance specifications.

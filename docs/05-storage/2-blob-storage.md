@@ -136,26 +136,19 @@ Although Managed Disks use Page Blob technology internally, customers work with 
 
 ## Exam Tip
 
-Microsoft almost always uses phrases such as:
+Ask:
 
-- unstructured data
-- images
-- videos
-- documents
-- backup and restore
-- browser access
+> "Does the application need object storage or a mounted file system?"
 
-These phrases almost always indicate:
+If the requirement involves:
 
-> **Azure Blob Storage**
+- images;
+- videos;
+- backups;
+- large amounts of unstructured object data;
 
-If the question mentions:
+→ **Blob Storage**
 
-- SMB
-- NFS
-- shared drive
-- mounted file share
+If multiple clients need a mounted SMB or NFS file share:
 
-the correct answer is usually:
-
-> **Azure Files**
+→ **Azure Files**

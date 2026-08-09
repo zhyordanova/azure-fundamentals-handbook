@@ -111,26 +111,18 @@ Queue Storage stores the messages that can trigger Azure Functions.
 
 ## Exam Tip
 
-Microsoft usually uses phrases such as:
+Ask:
 
-- message
-- queue
-- asynchronous
-- process later
-- background task
+> "Is the service storing work to be processed later, or executing the work?"
 
-These phrases almost always indicate:
+Store messages for asynchronous processing:
 
-> **Azure Queue Storage**
+→ **Azure Queue Storage**
 
-If the question mentions:
+Execute code when an event or message arrives:
 
-- execute code when a message arrives
+→ **Azure Functions**
 
-the correct answer is usually:
+Remember:
 
-> **Azure Functions**
-
-Queue Storage stores the message.
-
-Azure Functions process the message.
+> **Queue stores the work. Function processes the work.**
