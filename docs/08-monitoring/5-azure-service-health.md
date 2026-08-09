@@ -21,19 +21,27 @@ Azure Service Health helps determine whether an issue originates from the Azure 
 
 ## Service Health Information
 
-Azure Service Health provides information about several types of events.
+Azure Service Health provides personalized information about events that may affect your Azure environment.
 
 ### Service Issues
 
-Provides information about active Azure service problems that may affect your resources.
+Active problems with Azure services that may affect your resources.
 
 ### Planned Maintenance
 
-Provides information about scheduled Azure maintenance that may affect service availability.
+Scheduled Azure maintenance that may affect service availability.
 
 ### Health Advisories
 
-Provides information about service changes that may require customer attention.
+Important service changes or issues that may require customer attention.
+
+### Security Advisories
+
+Notifications about security-related events that may affect Azure services or resources.
+
+### Billing Updates
+
+Notifications about billing-related events relevant to your Azure environment.
 
 ## Azure Status, Service Health, and Resource Health
 

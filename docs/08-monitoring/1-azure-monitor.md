@@ -2,9 +2,16 @@
 
 ## Definition
 
-Azure Monitor is Microsoft's centralized monitoring service for collecting, analyzing, and responding to telemetry from Azure resources and applications.
+Azure Monitor is Microsoft's unified observability service for collecting, analyzing, and acting on telemetry from cloud and hybrid environments.
 
-It helps organizations understand the performance, availability, and health of their Azure environments.
+It helps organizations understand the health, performance, and reliability of Azure applications and infrastructure resources.
+
+Azure Monitor brings together monitoring data such as:
+
+- Metrics
+- Logs
+- Traces
+- Events
 
 ## Why Azure Monitor Exists
 
@@ -27,11 +34,12 @@ Azure Monitor provides:
 - Metrics
 - Logs
 - Alerts
-- Dashboards
-- Monitoring of Azure resources
+- Dashboards and visualizations
+- Monitoring of Azure resources and applications
 - Integration with Application Insights
+- Integration with Log Analytics
 
-Azure Monitor can collect telemetry from both Azure resources and applications.
+Azure Monitor provides the overall monitoring and observability platform for Azure.
 
 ## Metrics
 

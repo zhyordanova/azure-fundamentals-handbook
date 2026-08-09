@@ -2,9 +2,9 @@
 
 ## Definition
 
-Log Analytics is a tool in Azure Monitor used to query and analyze log data collected from Azure resources and applications.
+Log Analytics is a tool in the Azure portal used to query and analyze log data stored in Azure Monitor Logs.
 
-It allows administrators to investigate operational data, troubleshoot problems, identify trends, and better understand what is happening across an Azure environment.
+It helps administrators explore monitoring data, troubleshoot problems, identify trends, and investigate activity across Azure environments.
 
 ## Why Log Analytics Exists
 
@@ -26,17 +26,30 @@ Log Analytics provides this capability.
 
 ## Log Analytics Workspace
 
-Log data can be stored in a **Log Analytics workspace**.
+A Log Analytics workspace is a data store for log data collected from Azure and non-Azure resources and applications.
 
-A workspace provides a centralized location where collected log data can be queried and analyzed.
+Multiple resources can send log data to the same workspace.
 
-Multiple Azure resources can send monitoring data to the same workspace.
+Log Analytics can then be used to explore and analyze the data stored in the workspace.
 
 ## Querying Logs
 
-Log Analytics uses **Kusto Query Language (KQL)** to query log data.
+Log Analytics provides two ways to explore log data:
 
-Queries can be used to:
+### Simple Mode
+
+Allows users to:
+
+- Filter data
+- Sort results
+- Aggregate information
+- Explore logs without writing KQL
+
+### KQL Mode
+
+Uses Kusto Query Language (KQL) for more advanced log queries and analysis.
+
+KQL can be used to:
 
 - Search logs
 - Filter events
