@@ -18,21 +18,24 @@ Developers often want to build and deploy applications without managing:
 
 PaaS provides a managed application platform so developers can focus primarily on application development.
 
-## Customer Responsibilities
+## Shared Responsibilities
 
-With PaaS, the customer typically manages:
-
-- Application code
-- Application configuration
-- Data
-
-The cloud provider manages:
+With PaaS, Microsoft manages:
 
 - Physical infrastructure
 - Virtualization
 - Operating system
 - Operating system patching
-- Runtime and platform
+- Platform services and runtime
+
+The customer remains responsible for:
+
+- Customer data
+- Identities and users
+- Configuration and settings
+- Access management
+
+Some responsibilities, including application and network controls, are shared depending on the service.
 
 ## Azure Examples
 
@@ -100,20 +103,18 @@ Azure Virtual Machines are IaaS because the customer manages the operating syste
 
 ## Exam Tip
 
-Look for the responsibility boundary.
+Ask:
 
-If the scenario says:
+> "Does the customer need to manage the operating system?"
 
-> **Microsoft manages the operating system**
+If yes:
 
-and the customer primarily deploys application code:
+→ **IaaS**
+
+If Microsoft manages the operating system and platform while the customer focuses on the application:
 
 → **PaaS**
 
-For AZ-900, remember:
+For AZ-900:
 
-> **App Service = PaaS**
-
-and:
-
-> **Virtual Machine = IaaS**
+> **Azure App Service = PaaS**

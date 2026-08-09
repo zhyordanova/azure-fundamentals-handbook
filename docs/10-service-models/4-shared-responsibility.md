@@ -99,28 +99,42 @@ Example:
 
 | Responsibility | On-Premises | IaaS | PaaS | SaaS |
 |----------------|:-----------:|:----:|:----:|:----:|
-| Physical datacenter | Customer | Microsoft | Microsoft | Microsoft |
-| Physical network | Customer | Microsoft | Microsoft | Microsoft |
-| Physical servers | Customer | Microsoft | Microsoft | Microsoft |
+| Customer data | Customer | Customer | Customer | Customer |
+| Configurations and settings | Customer | Customer | Customer | Customer |
+| Identities and users | Customer | Customer | Customer | Customer |
+| Client devices | Customer | Customer | Customer | Shared |
+| Applications | Customer | Customer | Shared | Shared |
+| Network controls | Customer | Customer | Shared | Microsoft |
 | Operating system | Customer | Customer | Microsoft | Microsoft |
-| Application platform/runtime | Customer | Customer | Microsoft | Microsoft |
-| Application | Customer | Customer | Customer | Microsoft |
-| Data | Customer | Customer | Customer | Customer |
+| Physical hosts | Customer | Microsoft | Microsoft | Microsoft |
+| Physical network | Customer | Microsoft | Microsoft | Microsoft |
+| Physical datacenter | Customer | Microsoft | Microsoft | Microsoft |
 
-> The exact responsibility boundary can vary by service. This table represents the conceptual model needed for Azure Fundamentals.
+## Responsibilities That Always Remain with the Customer
 
-## Responsibilities That Remain Important for the Customer
+Regardless of the cloud service model, the customer always retains responsibility for important areas such as:
 
-Moving to a managed cloud service does not remove the customer's responsibility for protecting and managing their own information and access.
+### Data
 
-Important customer responsibilities include:
+The customer is responsible for protecting and governing their data.
 
-- Data
-- User identities
-- Access management
-- Account configuration
+### Identities and Users
 
-The amount of infrastructure managed by the customer decreases as you move from IaaS toward SaaS.
+The customer manages user identities and accounts.
+
+### Access Management
+
+The customer determines who should have access and configures controls such as:
+
+- Azure RBAC
+- Multifactor Authentication
+- Conditional Access
+
+### Configurations and Settings
+
+The customer remains responsible for configuring the cloud services they use appropriately.
+
+The amount of infrastructure management decreases as you move from IaaS toward SaaS, but customer responsibility never becomes zero.
 
 ## Microsoft Trigger Words
 
@@ -163,7 +177,27 @@ Customers still have responsibilities for their data, identities, access, and ho
 
 ## Exam Tip
 
-For AZ-900, remember the direction:
+First identify the operating system boundary:
+
+**Customer manages the OS**
+
+→ **IaaS**
+
+**Microsoft manages the OS**
+
+→ **PaaS or SaaS**
+
+Then ask:
+
+**Customer deploys their own application**
+
+→ **PaaS**
+
+**Customer uses a ready-made application**
+
+→ **SaaS**
+
+Remember:
 
 > **IaaS → PaaS → SaaS**
 
@@ -171,12 +205,9 @@ As you move to the right:
 
 > **Customer infrastructure responsibility decreases.**
 
-The most important boundary to recognize is the operating system:
+But the customer always retains important responsibilities for:
 
-- **IaaS** → Customer manages the OS.
-- **PaaS** → Microsoft manages the OS.
-- **SaaS** → Microsoft manages the OS and application.
-
-But:
-
-> **Customer data remains the customer's responsibility.**
+- Data
+- Identities
+- Access
+- Configuration

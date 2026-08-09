@@ -82,16 +82,27 @@ Microsoft may ask questions such as:
 
 ❌ Thinking SaaS means the customer has no responsibilities.
 
-The provider manages the application and underlying infrastructure, but the customer still has responsibilities for areas such as data, identities, access, and configuration.
+Microsoft manages the underlying infrastructure, operating system, platform, and SaaS application service.
 
+The customer still remains responsible for areas such as:
+
+- Data
+- Identities and users
+- Access management
+- Configuration and settings
+- Endpoint security
+
+Some application responsibilities are shared.
+
+---
 
 ❌ Thinking Azure App Service is SaaS.
 
 Azure App Service is PaaS.
 
-It provides a managed platform on which customers deploy their own applications.
+It provides a managed platform for deploying your own applications.
 
-SaaS provides the completed application itself.
+SaaS provides a ready-to-use application.
 
 ## Compare With
 
@@ -106,16 +117,16 @@ SaaS provides the completed application itself.
 
 Ask:
 
-> **Am I building an application or simply using one?**
+> "Am I deploying an application or consuming a ready-made application?"
 
-If you deploy your own application onto a managed platform:
+Deploy your own application on a managed platform:
 
 → **PaaS**
 
-If you simply use a completed application provided by Microsoft or another provider:
+Use a ready-made cloud application:
 
 → **SaaS**
 
-Remember:
+For AZ-900:
 
 > **Microsoft 365 = SaaS**

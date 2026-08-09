@@ -22,21 +22,21 @@ IaaS provides this flexibility without requiring organizations to purchase and m
 
 ## Customer Responsibilities
 
-With IaaS, the customer typically manages:
+With IaaS, the customer manages areas such as:
 
 - Operating system
 - Operating system updates and patches
 - Applications
-- Runtime and middleware
+- Network controls
 - Application configuration
 - Data
+- Identities and access
 
-The cloud provider manages:
+Microsoft manages the underlying cloud infrastructure, including:
 
 - Physical datacenter
-- Physical servers
-- Physical networking
-- Storage infrastructure
+- Physical network
+- Physical hosts
 - Virtualization layer
 
 ## Azure Examples
@@ -109,18 +109,18 @@ Among IaaS, PaaS, and SaaS, IaaS gives the customer the most management responsi
 
 ## Exam Tip
 
-Ask one question:
+Ask:
 
-> **Who manages the operating system?**
+> "Does the customer need control of the operating system?"
 
-If the customer manages it:
+If yes:
 
 → **IaaS**
 
-If Microsoft manages it and the customer focuses on the application:
+If Microsoft manages the operating system and the customer focuses on deploying an application:
 
 → **PaaS**
 
-For AZ-900, the strongest association is:
+For AZ-900:
 
-> **Virtual Machine = IaaS**
+> **Azure Virtual Machines = IaaS**
