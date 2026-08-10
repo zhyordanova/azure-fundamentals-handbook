@@ -4,8 +4,6 @@
 
 Use this page to understand how the major Azure concepts relate to each other.
 
----
-
 ## Cloud Fundamentals
 
 ```mermaid
@@ -44,8 +42,6 @@ flowchart LR
     GEO["Geo-distribution"] --> GEO1["Serve users across geographic locations"]
 ```
 
----
-
 ## Azure Resource Hierarchy
 
 ```mermaid
@@ -71,8 +67,6 @@ flowchart TD
 | Resource | Actual Azure service instance |
 
 Azure Resource Manager provides the management layer used to create, update, and delete Azure resources.
-
----
 
 ## Azure Global Infrastructure
 
@@ -103,8 +97,6 @@ flowchart LR
 ```
 
 Not every Azure Region has a Region Pair.
-
----
 
 ## Compute
 
@@ -138,8 +130,6 @@ flowchart TD
 | Event-driven serverless code | Azure Functions |
 | Simple container execution | Azure Container Instances |
 | Kubernetes orchestration | Azure Kubernetes Service |
-
----
 
 ## Networking
 
@@ -176,8 +166,6 @@ flowchart TD
 | Private connectivity without traversing the public Internet | ExpressRoute |
 | Secure RDP / SSH to VMs | Azure Bastion |
 | Represent remote or on-premises VPN site | Local Network Gateway |
-
----
 
 ## Storage
 
@@ -239,8 +227,6 @@ Hot, Cool, and Cold are online tiers.
 
 Archive is an offline tier and requires rehydration before the data can be accessed.
 
----
-
 ## Identity and Access
 
 ```mermaid
@@ -282,8 +268,6 @@ flowchart LR
     AUTHZ["Authorization"] --> WHAT["What are you allowed to do?"]
 ```
 
----
-
 ## Governance
 
 ```mermaid
@@ -322,8 +306,6 @@ flowchart LR
 
     TAGS["Resource Tags"] --> ORG["Organization"]
 ```
-
----
 
 ## Monitoring and Observability
 
@@ -368,8 +350,6 @@ flowchart LR
     SH["Azure Service Health"] --> AZ["Does Azure have a platform problem?"]
 ```
 
----
-
 ## Cost Management
 
 ```mermaid
@@ -400,8 +380,6 @@ flowchart TD
 | Flexible compute commitment | Azure Savings Plan |
 | Interruptible workload | Azure Spot Virtual Machines |
 
----
-
 ## Cloud Service Models
 
 ```mermaid
@@ -423,8 +401,6 @@ flowchart TD
 | IaaS | Azure Virtual Machines | Customer manages the OS |
 | PaaS | Azure App Service | Microsoft manages the OS and platform |
 | SaaS | Microsoft 365 | Customer uses a ready-to-use application |
-
----
 
 ## Shared Responsibility
 
@@ -472,8 +448,6 @@ flowchart TD
 
 These responsibilities remain important regardless of the cloud service model.
 
----
-
 ## AZ-900 Big Picture
 
 ```mermaid
@@ -520,8 +494,6 @@ flowchart TD
     MON --> HEALTH["Azure Service Health"]
 ```
 
----
-
 ## Final Mental Model
 
 ```mermaid
@@ -565,8 +537,6 @@ flowchart TD
 
     A -->|Analyze actual spending| CM["Microsoft Cost Management"]
 ```
-
----
 
 ## Exam Strategy
 
