@@ -6,8 +6,6 @@ Microsoft exam questions often describe a requirement without directly naming th
 
 Use the trigger words below to quickly identify what the question is asking about.
 
----
-
 ## Cloud Concepts
 
 | Trigger Words | Think |
@@ -22,8 +20,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | worldwide users, multiple regions, global deployment | **Geo-distribution** |
 | upfront investment, buy servers, hardware purchase | **CapEx** |
 | monthly cost, pay-as-you-go, ongoing cost, consumption | **OpEx** |
-
----
 
 ## Azure Architecture
 
@@ -40,8 +36,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | VM, Storage Account, SQL Database, deployed Azure service | **Azure Resource** |
 | deployment, create/update/delete resources, ARM, management layer | **Azure Resource Manager** |
 
----
-
 ## Compute
 
 | Trigger Words | Think |
@@ -52,8 +46,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | serverless, event-driven, trigger, execute code | **Azure Functions** |
 | simple container workload, no VM management, no Kubernetes cluster | **Azure Container Instances (ACI)** |
 | Kubernetes, orchestrate containers, microservices, container cluster | **Azure Kubernetes Service (AKS)** |
-
----
 
 ## Networking
 
@@ -66,8 +58,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | private connection, no public Internet, circuit, predictable latency | **ExpressRoute** |
 | secure RDP/SSH, VM administration, no public IP on VM | **Azure Bastion** |
 | represents on-premises network, remote VPN site, address prefixes | **Local Network Gateway** |
-
----
 
 ## Storage
 
@@ -84,8 +74,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | messages, asynchronous processing, process later, decouple applications | **Queue Storage** |
 | NoSQL, key-value, Partition Key, Row Key, flexible schema | **Table Storage** |
 
----
-
 ## Identity
 
 | Trigger Words | Think |
@@ -97,8 +85,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | require MFA based on condition, compliant device, location, block access | **Conditional Access** |
 | on-premises Active Directory + Entra ID, synchronization, common identity | **Hybrid Identity** |
 
----
-
 ## Governance
 
 | Trigger Words | Think |
@@ -106,8 +92,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | enforce, compliance, standards, require, deny, audit, mandatory tags | **Azure Policy** |
 | prevent deletion, accidental deletion, read-only, cannot modify | **Resource Locks** |
 | metadata, department, owner, environment, cost tracking, classification | **Resource Tags** |
-
----
 
 ## Monitoring
 
@@ -118,8 +102,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | query logs, KQL, Log Analytics workspace, investigate logs | **Log Analytics** |
 | recommendations, optimize, best practices, underutilized resources | **Azure Advisor** |
 | Azure outage, service incident, planned maintenance, health advisory | **Azure Service Health** |
-
----
 
 ## Cost Management
 
@@ -132,8 +114,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | consistent hourly compute spend, flexible compute usage | **Azure Savings Plan for Compute** |
 | unused capacity, interruptible workload, eviction | **Azure Spot Virtual Machines** |
 
----
-
 ## Service Models
 
 | Trigger Words | Think |
@@ -142,8 +122,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | Microsoft manages OS, managed platform, deploy application code | **PaaS** |
 | ready-to-use application, Microsoft 365, provider manages application | **SaaS** |
 | who manages, customer responsibility, Microsoft responsibility | **Shared Responsibility Model** |
-
----
 
 ## High-Value Distinctions
 
@@ -194,8 +172,6 @@ Use the trigger words below to quickly identify what the question is asking abou
 | Customer manages OS | **IaaS** |
 | Microsoft manages OS, customer deploys app | **PaaS** |
 | Customer uses finished application | **SaaS** |
-
----
 
 ## Exam Strategy
 
