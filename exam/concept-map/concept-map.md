@@ -207,19 +207,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-
     HOT["Hot<br>Frequently accessed"]
-
     COOL["Cool<br>Infrequently accessed"]
-
     COLD["Cold<br>Rarely accessed"]
-
     ARCHIVE["Archive<br>Offline"]
 
     HOT --> COOL
-
     COOL --> COLD
-
     COLD --> ARCHIVE
 ```
 
