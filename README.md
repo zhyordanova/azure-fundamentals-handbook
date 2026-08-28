@@ -37,41 +37,29 @@ azure-fundamentals-handbook
 ├── assets/
 │
 ├── resources/
+|
+├── review/
 │
 └── CHANGELOG.md
 ```
 
-## Documentation
+## Learning
 
-The `docs` directory contains the core learning material organized by topic. Each chapter builds upon the previous one and is intended to be read sequentially.
+Detailed chapter-by-chapter material.
 
-| Chapter | Topic |
-|----------|-------|
-| 01 | [Cloud Concepts](docs/01-cloud-concepts/) |
-| 02 | [Azure Architecture](docs/02-azure-architecture/) |
-| 03 | [Compute](docs/03-compute/) |
-| 04 | [Networking](docs/04-networking/) |
-| 05 | [Storage](docs/05-storage/) |
-| 06 | [Identity](docs/06-identity/) |
-| 07 | [Governance](docs/07-governance/) |
-| 08 | [Monitoring](docs/08-monitoring/) |
-| 09 | [Cost Management](docs/09-cost-management/) |
-| 10 | [Service Models](docs/10-service-models/) |
+→ [Start Learning](./docs/)
+
+## Review
+
+Fast decision-based revision before the exam.
+
+→ [Enter Review Mode](./review/)
 
 ## Exam Preparation
 
-The `exam` directory focuses on Microsoft AZ-900 certification preparation.
+Practice questions, decision trees, traps and mock exams.
 
-| Resource | Description |
-|----------|-------------|
-| [Concept Map](exam/concept-map.md) | Core Azure concepts grouped by topic. |
-| [Trigger Words](exam/trigger-words.md) | Microsoft keywords that reveal the correct answer. |
-| [Microsoft Exam Patterns](exam/microsoft-patterns.md) | Typical question patterns used in AZ-900. |
-| [Common Traps](exam/common-traps.md) | Frequently confused Azure services and concepts. |
-| [Mock Exams](exam/mock-exams.md) | Practice exams and review sessions. |
-| [Wrong Answers Review](exam/wrong-answers-review.md) | Review of incorrect answers and explanations. |
-
-Unlike the documentation chapters, these files are optimized specifically for certification preparation.
+→ [Exam Preparation](./exam/)
 
 ## Learning Philosophy
 

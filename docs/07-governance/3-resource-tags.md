@@ -105,6 +105,12 @@ Azure Policy can require specific tags.
 
 Resource Tags themselves do not enforce rules.
 
+❌ Thinking tags are automatically inherited.
+
+Resources do not automatically inherit tags from their Resource Group or Subscription.
+
+Azure Policy can be used to apply or enforce tag inheritance.
+
 ---
 
 ## Compare With

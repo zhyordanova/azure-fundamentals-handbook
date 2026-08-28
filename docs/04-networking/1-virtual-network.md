@@ -2,115 +2,74 @@
 
 ## Definition
 
-An Azure Virtual Network (VNet) is the fundamental networking service in Azure.
+Azure Virtual Network (VNet) is the fundamental private networking service in Azure. It provides an isolated network boundary in which Azure resources can communicate with each other and connect to other networks.
 
-It enables Azure resources to communicate securely with each other, with the Internet, and with on-premises networks.
+## What Problem Does It Solve?
 
-A Virtual Network is similar to a traditional network in an on-premises datacenter, but it provides the additional scalability, availability, and flexibility of Azure.
+A VNet provides the private network foundation for Azure workloads. It defines an address space that can be divided into subnets and connected to other Azure or on-premises networks.
 
-## Why Virtual Networks Exist
-
-Most Azure resources need network connectivity.
-
-For example:
-
-- Virtual Machines
-- Azure Kubernetes Service (AKS)
-- Azure Bastion
-- VPN Gateway
-
-A Virtual Network provides the private network where these resources can communicate securely.
-
-Without a Virtual Network, many Azure services cannot communicate privately.
-
-## Characteristics
-
-An Azure Virtual Network provides:
+## Key Characteristics
 
 - Private IP addressing
 - Network isolation
 - Communication between Azure resources
+- Address space that can be divided into subnets
+- Connectivity to other VNets
 - Connectivity to on-premises networks
-- Connectivity to the Internet
-- Integration with other Azure networking services
+- Integration with Azure networking and security services
 
-## Typical Use Cases
+## Decision Factors
 
-Azure Virtual Networks are commonly used for:
+Choose a VNet when the requirement is to create a private network boundary for Azure resources.
 
-- Hosting Virtual Machines
-- Connecting multiple Azure services
-- Hybrid cloud networking
-- Secure internal application communication
-- Enterprise cloud environments
+Do not choose a VNet when the actual requirement is only to:
 
-## Connectivity Options
+- divide an existing VNet into smaller network segments → **Subnet**
+- filter inbound or outbound traffic → **NSG**
+- connect two existing VNets → **VNet Peering**
+- connect Azure to on-premises → **VPN Gateway or ExpressRoute**
 
-Resources inside a Virtual Network can communicate with:
+## Best-Fit Scenarios
 
-- Other resources in the same Virtual Network
-- Other Virtual Networks (using VNet Peering)
-- On-premises networks (using VPN Gateway or ExpressRoute)
-- The Internet
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- private network
-- Azure network
-- VNet
-- network communication
-- Azure resources communicate
-- IP address space
-
-Think:
-
-> Azure Virtual Network (VNet)
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- What is an Azure Virtual Network?
-- Which Azure service enables communication between Azure resources?
-- Which Azure networking service provides private networking?
-- Which Azure networking service connects resources inside Azure?
-
-## Common Mistakes
-
-❌ Thinking a Virtual Network is a security service.
-
-A Virtual Network provides connectivity.
-
-Traffic filtering is performed by Network Security Groups (NSGs).
-
-❌ Thinking Virtual Networks automatically connect to each other.
-
-Separate VNets require Virtual Network Peering or another connectivity solution.
+- Hosting Azure Virtual Machines in a private network
+- Separating application workloads from the public Internet
+- Building a network that will later connect to on-premises systems
+- Creating a foundation for subnets, peering, private endpoints, or Bastion
 
 ## Compare With
 
-| Azure Virtual Network | Network Security Group |
-|------------------------|------------------------|
-| Provides network connectivity | Filters network traffic |
-| Creates a private network | Controls inbound and outbound access |
-| Connects Azure resources | Secures Azure resources |
+| Requirement | Best Fit |
+|---|---|
+| Create a private Azure network | **VNet** |
+| Divide a VNet address space | **Subnet** |
+| Filter network traffic | **NSG** |
+| Connect separate VNets | **VNet Peering** |
 
-## Exam Tip
+## Trade-offs
+
+A VNet creates the network boundary but does not by itself define detailed traffic permissions, connect every separate network automatically, or make Azure PaaS services private. Additional networking services are used for those requirements.
+
+## Common Mistakes
+
+❌ Treating a VNet as a firewall.
+
+A VNet provides networking. NSGs provide traffic filtering.
+
+❌ Assuming separate VNets communicate automatically.
+
+They require peering or another connectivity solution.
+
+## Microsoft Trigger Words
+
+- private Azure network
+- address space
+- network isolation
+- Azure resources communicate privately
+
+## Exam Reasoning
 
 Ask:
 
-> "Does the requirement need connectivity, traffic filtering, or connectivity between networks?"
+> What is the object I need to create or control?
 
-If the requirement is about creating a private network for Azure resources:
-
-→ **Azure Virtual Network**
-
-If it is about filtering traffic:
-
-→ **Network Security Group**
-
-If it is about connecting separate networks:
-
-→ Think about **VNet Peering, VPN Gateway, or ExpressRoute**.
+If the answer is **the private network itself**, choose **Azure Virtual Network**.
