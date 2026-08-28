@@ -7,8 +7,6 @@ The goal is not only to remember what each service does, but to identify the **b
 > **Review principle:** Do not start with a trigger word.  
 > First identify **what is communicating with what**, then determine the requirement and the business constraints.
 
----
-
 ## 1. Start With the Two Endpoints
 
 When a networking question looks confusing, first ask:
@@ -51,8 +49,6 @@ Think:
 
 A VNet provides the network address space in which Azure resources can communicate.
 
----
-
 ### Subnet
 
 A subnet divides a VNet address space into smaller network segments.
@@ -74,8 +70,6 @@ Think:
 A subnet does not connect separate networks.
 
 It organizes and segments the address space **inside a VNet**.
-
----
 
 ### Network Security Group — NSG
 
@@ -100,8 +94,6 @@ and then:
 
 > **Important:** An NSG controls traffic.  
 > It does **not** create connectivity between networks.
-
----
 
 ## 3. VNet Peering vs Private Endpoint vs Bastion
 
@@ -133,8 +125,6 @@ Think:
 
 > **VNet ↔ VNet → VNet Peering**
 
----
-
 ### Private Endpoint
 
 Use a Private Endpoint when resources inside a VNet need private access to a supported Azure service by using a **private IP address**.
@@ -161,8 +151,6 @@ Azure Storage
 Think:
 
 > **VNet ↔ Azure Service → Private Endpoint**
-
----
 
 ### Azure Bastion
 
@@ -202,8 +190,6 @@ VNet ↔ Azure Service
 Administrator ↔ VM
 → Azure Bastion
 ```
-
----
 
 ## 4. VPN Gateway vs ExpressRoute
 
@@ -260,8 +246,6 @@ Think:
 
 > **Encrypted Internet connectivity is sufficient → VPN Gateway**
 
----
-
 ### Choose ExpressRoute When
 
 The scenario requires or prioritizes:
@@ -284,8 +268,6 @@ Think:
 
 > **Private connectivity is required → ExpressRoute**
 
----
-
 ### Important Exam Rule
 
 > Do not automatically choose the most powerful solution.
@@ -303,8 +285,6 @@ Public vs private connectivity
 ```
 
 Then choose the solution that satisfies **all requirements without unnecessary capabilities**.
-
----
 
 ## 5. Azure DNS
 
@@ -331,8 +311,6 @@ It does not:
 - create VPN tunnels
 - provide RDP/SSH access
 - filter network traffic
-
----
 
 ## 6. Public vs Private Endpoint
 
@@ -367,8 +345,6 @@ A Private Endpoint provides private access to a supported Azure service by using
 Think:
 
 > **Private IP access to Azure service → Private Endpoint**
-
----
 
 ## 7. Networking Decision Map
 
@@ -418,8 +394,6 @@ flowchart TD
     E -->|"Predictable performance / higher bandwidth / private path"| C
 ```
 
----
-
 ## 8. How to Solve Networking Scenario Questions
 
 Do **not** start by searching for a trigger word.
@@ -463,8 +437,6 @@ On-premises ↔ Azure
 
 This immediately eliminates many incorrect answers.
 
----
-
 ### Step 2 — Identify the Action
 
 Ask:
@@ -498,8 +470,6 @@ Administer VM
 → Azure Bastion
 ```
 
----
-
 ### Step 3 — Find Technically Valid Options
 
 Do not immediately select the first familiar service.
@@ -520,8 +490,6 @@ Both may provide connectivity between on-premises and Azure.
 
 The rest of the scenario determines the **best fit**.
 
----
-
 ### Step 4 — Identify the Constraints
 
 Look for requirements involving:
@@ -536,8 +504,6 @@ Look for requirements involving:
 - private connectivity
 
 These constraints often determine the correct answer when several options are technically possible.
-
----
 
 ### Step 5 — Eliminate Over-Engineering
 
@@ -559,8 +525,6 @@ VPN Gateway
 
 Choosing ExpressRoute simply because it provides stronger connectivity characteristics may add capabilities that the scenario does not require.
 
----
-
 ### Step 6 — Choose the Best Fit
 
 Choose the simplest solution that satisfies **all stated requirements**.
@@ -574,8 +538,6 @@ No unnecessary capabilities
         ↓
 BEST FIT
 ```
-
----
 
 ## 9. Common Networking Traps
 
@@ -595,8 +557,6 @@ Private Endpoint
 
 First determine **what is being connected**.
 
----
-
 ### Trap 2 — VNet ↔ VNet
 
 ```text
@@ -609,8 +569,6 @@ VNet B
 
 Not Private Endpoint.
 
----
-
 ### Trap 3 — VNet ↔ Azure Service
 
 ```text
@@ -622,8 +580,6 @@ Azure Storage / Azure Service
 → **Private Endpoint**
 
 Not VNet Peering.
-
----
 
 ### Trap 4 — RDP / SSH → VM
 
@@ -638,8 +594,6 @@ VM
 → **Azure Bastion**
 
 Not Private Endpoint.
-
----
 
 ### Trap 5 — Allow / Deny Traffic
 
@@ -656,8 +610,6 @@ Remember:
 
 > NSG controls traffic.  
 > NSG does not create connectivity.
-
----
 
 ### Trap 6 — On-Premises ↔ Azure Does Not Automatically Mean ExpressRoute
 
@@ -695,8 +647,6 @@ Bandwidth?
 Security?
 ```
 
----
-
 ### Trap 7 — Subnet vs NSG
 
 ```text
@@ -723,8 +673,6 @@ Name → IP
 Azure DNS provides name resolution.
 
 It does not connect networks.
-
----
 
 ## 10. 30-Second Review
 
