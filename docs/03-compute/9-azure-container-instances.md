@@ -60,6 +60,19 @@ Microsoft manages:
 - Container host
 - Networking infrastructure
 
+## Decision Factors
+
+Choose Azure Container Instances when:
+
+- the workload is containerized
+- Kubernetes orchestration is not required
+- the organization wants to run containers without managing virtual machines
+- a simpler managed container execution option is sufficient
+
+Choose AKS when the requirement specifically involves Kubernetes orchestration and management of a more complex containerized application.
+
+> **Simple managed container execution → ACI**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -105,7 +118,7 @@ Application orchestration is handled by Azure Kubernetes Service (AKS).
 | Best for small workloads | Best for complex applications |
 | Minimal management | Advanced management capabilities |
 
-## Exam Tip
+## Exam Reasoning
 
 Microsoft usually distinguishes ACI from AKS using one phrase:
 

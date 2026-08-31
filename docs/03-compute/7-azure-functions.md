@@ -76,6 +76,19 @@ Microsoft manages:
 - Scaling
 - Security patching
 
+## Decision Factors
+
+Choose Azure Functions when:
+
+- execution is event-driven
+- code should run in response to a trigger
+- the workload consists of focused functions or actions
+- minimizing server and infrastructure management is important
+
+Choose App Service when the requirement is to host a complete web application or API continuously. Choose a Virtual Machine when operating-system or server-level control is required.
+
+> **Event → Code → Azure Functions**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -124,7 +137,7 @@ Customers do not provision or manage servers.
 | Event-driven | Continuously running application |
 | Automatically scales per execution | Hosts the application continuously |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 

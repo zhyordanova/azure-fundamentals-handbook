@@ -6,9 +6,9 @@
 
 3. [Virtual Machine Scale Sets](3-virtual-machine-scale-sets.md)
 
-4. [Availability Stes](4-availability-sets.md)
+4. [Availability Sets](4-availability-sets.md)
 
-5. [Azure Virtual Desctop](5-azure-virtual-desktop.md)
+5. [Azure Virtual Desktop](5-azure-virtual-desktop.md)
 
 6. [App Service](6-app-service.md)
 

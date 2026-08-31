@@ -65,6 +65,19 @@ Microsoft manages:
 - Networking infrastructure
 - Hypervisor
 
+## Decision Factors
+
+Choose Azure Virtual Machines when the scenario requires:
+
+- control over the operating system
+- custom software or server configuration
+- support for legacy or specialized workloads
+- greater infrastructure control
+
+Consider a managed platform such as Azure App Service when reducing operating-system administration is more important than server-level control.
+
+> **Maximum OS control → Virtual Machine**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -109,7 +122,7 @@ With Azure Virtual Machines, operating system management remains the customer's 
 | Full administrative control | Focus on application deployment |
 | Supports any supported software | Optimized for web applications and APIs |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 

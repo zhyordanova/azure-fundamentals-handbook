@@ -73,6 +73,18 @@ Microsoft manages:
 - Control plane updates
 - Core Kubernetes infrastructure
 
+## Decision Factors
+
+Choose Azure Kubernetes Service when:
+
+- Kubernetes is required
+- multiple containerized components need orchestration
+- the workload needs Kubernetes-based deployment, scaling, and management
+
+Do not choose AKS merely because the workload uses containers. If Kubernetes orchestration is unnecessary, Azure Container Instances may be the simpler fit.
+
+> **Kubernetes orchestration → AKS**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -120,7 +132,7 @@ AKS manages large-scale containerized applications using Kubernetes.
 | Cluster management | No cluster management |
 | Enterprise-scale applications | Short-lived or lightweight workloads |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 

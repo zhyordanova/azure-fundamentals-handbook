@@ -57,6 +57,21 @@ Example:
 - High sustained CPU utilization → Add VM instances.
 - Low sustained utilization → Remove VM instances.
 
+## Decision Factors
+
+First determine whether the requirement is about **scaling** or **availability**.
+
+Choose VM Scale Sets when the workload requires:
+
+- multiple VM instances
+- scale out or scale in
+- automatic adjustment of VM capacity based on demand
+- centralized management of a scalable VM workload
+
+Do not choose VM Scale Sets only because a scenario mentions multiple VMs. If the main requirement is fault/update separation rather than scaling, consider an **Availability Set**.
+
+> **Scale VM capacity → VM Scale Sets**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -103,7 +118,7 @@ VM Scale Sets are built on Azure Virtual Machines and therefore belong to Infras
 | Individual management | Centralized management |
 | Suitable for small workloads | Suitable for scalable workloads |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 

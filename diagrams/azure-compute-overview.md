@@ -5,20 +5,43 @@ flowchart TD
 
     COMPUTE["Azure Compute"]
 
-    COMPUTE --> IAAS["Infrastructure as a Service (IaaS)"]
-    COMPUTE --> PAAS["Platform as a Service (PaaS)"]
-    COMPUTE --> SERVERLESS["Serverless"]
+    COMPUTE --> VM["Virtual Machines - IaaS"]
+    VM --> VMSS["VM Scale Sets - scaling"]
+    VM --> AS["Availability Sets - VM availability"]
 
-    IAAS --> VM["Virtual Machines"]
-    VM --> VMSS["Virtual Machine Scale Sets"]
+    COMPUTE --> AVD["Azure Virtual Desktop - desktop virtualization"]
+    COMPUTE --> APP["Azure App Service - managed web apps / APIs"]
+    COMPUTE --> FUNC["Azure Functions - event-driven serverless code"]
+    COMPUTE --> CONTAINERS["Containerized workloads"]
 
-    PAAS --> APP["Azure App Service"]
+    CONTAINERS --> ACI["Azure Container Instances - simple container execution"]
+    CONTAINERS --> AKS["Azure Kubernetes Service - Kubernetes orchestration"]
+```
 
-    SERVERLESS --> FUNC["Azure Functions"]
+## Quick Orientation
 
-    COMPUTE --> CONTAINERS["Containers"]
+```text
+Need server / OS control
+→ Virtual Machine
 
-    CONTAINERS --> ACI["Azure Container Instances"]
+Need scalable VM capacity
+→ VM Scale Sets
 
-    CONTAINERS --> AKS["Azure Kubernetes Service"]
+Need VM fault/update separation
+→ Availability Set
+
+Need cloud-hosted Windows desktop
+→ Azure Virtual Desktop
+
+Need managed web app / API hosting
+→ App Service
+
+Need event-driven code
+→ Azure Functions
+
+Need simple container execution
+→ Azure Container Instances
+
+Need Kubernetes orchestration
+→ Azure Kubernetes Service
 ```

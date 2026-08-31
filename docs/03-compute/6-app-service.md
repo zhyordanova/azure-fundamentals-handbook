@@ -54,6 +54,18 @@ Microsoft manages:
 - Security patching
 - Web server platform
 
+## Decision Factors
+
+Choose Azure App Service when:
+
+- the workload is a web application, REST API, or web back end
+- the organization wants Microsoft to manage the operating system and web platform
+- developers should focus on application code rather than server administration
+
+Choose a Virtual Machine instead when the workload requires operating-system control or custom server configuration. Choose Azure Functions when the primary requirement is event-driven execution rather than continuously hosted application functionality.
+
+> **Web app or API + less infrastructure management → App Service**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -104,7 +116,7 @@ Customers manage only the application and its data.
 | Deploy application code | Install and manage software |
 | Optimized for web apps | General-purpose compute |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 

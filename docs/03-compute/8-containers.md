@@ -52,6 +52,23 @@ Containers are commonly used for:
 - Continuous Integration / Continuous Deployment (CI/CD)
 - Cloud-native applications
 
+## Decision Factors
+
+Use containers when application portability, isolation, and lightweight deployment are more important than running a complete operating system for each workload.
+
+For Azure container services, ask whether the workload needs Kubernetes orchestration:
+
+```text
+Run containers without managing VMs
+        ↓
+Need Kubernetes orchestration?
+
+No  → Azure Container Instances
+Yes → Azure Kubernetes Service
+```
+
+> **Container execution and container orchestration are different requirements.**
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -94,7 +111,7 @@ Containers and virtual machines solve different problems and are often used toge
 | Fast startup | Slower startup |
 | Package applications | Emulate a complete computer |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 
