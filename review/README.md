@@ -1,18 +1,3 @@
-# AZ-900 Review Mode
-
-Use this section for fast exam preparation after completing the detailed learning material in [docs](../docs/).
-
-The goal of Review Mode is not to repeat definitions.
-
-It focuses on:
-
-- decision-making
-- service comparisons
-- trade-offs
-- best-fit scenarios
-- common exam traps
-- scenario reasoning
-
 ## Chapters
 
 1. [Cloud Concepts](./01-cloud-concepts.md)

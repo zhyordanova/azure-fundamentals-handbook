@@ -1,15 +1,17 @@
 # Networking — Quick Review
 
-Use this page for a fast review of the most important Azure networking concepts and decision patterns.
+Use this page for fast AZ-900 networking review.
 
-The goal is not only to remember what each service does, but to identify the **best-fit solution for a given scenario**.
+The goal is not only to remember what each Azure networking service does, but to identify the **best-fit solution for a scenario**.
 
 > **Review principle:** Do not start with a trigger word.  
-> First identify **what is communicating with what**, then determine the goal and the business constraints.
+> Identify the **endpoints**, then the **goal**, then the **constraints**.
+
+---
 
 ## 1. Networking Decision Map
 
-When a networking question looks confusing, start with:
+Start with:
 
 > **What are you trying to connect or accomplish?**
 
@@ -20,7 +22,7 @@ flowchart TD
 
     A --> B["Create private Azure network"]
     A --> C["Divide a VNet"]
-    A --> D["Filter network traffic"]
+    A --> D["Filter traffic"]
     A --> E["Connect two Azure VNets"]
     A --> F["Private access to Azure service"]
     A --> G["Administer Azure VM"]
@@ -37,99 +39,63 @@ flowchart TD
     I --> I1["VPN Gateway or ExpressRoute"]
 ```
 
-For connectivity questions, identifying the **two endpoints** is especially useful:
-
-```text
-VNet ↔ VNet
-VNet ↔ Azure Service
-Administrator ↔ VM
-On-premises ↔ Azure
-```
+For connectivity questions, identify the **two endpoints** first.
 
 The word **private** alone is not enough to determine the answer.
 
-# 2. Core Networking Components
+---
 
-## Virtual Network — VNet
+## 2. Core Networking Components
 
-An Azure Virtual Network provides a private network environment and address space for Azure resources.
+### Virtual Network — VNet
 
-Think:
+Provides a private network environment and address space for Azure resources.
 
 > **Create an Azure private network → VNet**
 
-## Subnet
+### Subnet
 
-A subnet divides the address space of a VNet into smaller network segments.
+Divides a VNet address space into smaller network segments.
 
-```mermaid
-flowchart TD
-
-    A["Virtual Network"]
-
-    A --> B["Web Subnet"]
-    A --> C["Application Subnet"]
-    A --> D["Database Subnet"]
+```text
+VNet
+├── Web Subnet
+├── Application Subnet
+└── Database Subnet
 ```
-
-Think:
 
 > **Divide a VNet → Subnet**
 
-A subnet provides **segmentation inside a VNet**. It does not connect separate networks.
+A subnet provides segmentation **inside a VNet**. It does not connect separate networks.
 
-## Network Security Group — NSG
+### Network Security Group — NSG
 
-A Network Security Group controls inbound and outbound network traffic by using allow and deny rules.
+Controls inbound and outbound network traffic using allow and deny rules.
 
-Rules can evaluate characteristics such as:
+Rules can evaluate:
 
-- source
-- destination
+- source and destination
 - port
 - protocol
-- traffic direction
-
-Think:
+- inbound or outbound direction
 
 > **Control traffic → NSG**
 
-> **Important:** An NSG controls traffic.  
-> It does **not** create network connectivity.
+**Important:** An NSG controls traffic. It does **not** create network connectivity.
 
-## Public vs Private Endpoint
+### Public vs Private Endpoint
 
-The important question is:
+A **Public Endpoint** provides publicly reachable access.
 
-> **How should the Azure service be accessed?**
-
-```mermaid
-flowchart TD
-
-    A["How should the Azure service be accessed?"]
-
-    A --> B["Publicly reachable endpoint"]
-    A --> C["Private IP from a VNet"]
-
-    B --> D["Public Endpoint"]
-    C --> E["Private Endpoint"]
-```
-
-### Public Endpoint
-
-Provides access through a publicly reachable endpoint.
-
-### Private Endpoint
-
-Provides private access to a supported Azure service by using a private IP address from a VNet.
-
-Think:
+A **Private Endpoint** provides private access to a supported Azure service using a private IP address from a VNet.
 
 > **Private IP access to Azure service → Private Endpoint**
 
-# 3. VNet Peering vs Private Endpoint vs Azure Bastion
+---
 
-These services can all appear in private-networking scenarios, but they solve **different problems**.
+## 3. Private Connectivity Choices
+
+VNet Peering, Private Endpoint, and Azure Bastion can all appear in private-networking scenarios, but they solve different problems.
 
 ```mermaid
 flowchart LR
@@ -141,26 +107,15 @@ flowchart LR
     E["Administrator ↔ VM"] --> F["Azure Bastion"]
 ```
 
-## VNet Peering
+### VNet Peering
 
-Use VNet Peering when **two Azure Virtual Networks** need private connectivity.
+Connects **two Azure Virtual Networks** privately.
 
-```mermaid
-flowchart LR
+> **VNet ↔ VNet → VNet Peering**
 
-    A["VNet A"] <--> B["VNet B"]
-```
+### Private Endpoint
 
-## Private Endpoint
-
-Use a Private Endpoint when a resource in a VNet needs private access to a supported Azure service through a **private IP address**.
-
-```mermaid
-flowchart LR
-
-    A["VNet"] --> B["Private Endpoint"]
-    B --> C["Azure Service"]
-```
+Provides private access from a VNet to a supported Azure service through a private IP.
 
 Example:
 
@@ -172,18 +127,13 @@ Private Endpoint
 Azure Storage
 ```
 
-## Azure Bastion
+> **VNet ↔ Azure Service → Private Endpoint**
 
-Azure Bastion provides secure administrative access to Azure Virtual Machines by using RDP or SSH.
+### Azure Bastion
 
-```mermaid
-flowchart LR
+Provides secure administrative access to Azure VMs using RDP or SSH without requiring a public IP on the target VM.
 
-    A["Administrator"] --> B["Azure Bastion"]
-    B --> C["Azure VM"]
-```
-
-The target VM does not require a public IP address for Bastion access.
+> **Administrator ↔ VM → Azure Bastion**
 
 ### Key Distinction
 
@@ -195,13 +145,13 @@ Ask:
 
 > **Private connection between WHAT?**
 
-That determines whether you need Peering, Private Endpoint, or Bastion.
+---
 
-# 4. VPN Gateway vs ExpressRoute
+## 4. VPN Gateway vs ExpressRoute
 
-Both services can provide connectivity between an on-premises environment and Azure.
+Both can provide connectivity between an on-premises environment and Azure.
 
-The correct answer depends on the **technical and business requirements**.
+The correct choice depends on the **technical and business requirements**.
 
 | Decision Factor | VPN Gateway | ExpressRoute |
 |---|---|---|
@@ -212,7 +162,7 @@ The correct answer depends on the **technical and business requirements**.
 | Performance | Internet-dependent | More predictable |
 | Bandwidth | Lower options | Higher options available |
 
-## Decision Process
+### Decision Process
 
 ```mermaid
 flowchart TD
@@ -240,8 +190,6 @@ Best fit when:
 - lower cost is important
 - connectivity requirements are simpler
 
-Think:
-
 > **Encrypted Internet connectivity is sufficient → VPN Gateway**
 
 ### ExpressRoute
@@ -253,15 +201,11 @@ Best fit when the scenario requires or prioritizes:
 - more predictable network performance
 - higher bandwidth
 
-Think:
-
 > **Private connectivity is required → ExpressRoute**
 
 ### Exam Rule
 
-> Do not automatically choose the most powerful solution.
-
-If multiple solutions can technically work, identify what the scenario is optimizing:
+If multiple solutions technically work, look for what the scenario is optimizing:
 
 ```text
 Cost
@@ -273,41 +217,44 @@ Bandwidth
 Public vs private connectivity
 ```
 
-Choose the solution that satisfies **all requirements without unnecessary capabilities**.
+> Choose the solution that satisfies **all requirements without unnecessary capabilities**.
 
-# 5. Azure DNS
+---
 
-Azure DNS provides DNS hosting and name resolution by using Azure infrastructure.
+## 5. Azure DNS
 
-```mermaid
-flowchart LR
+Azure DNS provides DNS hosting and name resolution using Azure infrastructure.
 
-    A["Domain Name"] --> B["Azure DNS"]
-    B --> C["IP Address"]
+```text
+Domain Name
+     ↓
+ Azure DNS
+     ↓
+ IP Address
 ```
-
-Think:
 
 > **Name resolution → Azure DNS**
 
-Azure DNS resolves names. It does **not**:
+Azure DNS does not:
 
 - connect VNets
 - create VPN tunnels
 - provide RDP/SSH access
 - filter network traffic
 
-# 6. How to Solve Networking Scenario Questions
+---
 
-Use the following process instead of searching for a trigger word.
+## 6. How to Solve Networking Scenario Questions
+
+Use this process instead of searching for a trigger word.
 
 ```mermaid
 flowchart TD
 
     A["1. Identify the endpoints"]
-    B["2. Identify the required action"]
-    C["3. Find technically valid options"]
-    D["4. Identify the constraints"]
+    B["2. Identify the goal"]
+    C["3. Find valid options"]
+    D["4. Identify constraints"]
     E["5. Eliminate over-engineering"]
     F["6. Choose the best fit"]
 
@@ -318,21 +265,24 @@ flowchart TD
     E --> F
 ```
 
-## Step 1 — Identify the Endpoints
+### Step 1 — Identify the Endpoints
 
 Ask:
 
 > **What is communicating with what?**
 
-This determines the scope of the problem.
+Examples:
 
-## Step 2 — Identify the Action
+```text
+VNet ↔ VNet
+VNet ↔ Azure Service
+Administrator ↔ VM
+On-premises ↔ Azure
+```
 
-Ask:
+### Step 2 — Identify the Goal
 
-> **What must happen?**
-
-Typical actions:
+What must happen?
 
 ```text
 CONNECT
@@ -343,19 +293,17 @@ ADMINISTER
 PRIVATE ACCESS
 ```
 
-## Step 3 — Find Technically Valid Options
-
-Do not immediately select the first familiar service.
+### Step 3 — Find Valid Options
 
 Ask:
 
 > **Could more than one answer technically satisfy the basic requirement?**
 
-For example, both VPN Gateway and ExpressRoute can provide on-premises-to-Azure connectivity.
+This is especially important for **VPN Gateway vs ExpressRoute**.
 
-## Step 4 — Identify the Constraints
+### Step 4 — Identify the Constraints
 
-Look for requirements involving:
+Look for:
 
 - cost
 - administrative effort
@@ -363,18 +311,13 @@ Look for requirements involving:
 - performance
 - latency
 - bandwidth
-- public connectivity
-- private connectivity
+- public vs private connectivity
 
-These constraints often determine the correct answer.
-
-## Step 5 — Eliminate Over-Engineering
+### Step 5 — Eliminate Over-Engineering
 
 Ask:
 
 > **Does one solution provide capabilities the scenario never requested?**
-
-Do not automatically choose the most advanced service.
 
 For example:
 
@@ -386,9 +329,9 @@ lower cost is important
 VPN Gateway
 ```
 
-ExpressRoute provides additional connectivity characteristics, but the scenario may not require them.
+Do not choose ExpressRoute simply because it provides more advanced connectivity characteristics.
 
-## Step 6 — Choose the Best Fit
+### Step 6 — Choose the Best Fit
 
 ```text
 Technical requirement
@@ -400,17 +343,13 @@ No unnecessary capabilities
 BEST FIT
 ```
 
-Choose the simplest solution that satisfies **all stated requirements**.
+---
 
-# 7. Common Networking Traps
+## 7. Common Networking Traps
 
-## Trap 1 — "Private" Is Not a Service Name
+### Private Does Not Automatically Mean Private Endpoint
 
-Do not automatically choose **Private Endpoint** when you see the word `private`.
-
-Identify the endpoints first.
-
-## Trap 2 — VNet Peering vs Private Endpoint
+Identify what is being connected:
 
 ```text
 VNet ↔ VNet
@@ -418,33 +357,24 @@ VNet ↔ VNet
 
 VNet ↔ Azure Service
 → Private Endpoint
-```
 
-## Trap 3 — Private Endpoint vs Bastion
-
-```text
-Private access to Azure Service
-→ Private Endpoint
-
-Secure RDP / SSH to VM
+Administrator ↔ VM
 → Azure Bastion
 ```
 
-## Trap 4 — Subnet vs NSG
+### Subnet vs NSG
 
 ```text
-Divide the network
+Divide network
 → Subnet
 
 Control traffic
 → NSG
 ```
 
-A subnet provides segmentation.
+A subnet provides segmentation. An NSG provides traffic filtering.
 
-An NSG provides traffic filtering.
-
-## Trap 5 — NSG Does Not Create Connectivity
+### NSG Does Not Create Connectivity
 
 ```text
 Allow / Deny
@@ -455,26 +385,19 @@ Port / Protocol
 
 NSG controls traffic that already has a network path.
 
-## Trap 6 — On-Premises ↔ Azure Does Not Automatically Mean ExpressRoute
+### On-Premises ↔ Azure Does Not Automatically Mean ExpressRoute
 
 Both VPN Gateway and ExpressRoute may satisfy the basic connectivity requirement.
 
-Continue asking:
+Ask:
 
 ```text
 Must traffic avoid the public Internet?
-
 Is encrypted Internet connectivity sufficient?
-
-What does the scenario prioritize?
-
-Cost?
-Administrative effort?
-Performance?
-Bandwidth?
+What matters most: cost, administration, performance, or bandwidth?
 ```
 
-## Trap 7 — Azure DNS Does Not Create Connectivity
+### Azure DNS Does Not Create Connectivity
 
 ```text
 Name → IP
@@ -483,46 +406,53 @@ Name → IP
 
 DNS provides name resolution, not network connectivity.
 
-# 30-Second Review
+---
 
-```mermaid
-flowchart LR
-
-    A["VNet"] --> A1["Create Azure private network"]
-
-    B["Subnet"] --> B1["Divide VNet"]
-
-    C["NSG"] --> C1["Filter traffic"]
-
-    D["VNet Peering"] --> D1["VNet ↔ VNet"]
-
-    E["Private Endpoint"] --> E1["VNet ↔ Azure Service"]
-
-    F["Azure Bastion"] --> F1["Administrator ↔ VM"]
-
-    G["Azure DNS"] --> G1["Name resolution"]
-
-    H["VPN Gateway"] --> H1["Encrypted Internet connectivity"]
-
-    I["ExpressRoute"] --> I1["Private connectivity"]
-```
-
-## Final Networking Rule
-
-Before choosing a networking service:
+## 30-Second Review
 
 ```text
-1. Identify the ENDPOINTS.
+Create Azure private network
+→ VNet
 
-2. Identify the GOAL.
+Divide VNet
+→ Subnet
 
-3. Find the technically VALID OPTIONS.
+Filter traffic
+→ NSG
 
-4. Identify the CONSTRAINTS.
+VNet ↔ VNet
+→ VNet Peering
 
-5. Eliminate unnecessary capabilities.
+VNet ↔ Azure Service
+→ Private Endpoint
 
-6. Choose the BEST FIT.
+Administrator ↔ VM
+→ Azure Bastion
+
+Name resolution
+→ Azure DNS
+
+Encrypted Internet connectivity
+→ VPN Gateway
+
+Private on-premises connectivity
+→ ExpressRoute
+```
+
+### Final Networking Rule
+
+```text
+ENDPOINTS
+    ↓
+GOAL
+    ↓
+VALID OPTIONS
+    ↓
+CONSTRAINTS
+    ↓
+REMOVE OVER-ENGINEERING
+    ↓
+BEST FIT
 ```
 
 > **Endpoint + Goal + Constraints → Best Fit**
