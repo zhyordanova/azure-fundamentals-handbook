@@ -37,8 +37,6 @@ azure-fundamentals-handbook
 ├── assets/
 │
 ├── resources/
-|
-├── review/
 │
 └── CHANGELOG.md
 ```
@@ -49,15 +47,9 @@ Detailed chapter-by-chapter material.
 
 → [Start Learning](./docs/)
 
-## Review
-
-Fast decision-based revision before the exam.
-
-→ [Enter Review Mode](./review/)
-
 ## Exam Preparation
 
-Practice questions, decision trees, traps and mock exams.
+Decision trees, exam patterns, practice questions and mock exams.
 
 → [Exam Preparation](./exam/)
 
