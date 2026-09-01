@@ -57,14 +57,6 @@ flowchart TD
     D --> FS["Azure File Sync"]
 ```
 
-## Compare With
-
-| Requirement | Best Fit |
-|---|---|
-| Command-line transfer | AzCopy |
-| GUI storage management | Storage Explorer |
-| Windows Server + Azure Files synchronization | Azure File Sync |
-
 ## Common Mistakes
 
 Do not choose Azure File Sync for a one-time generic file copy. Its key scenario is synchronization between Windows file servers and Azure Files.

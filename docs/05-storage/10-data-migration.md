@@ -27,34 +27,30 @@ Think:
 
 ## Decision Factors
 
-Ask what problem must be solved:
+First identify **what kind of migration problem must be solved**.
 
 ```mermaid
 flowchart TD
-    A["Need to move to Azure?"]
+    A["Need to move workloads or large amounts of data to Azure?"]
 
-    A --> B["Discover / assess / plan migration"]
-    A --> C["Transfer very large data with limited network"]
-    A --> D["Copy files using command line"]
-    A --> E["Manage/copy storage using GUI"]
-    A --> F["Synchronize Windows file server"]
+    A --> B{"What is the main requirement?"}
 
-    B --> MIG["Azure Migrate"]
-    C --> BOX["Azure Data Box"]
-    D --> AZ["AzCopy"]
-    E --> SE["Storage Explorer"]
-    F --> FS["Azure File Sync"]
+    B -->|"Discover, assess, plan, and manage migration"| MIG["Azure Migrate"]
+    B -->|"Transfer very large amounts of data when network transfer is impractical"| BOX["Azure Data Box"]
 ```
 
-## Compare With
+## Azure Migrate vs Azure Data Box
 
-| Requirement | Best Fit |
-|---|---|
-| Discover, assess, plan, and track migration | Azure Migrate |
-| Large offline/physical data transfer | Azure Data Box |
-| Command-line file transfer | AzCopy |
-| GUI storage management | Storage Explorer |
-| Ongoing Windows file-server synchronization | Azure File Sync |
+| Decision Factor | Azure Migrate | Azure Data Box |
+|---|---|---|
+| Primary purpose | Migration assessment and management | Large-scale physical data transfer |
+| Focus | Workloads, servers, apps, and databases | Data |
+| Discovery and assessment | Yes | No |
+| Physical device | No | Yes |
+| Useful when network transfer is impractical | Not its primary purpose | Yes |
+| Best-fit question | "How should we assess and manage the migration?" | "How should we move this very large dataset?" |
+
+> For file-level transfer and synchronization tools such as **AzCopy, Storage Explorer, and Azure File Sync**, see [File Movement Tools](9-file-movement-tools.md).
 
 ## Common Mistakes
 
@@ -74,15 +70,14 @@ Physical device / very large dataset / limited network
 
 ## Exam Reasoning
 
-First classify the task:
+First classify the migration task:
 
 ```text
-MIGRATION PLANNING
+MIGRATION ASSESSMENT / PLANNING / MANAGEMENT
 → Azure Migrate
 
-LARGE PHYSICAL DATA TRANSFER
+VERY LARGE DATA + NETWORK TRANSFER IS IMPRACTICAL
 → Azure Data Box
-
-FILE-LEVEL MOVEMENT OR SYNC
-→ AzCopy / Storage Explorer / Azure File Sync
 ```
+
+If the task is instead about command-line copy, GUI storage management, or ongoing Windows file-server synchronization, use the tools covered in [File Movement Tools](9-file-movement-tools.md).
