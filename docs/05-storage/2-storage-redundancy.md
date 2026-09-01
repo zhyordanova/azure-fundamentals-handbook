@@ -4,47 +4,42 @@
 
 Azure Storage redundancy keeps multiple copies of data to protect against infrastructure failures.
 
-The redundancy option determines **where the copies are stored** and therefore which failures the storage design can tolerate.
+The redundancy option determines **where the copies are stored** and which failures the storage design can tolerate.
 
-## What Problem Does It Solve?
+The correct choice balances:
 
-Different workloads require different levels of resiliency.
-
-The correct redundancy option balances:
-
-- required availability and durability
+- required resiliency
 - protection against zone or regional failures
 - cost
 
-## Key Options
+## Redundancy Comparison
 
-### Locally Redundant Storage — LRS
+| Option | Primary Protection | Secondary Region | Relative Cost |
+|---|---|---|---|
+| **LRS** | Local infrastructure | No | Lowest |
+| **ZRS** | Availability zones | No | Higher than LRS |
+| **GRS** | Local + regional replication | Yes | Higher |
+| **GZRS** | Zones + regional replication | Yes | Highest of these options |
 
-LRS keeps multiple copies of data within a single physical location in the primary Azure region.
+### Mental Model
 
-Best fit when local infrastructure protection is sufficient and lower cost is important.
+```text
+LRS
+→ local protection
 
-### Zone-Redundant Storage — ZRS
+ZRS
+→ zone protection
 
-ZRS replicates data synchronously across availability zones in the primary region.
+GRS
+→ regional protection
 
-Best fit when the data must remain resilient to an availability-zone failure.
-
-### Geo-Redundant Storage — GRS
-
-GRS keeps copies in the primary region and asynchronously replicates data to a secondary Azure region.
-
-Best fit when protection from a regional failure is required.
-
-### Geo-Zone-Redundant Storage — GZRS
-
-GZRS combines zone redundancy in the primary region with asynchronous replication to a secondary region.
-
-Best fit when both zone resiliency in the primary region and geo-redundancy are required.
+GZRS
+→ zone + regional protection
+```
 
 ## Decision Factors
 
-Ask:
+Start with:
 
 > **What failure must the data survive?**
 
@@ -60,57 +55,97 @@ flowchart TD
     C --> ZRS["ZRS"]
 
     D --> E{"Also require zone resiliency in the primary region?"}
+
     E -->|No| GRS["GRS"]
     E -->|Yes| GZRS["GZRS"]
 ```
 
-## Compare With
+Do not automatically choose the most resilient option.
 
-| Option | Primary Protection | Secondary Region | Relative Cost |
-|---|---|---|---|
-| LRS | Local infrastructure | No | Lowest |
-| ZRS | Availability zones | No | Higher than LRS |
-| GRS | Local + regional replication | Yes | Higher |
-| GZRS | Zones + regional replication | Yes | Highest of these options |
+If multiple options satisfy the requirement, consider cost and avoid unnecessary resiliency.
+
+> **Required resiliency first; cost breaks the tie between valid options.**
 
 ## Common Mistakes
 
-Do not choose the most resilient option automatically.
+### ZRS vs GRS
 
-If the scenario only requires local protection and prioritizes cost, geo-redundancy may be unnecessary.
-
-Do not confuse:
+The letters help identify the protection scope:
 
 ```text
-Z = Zone
-G = Geo / secondary region
+Z
+→ Zone
+
+G
+→ Geo / secondary region
 ```
 
-## Microsoft Trigger Words
+But do not stop at the acronym.
 
-- local redundancy
-- zone failure
-- availability zones
-- regional failure
-- geo-redundancy
-- secondary region
+Ask what failure the solution must survive.
+
+### GRS vs GZRS
+
+Both provide replication to a secondary region.
+
+The distinction is the primary region:
+
+```text
+GRS
+→ local redundancy in primary region
+→ secondary region
+
+GZRS
+→ zone redundancy in primary region
+→ secondary region
+```
+
+### More Resilient Is Not Automatically Better
+
+If the requirement is only:
+
+```text
+Protect against zone failure
++
+avoid unnecessary cost
+```
+
+choose:
+
+```text
+ZRS
+```
+
+not GZRS simply because GZRS provides more protection.
 
 ## Exam Reasoning
 
-Use the minimum redundancy level that satisfies **all stated resiliency requirements**.
+Use this order:
 
 ```text
-Local protection only
+1. Identify the failure scope.
+
+2. Determine the minimum redundancy that survives it.
+
+3. Check whether additional resiliency is required.
+
+4. Use cost to choose between valid options.
+```
+
+Quick mapping:
+
+```text
+LOCAL
 → LRS
 
-Zone failure protection
+ZONE
 → ZRS
 
-Regional failure protection
+REGION
 → GRS
 
-Zone + regional protection
+ZONE + REGION
 → GZRS
 ```
 
-> **Required resiliency first; cost breaks the tie between valid options.**
+> **Failure scope → Required resiliency → Cost → Best fit**

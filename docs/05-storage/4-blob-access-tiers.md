@@ -2,73 +2,75 @@
 
 ## Definition
 
-Azure Blob Storage access tiers help optimize cost based on how frequently data is accessed and how quickly it must be available.
+Azure Blob Storage provides different access tiers that allow data to be stored according to how frequently it is accessed.
 
-The four primary tiers are:
+Choosing the correct tier helps balance:
+
+- storage cost
+- access cost
+- access frequency
+- availability requirements
+
+The main access tiers are:
 
 - Hot
 - Cool
 - Cold
 - Archive
 
-## What Problem Does It Solve?
+## Access Tier Comparison
 
-Not all data has the same access pattern.
-
-Access tiers let organizations trade lower storage cost for higher access cost and, for Archive, slower retrieval.
-
-## Tier Comparison
-
-| Tier | Access Pattern | Online? | Storage Cost | Access Cost |
+| Tier | Access Pattern | Availability | Storage Cost | Access Cost |
 |---|---|---|---|---|
-| Hot | Frequent | Yes | Highest | Lowest |
-| Cool | Infrequent | Yes | Lower | Higher |
-| Cold | Rare | Yes | Lower | Higher |
-| Archive | Long-term / very rare | No | Lowest | Highest |
-
-Typical minimum storage durations are approximately:
-
-- Cool: 30 days
-- Cold: 90 days
-- Archive: 180 days
+| **Hot** | Frequently accessed | Online | Highest | Lowest |
+| **Cool** | Infrequently accessed | Online | Lower | Higher |
+| **Cold** | Rarely accessed | Online | Lower than Cool | Higher |
+| **Archive** | Rarely accessed / long-term | Offline | Lowest | Highest / rehydration required |
 
 ## Decision Factors
 
-Ask two questions:
+Do not choose a tier based only on how often the data is accessed.
 
-1. **How often is the data accessed?**
-2. **Must the data remain immediately available online?**
+Consider:
+
+```text
+ACCESS FREQUENCY
+        +
+ONLINE AVAILABILITY
+        +
+COST
+        ↓
+BEST-FIT TIER
+```
 
 ```mermaid
 flowchart TD
-    A["How is the blob data used?"]
-    A -->|Frequently| HOT["Hot"]
-    A -->|Infrequently, but online| COOL["Cool"]
-    A -->|Rarely, but immediately online| COLD["Cold"]
-    A -->|Long-term and retrieval can wait| ARCH["Archive"]
+
+    A["How will the data be used?"]
+
+    A --> B["Frequently accessed"]
+    A --> C["Infrequently accessed"]
+    A --> D["Rarely accessed"]
+    A --> E["Long-term and immediate access not required"]
+
+    B --> HOT["Hot"]
+
+    C --> COOL["Cool"]
+
+    D --> F{"Must remain immediately online?"}
+    F -->|Yes| COLD["Cold"]
+    F -->|No| ARCHIVE["Archive"]
+
+    E --> ARCHIVE
 ```
 
-## Best-Fit Scenarios
-
-```text
-Active application data
-→ Hot
-
-Infrequent online data
-→ Cool
-
-Rarely accessed but immediately online
-→ Cold
-
-Long-term retention with rehydration acceptable
-→ Archive
-```
+> **Key distinction:** Cold is rarely accessed but remains online. Archive is offline.
 
 ## Changing Access Tiers
 
-Access tiers are not permanently fixed when data is created.
+Access tiers are **not permanently fixed when a blob is created**.
 
-A blob can be moved between access tiers as its usage pattern changes.
+A blob can move between tiers as its usage pattern changes.
 
 ```text
 Hot ↔ Cool ↔ Cold
@@ -77,16 +79,14 @@ Hot ↔ Cool ↔ Cold
           ↓
       Rehydrate
           ↓
-   Online access tier
+     Online tier
 ```
 
 Hot, Cool, and Cold are **online tiers**.
 
-Archive is an **offline tier**. An archived blob must be rehydrated to an online tier before its data can be read or modified.
+Archive is an **offline tier**. Archived data must be rehydrated to an online tier before it can be read or modified normally.
 
 The default access tier of a general-purpose v2 storage account can also be changed after the storage account is created.
-
-Archive cannot be configured as the default storage account access tier; it is applied at the blob level.
 
 ### Quick Exam Check
 
@@ -100,47 +100,72 @@ Can a blob move to another tier?
 Can archived data be accessed immediately?
 → NO
 
-Must Archive data be rehydrated before normal access?
+Must archived data be rehydrated?
 → YES
 
 Can Archive be the default storage account access tier?
 → NO
 ```
 
-### Hot
-- frequently accessed
-- active data
-
-### Cool
-- infrequently accessed
-- online
-
-### Cold
-- rarely accessed
-- online
-
-### Archive
-- offline
-- long-term retention
-- rehydration
-
 ## Common Mistakes
 
-Archive is not simply a cheaper online tier.
+### Cold vs Archive
 
-Archive data is offline and must be rehydrated before it can be read.
+Both are designed for rarely accessed data, but:
 
-Do not choose a tier only from access frequency. Also check whether immediate online access is required.
+```text
+Cold
+→ ONLINE
+
+Archive
+→ OFFLINE
+→ rehydration required
+```
+
+If immediate access is required, **Archive is not the best fit**.
+
+### Choosing Only by Storage Cost
+
+Archive has the lowest storage cost, but that does not automatically make it the best option.
+
+Consider whether the data must remain immediately accessible.
 
 ## Exam Reasoning
 
+When the question asks for the best access tier, use this order:
+
 ```text
-Frequency
-+
-Online availability requirement
-+
-Cost
-→ Best-fit tier
+1. How often is the data accessed?
+
+2. Must it remain immediately available?
+
+3. What cost trade-off is acceptable?
 ```
 
-> **Hot / Cool / Cold = online. Archive = offline.**
+Then:
+
+```text
+Frequent
+→ Hot
+
+Infrequent + online
+→ Cool
+
+Rare + online
+→ Cold
+
+Long-term + offline acceptable
+→ Archive
+```
+
+For changeability questions:
+
+```text
+Access tier
+→ CAN CHANGE
+
+Archive data
+→ MUST REHYDRATE before normal access
+```
+
+> **Access frequency + availability requirement + cost → Best-fit tier**
