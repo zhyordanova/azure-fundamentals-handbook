@@ -107,16 +107,6 @@ Can Archive be the default storage account access tier?
 → NO
 ```
 
-## Common Mistakes
-
-Archive is not simply a cheaper online tier.
-
-Archive data is offline and must be rehydrated before it can be read.
-
-Do not choose a tier only from access frequency. Also check whether immediate online access is required.
-
-## Microsoft Trigger Words
-
 ### Hot
 - frequently accessed
 - active data
@@ -133,6 +123,14 @@ Do not choose a tier only from access frequency. Also check whether immediate on
 - offline
 - long-term retention
 - rehydration
+
+## Common Mistakes
+
+Archive is not simply a cheaper online tier.
+
+Archive data is offline and must be rehydrated before it can be read.
+
+Do not choose a tier only from access frequency. Also check whether immediate online access is required.
 
 ## Exam Reasoning
 

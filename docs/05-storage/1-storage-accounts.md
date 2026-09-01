@@ -105,33 +105,6 @@ Region / location
 
 > `*` Redundancy changes can depend on the storage account type, region, and supported conversion path.
 
-### Exam Reasoning
-
-If the question asks whether a storage account can simply be renamed or moved to another Azure region:
-
-```text
-Rename existing storage account?
-→ NO
-
-Change existing storage account region?
-→ NO
-```
-
-A different name or region generally requires creating another storage account and moving the data.
-
-Do not confuse these settings with access tiers:
-
-```text
-Change access tier?
-→ YES
-
-Rename storage account?
-→ NO
-
-Change storage account region?
-→ NO
-```
-
 ## Compare With
 
 | Storage Account | Storage Service |
@@ -170,4 +143,29 @@ Storage container / namespace / management boundary
 
 Specific data requirement
 → Choose the appropriate storage service
+```
+
+If the question asks whether a storage account can simply be renamed or moved to another Azure region:
+
+```text
+Rename existing storage account?
+→ NO
+
+Change existing storage account region?
+→ NO
+```
+
+A different name or region generally requires creating another storage account and moving the data.
+
+Do not confuse these settings with access tiers:
+
+```text
+Change access tier?
+→ YES
+
+Rename storage account?
+→ NO
+
+Change storage account region?
+→ NO
 ```
