@@ -4,74 +4,151 @@
 
 An Azure Storage Account is the top-level Azure resource that provides access to Azure Storage services.
 
-It acts as a logical container for storage data and provides a unique namespace for all storage services associated with the account.
+It provides a unique namespace and a management boundary for storage data.
 
-A Storage Account can contain different Azure Storage services, including:
-
-- Blob Storage
-- Azure Files
-- Queue Storage
-- Table Storage
-
-## Why Storage Accounts Exist
-
-Azure provides several storage data services for different scenarios.
-
-A Storage Account provides a namespace and management boundary for Azure Storage data services such as:
+A general-purpose storage account can provide services such as:
 
 - Blob Storage
 - Azure Files
 - Queue Storage
 - Table Storage
 
-This helps centralize:
+## What Problem Does It Solve?
 
-- Storage configuration
-- Security
-- Authentication
-- Billing
-- Monitoring
+Azure provides different storage services for different data types and access patterns.
 
-## Characteristics
+A Storage Account provides a common Azure resource through which those storage services can be configured, secured, monitored, and billed.
 
-An Azure Storage Account provides:
+## Key Characteristics
 
-- Globally unique account name
-- Secure access to Azure Storage services
-- High durability
-- High availability
-- Encryption at rest by default
-- Scalability
+A Storage Account provides:
 
-It serves as the entry point for Azure Storage services.
+- a globally unique account name
+- secure access to Azure Storage services
+- encryption at rest by default
+- scalability and durability
+- redundancy configuration
+- a common management boundary
 
-## Storage Services
+## Storage Account Options
 
-A Storage Account can provide access to:
+### Standard general-purpose v2
 
-| Storage Service | Purpose |
-|-----------------|---------|
-| Blob Storage | Unstructured data |
-| Azure Files | Managed file shares |
-| Queue Storage | Message storage |
-| Table Storage | NoSQL key-value data |
+The standard general-purpose v2 account is the general-purpose choice for most Azure Storage scenarios.
 
-Each storage service addresses different application requirements.
+It supports services such as Blob, Files, Queue, and Table Storage.
 
-## Typical Use Cases
+### Premium
 
-Storage Accounts are commonly used for:
+Premium storage account options are designed for specialized workloads that require higher performance and lower latency.
 
-- Application storage
-- Backup storage
-- Media storage
-- File sharing
-- Messaging
-- Structured and unstructured data
+For AZ-900, the important distinction is:
+
+```text
+General storage scenarios
+→ Standard general-purpose v2
+
+Specialized high-performance storage
+→ Premium
+```
+
+## Decision Factors
+
+First determine whether the question is asking for the **storage account** or a **specific storage service**.
+
+```text
+Resource that provides access to Azure Storage services
+→ Storage Account
+
+Unstructured objects
+→ Blob Storage
+
+Shared files
+→ Azure Files
+
+Messages
+→ Queue Storage
+
+Structured NoSQL key/value data
+→ Table Storage
+```
+
+## What Can Change After Creation?
+
+Not every storage account setting is fixed when the account is created.
+
+For AZ-900, remember the following distinction:
+
+| Setting | Can it change after creation? |
+|---|---|
+| Default access tier | ✅ Yes |
+| Blob access tier | ✅ Yes |
+| Redundancy | ✅ Often, but some changes have limitations |
+| Tags | ✅ Yes |
+| Storage account name | ❌ No |
+| Region / location | ❌ No |
+
+### Key Distinction
+
+```text
+CAN CHANGE
+────────────
+Access tier
+Redundancy*
+Tags
+
+CANNOT CHANGE
+────────────
+Storage account name
+Region / location
+```
+
+> `*` Redundancy changes can depend on the storage account type, region, and supported conversion path.
+
+### Exam Reasoning
+
+If the question asks whether a storage account can simply be renamed or moved to another Azure region:
+
+```text
+Rename existing storage account?
+→ NO
+
+Change existing storage account region?
+→ NO
+```
+
+A different name or region generally requires creating another storage account and moving the data.
+
+Do not confuse these settings with access tiers:
+
+```text
+Change access tier?
+→ YES
+
+Rename storage account?
+→ NO
+
+Change storage account region?
+→ NO
+```
+
+## Compare With
+
+| Storage Account | Storage Service |
+|---|---|
+| Top-level Azure resource | Stores a specific type of data |
+| Provides namespace and configuration boundary | Solves a particular storage requirement |
+| Can expose multiple storage services | Blob, Files, Queue, or Table |
+
+## Common Mistakes
+
+Do not treat Blob Storage, Azure Files, Queue Storage, and Table Storage as separate Azure accounts.
+
+They are storage services accessed through a Storage Account.
+
+Do not assume a Storage Account is only for files. Different services support different data models.
 
 ## Microsoft Trigger Words
-
-If a question contains words such as:
 
 - Storage Account
 - Azure Storage
@@ -79,46 +156,18 @@ If a question contains words such as:
 - Files
 - Queue
 - Table
+- namespace
 
-Think:
+## Exam Reasoning
 
-> Azure Storage Account
+Ask:
 
-## Common Exam Questions
+> **Is the question asking where Azure Storage services live, or which service fits the data?**
 
-Microsoft frequently asks questions such as:
+```text
+Storage container / namespace / management boundary
+→ Storage Account
 
-- What is an Azure Storage Account?
-- Which Azure resource contains Blob Storage?
-- Which Azure resource provides access to Azure Storage services?
-- Which Azure resource hosts Azure Files?
-
-## Common Mistakes
-
-❌ Thinking Blob Storage, Azure Files, Queue Storage, and Table Storage are separate Azure accounts.
-
-They are storage services that exist within a Storage Account.
-
-❌ Thinking Storage Accounts store only files.
-
-A Storage Account can host multiple storage services designed for different workloads.
-
-## Compare With
-
-| Storage Account | Blob Storage |
-|-----------------|--------------|
-| Azure resource | Storage service |
-| Hosts storage services | Stores unstructured data |
-| Entry point for Azure Storage | One storage option inside a Storage Account |
-
-## Exam Tip
-
-First identify whether the question is asking about the **storage container** or the **type of data being stored**.
-
-If the question asks which Azure resource provides access to Blob, File, Queue, or Table data:
-
-→ **Storage Account**
-
-If it asks what type of storage should be used:
-
-→ Identify the specific service: Blob, Files, Queue, or Table.
+Specific data requirement
+→ Choose the appropriate storage service
+```
