@@ -63,6 +63,24 @@ flowchart TD
 
 This allows developers to investigate problems inside the application rather than only monitoring the infrastructure hosting it.
 
+## Decision Factors
+
+Choose Application Insights when the requirement focuses on the behavior and performance of an application.
+
+Examples include:
+
+- Failed application requests
+- Response times
+- Dependencies
+- Application performance
+- Application usage
+
+Think:
+
+> **Inside the application → Application Insights**
+
+If the requirement is broader resource monitoring, use Azure Monitor.
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -105,21 +123,16 @@ Azure Service Health provides information about Azure service incidents and plan
 | Application performance | Resource and application monitoring |
 | Developer-focused | Broader operational monitoring |
 
-## Exam Tip
+## Exam Reasoning
 
 First identify **what is being monitored**.
 
-If the question focuses on:
+```text
+VM CPU / resource metric
+→ Azure Monitor
 
-- the application itself
-- failed requests
-- response times
-- application dependencies
+Web request failure / dependency / response time
+→ Application Insights
+```
 
-think:
-
-> **Application Insights**
-
-If the question focuses more broadly on Azure resource metrics, logs, or alerts, think:
-
-> **Azure Monitor**
+Application Insights is part of Azure Monitor, but its focus is **application-level telemetry**.

@@ -58,6 +58,28 @@ Azure Advisor is commonly used for:
 - Improving reliability
 - Reviewing Azure best-practice recommendations
 
+## Decision Factors
+
+Choose Azure Advisor when the requirement is to identify how existing Azure resources could be improved.
+
+Advisor answers:
+
+> **What should I change?**
+
+Azure Monitor answers:
+
+> **What is happening?**
+
+Example:
+
+```text
+CPU is currently above a threshold
+→ Azure Monitor
+
+A VM is consistently underutilized and you want a cost-saving recommendation
+→ Azure Advisor
+```
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -104,16 +126,18 @@ Azure Advisor analyzes existing Azure resources and recommends improvements.
 | Identifies optimization opportunities | Provides metrics, logs, and alerts |
 | Helps improve existing resources | Monitors resource behavior |
 
-## Exam Tip
+## Exam Reasoning
 
-Ask yourself:
+Ask:
 
-> "Is Microsoft asking me to observe a resource or improve it?"
+> **Am I observing a condition or looking for an improvement recommendation?**
 
-**Observe it**  
+```text
+OBSERVE
 → Azure Monitor
 
-**Improve or optimize it**  
+IMPROVE / OPTIMIZE
 → Azure Advisor
+```
 
-The word **recommendation** is the strongest clue for Azure Advisor.
+Do not confuse Advisor with the Pricing Calculator. Advisor analyzes **existing resources**; the Pricing Calculator estimates costs for a planned Azure solution.

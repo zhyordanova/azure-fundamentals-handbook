@@ -43,15 +43,48 @@ Notifications about security-related events that may affect Azure services or re
 
 Notifications about billing-related events relevant to your Azure environment.
 
-## Azure Status, Service Health, and Resource Health
+## Azure Status vs Service Health vs Resource Health
 
-These concepts are related but have different scopes.
+The key difference is **scope**.
 
-| Service | Purpose |
-|---------|---------|
-| Azure Status | Global view of Azure service availability |
-| Service Health | Personalized view of Azure services and regions relevant to you |
-| Resource Health | Health of an individual Azure resource |
+```mermaid
+flowchart TD
+
+    A["What health information do you need?"]
+
+    A --> B["Global Azure service status"]
+    A --> C["Azure incidents / maintenance affecting your environment"]
+    A --> D["Health of one specific Azure resource"]
+
+    B --> STATUS["Azure Status"]
+    C --> SERVICE["Service Health"]
+    D --> RESOURCE["Resource Health"]
+```
+
+### Azure Status
+
+Provides a broad global view of Azure service availability.
+
+### Service Health
+
+Provides a personalized view of Azure service incidents, planned maintenance, and advisories relevant to the services and regions you use.
+
+### Resource Health
+
+Provides information about the current health and availability of an individual Azure resource.
+
+### Remember
+
+```text
+GLOBAL AZURE
+→ Azure Status
+
+AZURE PLATFORM + MY ENVIRONMENT
+→ Service Health
+
+ONE SPECIFIC RESOURCE
+→ Resource Health
+```
 
 ## Typical Use Cases
 
@@ -61,6 +94,21 @@ Azure Service Health is commonly used for:
 - Reviewing planned maintenance
 - Receiving service health notifications
 - Determining whether Azure platform issues affect your environment
+
+## Decision Factors
+
+Choose the health tool based on **scope**, not simply on the word *health*.
+
+```text
+Broad Azure availability
+→ Azure Status
+
+Incidents / maintenance relevant to services and regions you use
+→ Service Health
+
+Availability of one deployed resource
+→ Resource Health
+```
 
 ## Microsoft Trigger Words
 
@@ -109,20 +157,24 @@ Resource Health focuses on the health of an individual Azure resource.
 | Service advisories | Alerts based on monitored conditions |
 | Platform-focused | Workload-focused |
 
-## Exam Tip
+## Exam Reasoning
 
 Ask:
 
-> "Whose problem am I investigating?"
+> **Whose health problem am I investigating?**
 
-If the question is about **your resource metrics or logs**:
+```text
+My workload metrics or logs
+→ Azure Monitor
 
-→ **Azure Monitor**
+Azure platform incident or planned maintenance affecting me
+→ Service Health
 
-If the question is about **an Azure outage or planned maintenance**:
+One specific Azure resource
+→ Resource Health
 
-→ **Azure Service Health**
+Broad Azure service availability
+→ Azure Status
+```
 
-If the question asks about **one specific resource's health**:
-
-→ **Resource Health**
+The strongest distinction is **scope**.

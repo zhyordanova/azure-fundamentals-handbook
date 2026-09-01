@@ -92,6 +92,26 @@ Azure Monitor is commonly used for:
 - Monitoring resource performance
 - Troubleshooting Azure environments
 
+## Decision Factors
+
+Choose Azure Monitor when the requirement is to observe and respond to operational telemetry.
+
+Typical requirements include:
+
+- Collect metrics
+- Collect logs
+- Monitor resource performance
+- Create alerts
+- Detect threshold conditions
+
+Think:
+
+> **Observe workload behavior → Azure Monitor**
+
+Do not choose Azure Monitor simply because a scenario contains the word **health**.
+
+First determine what is being observed.
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -137,16 +157,32 @@ Azure Monitor focuses on telemetry from resources and applications.
 | Monitors resources | Analyzes configurations |
 | Detects operational conditions | Suggests improvements |
 
-## Exam Tip
+## Exam Reasoning
 
-Ask yourself:
+Ask:
 
-> "Do I need to observe what my resources are doing?"
+> **What am I trying to understand?**
 
-If the requirement involves metrics, logs, alerts, or resource performance, think:
+```text
+My resource or workload behavior
+→ Azure Monitor
 
-> **Azure Monitor**
+How should I optimize my resources?
+→ Azure Advisor
 
-If the requirement asks what should be improved, think **Azure Advisor**.
+Is Azure experiencing a platform issue affecting me?
+→ Azure Service Health
 
-If it asks whether Azure itself is experiencing an incident or planned maintenance, think **Azure Service Health**.
+Is one specific resource healthy and available?
+→ Resource Health
+```
+
+For example:
+
+```text
+VM CPU exceeds 80%
+→ Azure Monitor
+
+Azure has planned maintenance affecting my region
+→ Azure Service Health
+```

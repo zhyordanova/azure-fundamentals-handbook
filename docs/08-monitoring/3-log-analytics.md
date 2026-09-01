@@ -93,6 +93,18 @@ Log Analytics is commonly used for:
 - Analyzing historical operational data
 - Identifying patterns across multiple resources
 
+## Decision Factors
+
+Choose Log Analytics when monitoring data has already been collected and the requirement is to search, query, or analyze log data.
+
+Think:
+
+> **Collect and monitor → Azure Monitor**
+
+> **Query and analyze collected logs → Log Analytics**
+
+KQL can be a useful clue, but the stronger concept is the need to **analyze collected log data**.
+
 ## Microsoft Trigger Words
 
 If a question contains words such as:
@@ -139,29 +151,18 @@ Log Analytics is used to investigate and analyze collected log data.
 | Uses KQL | Collects metrics, logs, and telemetry |
 | Investigation and analysis | Monitoring, alerts, and observability |
 
-## Exam Tip
+## Exam Reasoning
 
-Ask yourself:
+Ask:
 
-> "Do I need to collect monitoring data or analyze the logs?"
+> **Do I need to observe the environment or investigate collected logs?**
 
-If the requirement is about:
+```text
+Metrics / alerts / general monitoring
+→ Azure Monitor
 
-- metrics
-- alerts
-- general resource monitoring
+Search / query / analyze collected logs
+→ Log Analytics
+```
 
-→ **Azure Monitor**
-
-If the requirement is about:
-
-- querying logs
-- searching collected data
-- KQL
-- Log Analytics workspace
-
-→ **Log Analytics**
-
-The strongest exam clue is:
-
-> **query logs using KQL**
+Do not choose Log Analytics only because the scenario mentions monitoring. Its specific role is **log investigation and analysis**.
