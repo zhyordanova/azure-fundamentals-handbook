@@ -2,107 +2,52 @@
 
 ## Definition
 
-Single Sign-On (SSO) is an authentication feature that allows users to sign in once and access multiple applications without signing in again.
+Single Sign-On (SSO) allows a user to authenticate once and access multiple authorized applications without repeatedly signing in.
 
-After successful authentication, users can access authorized applications without repeatedly entering their credentials.
+## What Problem Does It Solve?
 
-## Why Single Sign-On Exists
+Organizations use many applications. Repeated sign-ins reduce usability and increase password fatigue.
 
-Organizations often use many different applications.
+SSO improves the authentication experience by reducing repeated authentication prompts.
 
-Without SSO, users may need to authenticate separately to each application.
+## Decision Factors
 
-Single Sign-On reduces repeated authentication prompts and allows users to access multiple assigned applications after signing in.
+Ask what the scenario is trying to simplify.
 
-Single Sign-On improves:
+```text
+One sign-in for multiple applications
+→ SSO
 
-- User experience
-- Productivity
-- Security
-- Password management
+Additional authentication factors
+→ MFA
 
-## Characteristics
-
-Single Sign-On provides:
-
-- One authentication process
-- Access to multiple applications
-- Reduced password fatigue
-- Improved user experience
-
-SSO simplifies authentication but does not replace authorization or Multifactor Authentication.
-
-## Typical Use Cases
-
-Single Sign-On is commonly used for:
-
-- Microsoft 365
-- Azure Portal
-- Salesforce
-- ServiceNow
-- Enterprise applications
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- sign in once
-- one login
-- multiple applications
-- seamless authentication
-- single authentication
-
-Think:
-
-> Single Sign-On (SSO)
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- Which Azure feature allows users to sign in once?
-- Which Azure feature reduces password fatigue?
-- Which Azure feature provides access to multiple applications after one authentication?
-
-## Common Mistakes
-
-❌ Thinking SSO synchronizes identities between on-premises and Azure.
-
-Hybrid Identity synchronizes identities.
-
-SSO provides seamless authentication across applications.
-
-❌ Thinking SSO replaces MFA.
-
-SSO simplifies authentication.
-
-MFA strengthens authentication.
-
-The two technologies are often used together.
+One identity across on-premises and cloud
+→ Hybrid Identity
+```
 
 ## Compare With
 
-| Single Sign-On | Hybrid Identity |
-|----------------|-----------------|
-| One authentication for multiple applications | One identity across on-premises and cloud |
-| Improves user experience | Synchronizes identities |
-| Authentication convenience | Identity integration |
+| SSO | MFA | Hybrid Identity |
+|---|---|---|
+| Reduces repeated sign-ins | Strengthens authentication | Integrates identity environments |
+| Authentication convenience | Additional verification | On-premises + cloud identity |
+| One sign-in, many apps | Multiple factors | Common identity across environments |
 
-## Exam Tip
+## Common Mistakes
 
-Ask:
+SSO does not replace MFA. They can be used together.
 
-> "Is the requirement about one sign-in or one identity?"
+SSO also does not mean identity synchronization between on-premises Active Directory and Microsoft Entra ID; that is a hybrid identity scenario.
 
-One sign-in for multiple applications:
+## Exam Reasoning
 
-→ **Single Sign-On (SSO)**
+```text
+ONE SIGN-IN FOR MANY APPS?
+→ SSO
 
-One identity across on-premises and cloud environments:
+STRONGER SIGN-IN?
+→ MFA
 
-→ **Hybrid Identity**
-
-Remember:
-
-> **SSO = authentication experience**  
-> **Hybrid Identity = identity integration**
+SAME IDENTITY ON-PREMISES + CLOUD?
+→ Hybrid Identity
+```

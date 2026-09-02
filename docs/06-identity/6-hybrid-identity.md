@@ -4,98 +4,47 @@
 
 Hybrid Identity integrates on-premises identity systems, such as Active Directory Domain Services, with Microsoft Entra ID.
 
-It enables organizations to provide a common identity experience across on-premises and cloud environments.
+It provides a common identity experience across on-premises and cloud environments.
 
-Identity provisioning and synchronization technologies help keep identity information consistent between the environments.
+## What Problem Does It Solve?
 
-## Why Hybrid Identity Exists
+Organizations moving to Azure or Microsoft 365 may already maintain identities on-premises.
 
-Many organizations already use Active Directory on-premises.
+Hybrid identity allows those organizations to integrate their existing identity environment with Microsoft Entra ID instead of maintaining unrelated cloud identities.
 
-When moving workloads to Microsoft Azure and Microsoft 365, users should not be required to maintain separate identities.
+## Decision Factors
 
-Hybrid Identity provides a single identity across both environments.
+Ask whether the requirement is about **one identity across environments** or **one sign-in across applications**.
 
-## Characteristics
+```text
+On-premises Active Directory + Microsoft Entra ID
++ common/synchronized identity
+→ Hybrid Identity
 
-Hybrid Identity provides:
-
-- One identity across on-premises and cloud
-- Identity synchronization
-- Consistent user experience
-- Integration with Microsoft Entra ID
-- Support for hybrid environments
-
-## Typical Use Cases
-
-Hybrid Identity is commonly used for:
-
-- Organizations migrating to Azure
-- Microsoft 365 deployments
-- Hybrid cloud environments
-- Active Directory integration
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- on-premises Active Directory
-- Microsoft Entra ID
-- same identity
-- synchronize identities
-- hybrid environment
-
-Think:
-
-> Hybrid Identity
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- Which Azure identity feature allows users to use the same identity in both on-premises and Azure?
-- Which Azure feature synchronizes identities?
-- Which Azure identity solution supports hybrid environments?
-
-## Common Mistakes
-
-❌ Thinking Hybrid Identity is the same as Single Sign-On.
-
-Hybrid Identity integrates identity across on-premises and cloud environments.
-
-Synchronization and provisioning technologies can be used to implement that integration.
-
-Single Sign-On provides seamless authentication after a user signs in.
-
-❌ Thinking Hybrid Identity replaces Microsoft Entra ID.
-
-Hybrid Identity extends Microsoft Entra ID by integrating it with on-premises Active Directory.
+One sign-in for multiple applications
+→ SSO
+```
 
 ## Compare With
 
 | Hybrid Identity | Single Sign-On |
-|-----------------|----------------|
-| One identity across environments | One sign-in for multiple applications |
-| Identity synchronization | Authentication convenience |
-| On-premises + Cloud | Multiple cloud applications |
+|---|---|
+| Integrates on-premises and cloud identity | Simplifies authentication across applications |
+| Common identity across environments | One sign-in for many apps |
+| Identity integration/synchronization | Authentication experience |
 
-## Exam Tip
+## Common Mistakes
 
-Ask:
+Hybrid Identity and SSO solve different problems.
 
-> "Is the scenario connecting applications or connecting identity environments?"
+An organization can use hybrid identity and still use SSO as part of the user authentication experience.
 
-One sign-in for multiple applications:
+## Exam Reasoning
 
-→ **Single Sign-On (SSO)**
+```text
+SAME IDENTITY ON-PREMISES + CLOUD?
+→ Hybrid Identity
 
-Common identity across on-premises Active Directory and Microsoft Entra ID:
-
-→ **Hybrid Identity**
-
-Strong Hybrid Identity clues include:
-
-- on-premises Active Directory
-- Microsoft Entra ID
-- identity synchronization
-- common identity across environments
+ONE SIGN-IN FOR MANY APPS?
+→ SSO
+```

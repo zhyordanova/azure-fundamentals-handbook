@@ -2,119 +2,54 @@
 
 ## Definition
 
-Multifactor Authentication (MFA) is a security feature that requires users to provide two or more forms of verification before accessing an application or service.
+Multifactor Authentication (MFA) requires two or more authentication factors to verify an identity.
 
-Instead of relying only on a password, MFA combines multiple authentication factors to significantly improve account security.
+Authentication factors include:
 
-## Why MFA Exists
+- something you know, such as a password or PIN;
+- something you have, such as a phone or security key;
+- something you are, such as a fingerprint or facial recognition.
 
-Passwords alone are vulnerable to:
+## What Problem Does It Solve?
 
-- Phishing attacks
-- Password reuse
-- Brute-force attacks
-- Credential theft
+A password alone can be compromised. MFA strengthens authentication by requiring additional proof of identity.
 
-By requiring an additional authentication factor, MFA greatly reduces the risk of unauthorized access.
+## Decision Factors
 
-## Authentication Factors
+Ask whether the requirement is for **additional authentication** or a **policy that decides when additional authentication is required**.
 
-Authentication factors are generally grouped into three categories:
+```text
+Require multiple authentication factors
+→ MFA
 
-### Something you know
+Require MFA only under certain conditions
+→ Conditional Access
+```
 
-Examples:
+## MFA vs Conditional Access
 
-- Password
-- PIN
+| MFA | Conditional Access |
+|---|---|
+| Provides additional identity verification | Decides when access controls apply |
+| Uses multiple authentication factors | Uses signals such as location, device, or risk |
+| Authentication mechanism | Policy decision engine |
 
-### Something you have
-
-Examples:
-
-- Microsoft Authenticator app
-- Mobile phone
-- Hardware security key
-
-### Something you are
-
-Examples:
-
-- Fingerprint
-- Facial recognition
-- Iris scan
-
-## Typical Use Cases
-
-MFA is commonly used for:
-
-- Microsoft 365
-- Azure Portal
-- VPN access
-- Enterprise applications
-- Remote access
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- second factor
-- verification code
-- authenticator app
-- phone notification
-- additional authentication
-- two-step verification
-
-Think:
-
-> Multifactor Authentication (MFA)
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- Which Azure feature requires a second authentication factor?
-- Which Azure feature improves sign-in security?
-- Which Azure feature uses an authenticator application?
+> Conditional Access can require MFA, but Conditional Access is not MFA.
 
 ## Common Mistakes
 
-❌ Thinking MFA decides when users can sign in.
+MFA does not decide whether a user is in a trusted location or using a compliant device.
 
-MFA provides an additional authentication factor.
+Those conditions can be evaluated by Conditional Access.
 
-Conditional Access decides **when** MFA is required.
+MFA also does not necessarily mean password + code. It requires multiple factors, and modern authentication can include passwordless methods.
 
+## Exam Reasoning
 
-❌ Thinking MFA always requires a password.
+```text
+MORE AUTHENTICATION FACTORS?
+→ MFA
 
-MFA requires two or more authentication factors.
-
-A password can be one factor, but modern authentication can also use passwordless methods.
-
-## Compare With
-
-| MFA | Conditional Access |
-|-----|--------------------|
-| Provides additional authentication | Determines when authentication requirements apply |
-| Strengthens identity verification | Applies access policies |
-| Uses multiple authentication factors | Uses conditions such as location or device |
-
-## Exam Tip
-
-Ask:
-
-> "Does the requirement need stronger authentication, or does it need a rule that decides when stronger authentication is required?"
-
-Need multiple authentication factors:
-
-→ **MFA**
-
-Need MFA only under certain conditions such as location, device, or risk:
-
-→ **Conditional Access**
-
-Remember:
-
-> **MFA = additional identity verification**  
-> **Conditional Access = policy that decides when access controls apply**
+IF location/device/risk condition THEN require MFA?
+→ Conditional Access
+```

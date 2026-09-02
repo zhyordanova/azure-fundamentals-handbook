@@ -2,149 +2,80 @@
 
 ## Definition
 
-Azure Role-Based Access Control (Azure RBAC) is the Azure authorization system used to manage access to Azure resources.
+Azure Role-Based Access Control (Azure RBAC) is Azure's authorization system for managing access to Azure resources.
 
-Azure RBAC grants permissions by assigning roles to security principals at a specific scope.
+A role assignment combines:
 
-Security principals can include:
+1. **Security principal** — who needs access;
+2. **Role definition** — what they can do;
+3. **Scope** — where the permissions apply.
 
-- Users
-- Groups
-- Service principals
-- Managed identities
+## What Problem Does It Solve?
 
-## Why Azure RBAC Exists
+Not every identity should have the same permissions.
 
-Not every user should have the same permissions.
-
-For example:
-
-- Administrators manage Azure resources.
-- Developers deploy applications.
-- Auditors only view resources.
-
-Azure RBAC provides fine-grained access control based on the principle of least privilege.
-
-## Characteristics
-
-Azure RBAC provides:
-
-- Role-based authorization
-- Least privilege access
-- Built-in Azure roles
-- Custom roles
-- Scope-based permissions
-
-RBAC determines **who can do what** on Azure resources.
+Azure RBAC supports least-privilege access by assigning only the permissions required for a job.
 
 ## Built-in Roles
 
-Common Azure RBAC roles include:
-
-## Role Assignment
-
-An Azure role assignment combines three elements:
-
-1. Security principal — Who needs access?
-2. Role definition — What are they allowed to do?
-3. Scope — Where does the access apply?
-
-### Owner
-
-- Full access to resources
-- Can assign roles
-
-### Contributor
-
-- Can create and manage resources
-- Cannot assign roles
-
-### Reader
-
-- Can view resources
-- Cannot make changes
+| Role | Main capability |
+|---|---|
+| **Owner** | Full resource control and can manage access |
+| **Contributor** | Create and manage resources but cannot manage access |
+| **Reader** | View resources without changing them |
+| **User Access Administrator** | Manage user access to Azure resources |
 
 ## Scope
 
-Azure RBAC can be applied at different scopes:
+Azure RBAC can be assigned at:
 
-- Management Group
-- Subscription
-- Resource Group
-- Individual Resource
+- Management Group;
+- Subscription;
+- Resource Group;
+- Resource.
 
-Permissions assigned at higher scopes are inherited by lower scopes.
+Permissions assigned at a higher scope can be inherited by lower scopes.
 
-## Microsoft Trigger Words
+## Decision Factors
 
-If a question contains words such as:
+Ask:
 
-- permissions
-- role
-- access
-- authorization
-- least privilege
-- Reader
-- Contributor
-- Owner
+> **Who should be allowed to perform which action, and where?**
 
-Think:
+```text
+Read only
+→ Reader
 
-> Azure RBAC
+Manage resources but not access
+→ Contributor
 
-## Common Exam Questions
+Full resource control + manage access
+→ Owner
 
-Microsoft frequently asks questions such as:
-
-- Which Azure service controls permissions?
-- Which Azure service follows the principle of least privilege?
-- Which role can only view Azure resources?
-- Which role can create resources but cannot assign permissions?
-
-## Common Mistakes
-
-❌ Thinking Azure RBAC authenticates users.
-
-Authentication is performed by Microsoft Entra ID.
-
-RBAC authorizes actions after authentication.
-
-❌ Thinking Azure Policy manages permissions.
-
-Azure Policy controls what can be deployed.
-
-Azure RBAC controls who can perform actions.
+Manage user access
+→ User Access Administrator
+```
 
 ## Compare With
 
-| Azure RBAC | Azure Policy |
-|------------|--------------|
-| Controls who can perform actions | Controls what can be deployed |
-| Authorization | Governance |
-| Uses roles | Uses policies |
+| Azure RBAC | Azure Policy | Resource Lock |
+|---|---|---|
+| Controls **who can do what** | Controls allowed/configured resource state | Prevents deletion or modification |
+| Authorization | Governance | Protection from administrative changes |
+| Roles + scopes | Policies | CanNotDelete / ReadOnly |
 
-## Exam Tip
+## Common Mistakes
 
-For Azure RBAC, think:
+Azure RBAC does not authenticate users. Authentication is handled by Microsoft Entra ID.
 
-> **Who + What + Where**
+Azure RBAC also does not enforce resource configuration standards; that is the purpose of Azure Policy.
 
-**Who**
+## Exam Reasoning
 
-→ User, group, service principal, or managed identity
+Use:
 
-**What**
+> **WHO + WHAT + WHERE → Azure RBAC**
 
-→ Role such as Reader, Contributor, or Owner
+If the requirement is about permissions on Azure resources, think **RBAC**.
 
-**Where**
-
-→ Management Group, Subscription, Resource Group, or Resource
-
-If the question is about **permissions on Azure resources**:
-
-→ **Azure RBAC**
-
-If the question is about enforcing resource configuration rules:
-
-→ **Azure Policy**
+If the requirement is about whether a resource configuration is allowed, think **Azure Policy**.
