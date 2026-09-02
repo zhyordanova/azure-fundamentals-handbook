@@ -92,26 +92,6 @@ Resources across a Subscription
 | **User Access Administrator** | ✅ | Access-focused | ✅ |
 | **Role Based Access Control Administrator** | ✅ | Access-focused | ✅ |
 
-### Mental Model
-
-```text
-Reader
-→ VIEW
-
-Contributor
-→ RESOURCES
-→ NOT access
-
-Owner
-→ RESOURCES + ACCESS
-
-User Access Administrator
-→ ACCESS
-
-Role Based Access Control Administrator
-→ RBAC ACCESS
-```
-
 The key distinction is:
 
 > **Managing resources and managing access are different permissions.**
