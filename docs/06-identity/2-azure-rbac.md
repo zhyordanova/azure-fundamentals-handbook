@@ -2,70 +2,45 @@
 
 ## Definition
 
-Azure Role-Based Access Control (Azure RBAC) is Azure's authorization system for managing access to Azure resources.
+Azure Role-Based Access Control (Azure RBAC) is Azure's authorization system for controlling access to Azure resources.
 
-RBAC determines:
-
-> **Who can do what, and where?**
-
-A role assignment combines three main elements:
+For AZ-900, think of RBAC as three questions:
 
 ```text
-WHO
+WHO?
 → Security principal
 
-WHAT
+WHAT?
 → Role
 
-WHERE
+WHERE?
 → Scope
 ```
 
-Examples of security principals include:
-
-- users
-- groups
-- service principals
-- managed identities
-
-## What Problem Does It Solve?
-
-Organizations need to control who can access Azure resources and what actions those users or identities can perform.
-
-Azure RBAC allows permissions to be granted according to job responsibilities instead of giving everyone unrestricted access.
-
-Example:
+Together:
 
 ```text
-User needs to view resources
-but must not modify them
-        ↓
-Reader
+WHO + ROLE + SCOPE
+→ ACCESS
 ```
 
-RBAC supports the principle of **least privilege**:
+A security principal can be a user, group, service principal, or managed identity.
 
-> Grant only the permissions required to perform the task.
+---
 
-## Role Assignments
+## Role Assignments and Scope
 
-Access is granted by creating a **role assignment**.
-
-A role assignment connects:
+Access is granted through a **role assignment** that combines a security principal, a role, and a scope.
 
 ```mermaid
 flowchart LR
-
     A["Security Principal<br/>WHO"] --> D["Role Assignment"]
-
     B["Role<br/>WHAT"] --> D
-
     C["Scope<br/>WHERE"] --> D
-
     D --> E["Access to Azure Resources"]
 ```
 
-For example:
+Example:
 
 ```text
 User: Alex
@@ -75,12 +50,10 @@ Role: Reader
 Scope: Resource Group A
         ↓
 Alex can read resources
-inside Resource Group A
+in Resource Group A
 ```
 
-## RBAC Scope
-
-Azure RBAC roles can be assigned at different scopes:
+Azure RBAC scopes follow the Azure resource hierarchy:
 
 ```text
 Management Group
@@ -92,386 +65,219 @@ Resource Group
 Resource
 ```
 
-Permissions assigned at a higher scope are inherited by lower scopes.
-
-Example:
-
-```text
-Reader at Subscription
-        ↓
-Reader access to resource groups
-        ↓
-Reader access to resources
-```
-
-A role assigned directly to one resource has a much narrower scope.
-
-### Decision Principle
+Permissions assigned at a higher scope apply to lower scopes. A role assigned on an unrelated scope does not grant access elsewhere.
 
 Use the **smallest scope that satisfies the requirement**.
 
 ```text
-Need access to one resource
+One resource
 → Resource scope
 
-Need access to all resources in one Resource Group
+All resources in one Resource Group
 → Resource Group scope
 
-Need access across a Subscription
+Resources across a Subscription
 → Subscription scope
 ```
 
+---
+
 ## Core Azure Roles
 
-For AZ-900, understand these fundamental roles.
-
-| Role | Main Purpose |
-|---|---|
-| **Owner** | Full resource management + manage access |
-| **Contributor** | Manage resources but not role assignments |
-| **Reader** | View resources |
-| **User Access Administrator** | Manage user access |
-| **Role Based Access Control Administrator** | Manage Azure RBAC access |
-
-## Owner
-
-The Owner role provides full control over Azure resources and can also assign Azure RBAC roles.
-
-```text
-Owner
-→ Manage resources
-→ Create / modify / delete resources
-→ Manage access
-→ Assign Azure RBAC roles
-```
-
-Think:
-
-> **Resources + Access → Owner**
-
-## Contributor
-
-Contributor can create and manage Azure resources.
-
-However, Contributor **cannot assign Azure RBAC roles**.
-
-```text
-Contributor
-→ Manage resources
-→ Create / modify / delete resources
-→ CANNOT assign Azure RBAC roles
-```
-
-Think:
-
-> **Resources, but not Access → Contributor**
-
-This distinction is especially important for exam scenarios.
-
-## Reader
-
-Reader can view Azure resources but cannot modify them.
-
-```text
-Reader
-→ View resources
-→ No modification
-→ No role assignment management
-```
-
-Think:
-
-> **View only → Reader**
-
-## User Access Administrator
-
-User Access Administrator focuses on managing access to Azure resources.
-
-```text
-User Access Administrator
-→ Manage user access
-→ Manage Azure role assignments
-```
-
-Think:
-
-> **Manage Access → User Access Administrator**
-
-## Role Based Access Control Administrator
-
-Role Based Access Control Administrator can manage access to Azure resources through Azure RBAC.
-
-```text
-Role Based Access Control Administrator
-→ Manage Azure RBAC access
-→ Assign Azure roles
-```
-
-Think:
-
-> **Manage RBAC → Role Based Access Control Administrator**
-
-It is focused on Azure RBAC access management rather than general Azure resource management.
-
-## Who Can Manage Role Assignments?
-
-Managing Azure resources and managing **access to those resources** are different permissions.
-
-| Role | Manage Resources | View Resources | Manage Azure RBAC Role Assignments |
+| Role | View Resources | Manage Resources | Manage RBAC Role Assignments |
 |---|:---:|:---:|:---:|
-| **Owner** | ✅ | ✅ | ✅ |
+| **Reader** | ✅ | ❌ | ❌ |
 | **Contributor** | ✅ | ✅ | ❌ |
-| **Reader** | ❌ | ✅ | ❌ |
-| **User Access Administrator** | Access-focused | ✅ | ✅ |
-| **Role Based Access Control Administrator** | Access-focused | ✅ | ✅ |
+| **Owner** | ✅ | ✅ | ✅ |
+| **User Access Administrator** | ✅ | Access-focused | ✅ |
+| **Role Based Access Control Administrator** | ✅ | Access-focused | ✅ |
 
-The critical distinction is:
+### Mental Model
 
 ```text
-Owner
-→ Resources + Access
+Reader
+→ VIEW
 
 Contributor
-→ Resources
-→ NOT role assignments
+→ RESOURCES
+→ NOT access
 
-Reader
-→ View only
+Owner
+→ RESOURCES + ACCESS
 
 User Access Administrator
-→ Access
+→ ACCESS
 
 Role Based Access Control Administrator
-→ RBAC access
+→ RBAC ACCESS
 ```
 
-To create or remove a role assignment, the user needs the appropriate role-assignment permission at the relevant scope.
+The key distinction is:
 
-## Decision Factors
+> **Managing resources and managing access are different permissions.**
 
-Start by identifying **what the user needs to do**.
+---
 
-```mermaid
-flowchart TD
+## Managing Existing Role Assignments
 
-    A["What access is required?"]
+For a question about an existing role assignment, **who created it is usually not the deciding factor**.
 
-    A --> B["View resources only"]
-    A --> C["Manage resources"]
-    A --> D["Manage resources + access"]
-    A --> E["Manage user access / role assignments"]
-
-    B --> READER["Reader"]
-
-    C --> CONTRIBUTOR["Contributor"]
-
-    D --> OWNER["Owner"]
-
-    E --> ACCESS["User Access Administrator<br/>or<br/>RBAC Administrator"]
-```
-
-Then determine:
-
-> **Where should the permission apply?**
+Ask instead:
 
 ```text
-Role
-+
-Scope
-→ Effective access
-```
-
-## Authentication vs RBAC
-
-Do not confuse authentication with authorization.
-
-```text
-Authentication
-→ WHO ARE YOU?
-
-Azure RBAC
-→ WHAT CAN YOU DO?
+Does the user have permission
+to manage role assignments?
+        +
+Does that permission apply
+at this scope or a parent scope?
 ```
 
 Example:
 
 ```text
-User signs in successfully
-→ Authentication
-
-User can restart a VM
-→ Authorization / RBAC
+Resource Group A
+└── User A → Reader
 ```
 
-## Entra ID vs Azure RBAC
-
-Microsoft Entra ID manages identities and authentication.
-
-Azure RBAC manages authorization to Azure resources.
+For that assignment:
 
 ```text
-Microsoft Entra ID
-→ Identity
+Owner at Subscription
+→ YES
 
-Azure RBAC
-→ Resource permissions
+RBAC Administrator at Resource Group A
+→ YES
+
+User Access Administrator at Resource Group A
+→ YES
+
+Contributor at Resource Group A
+→ NO
+
+Owner only at Resource Group B
+→ NO
 ```
 
-They work together:
+This is true even if the original assignment was created by a different administrator.
+
+> **Permission + Scope determine who can manage the assignment.**
+
+---
+
+## Decision Factors
+
+Start with the required action, then check the scope.
 
 ```mermaid
-flowchart LR
+flowchart TD
+    A["What access is required?"]
+    A --> B["View resources"]
+    A --> C["Manage resources"]
+    A --> D["Manage resources + access"]
+    A --> E["Manage access / role assignments"]
 
-    A["Microsoft Entra ID"] --> B["Authenticated Identity"]
-
-    B --> C["Azure RBAC"]
-
-    C --> D["Authorized Actions on Azure Resources"]
+    B --> READER["Reader"]
+    C --> CONTRIBUTOR["Contributor"]
+    D --> OWNER["Owner"]
+    E --> ACCESS["User Access Administrator<br/>or<br/>RBAC Administrator"]
 ```
 
-## Common Mistakes
-
-### Contributor vs Owner
-
-This is one of the most important RBAC distinctions.
-
-```text
-Contributor
-→ Manage resources
-→ CANNOT assign roles
-
-Owner
-→ Manage resources
-→ CAN assign roles
-```
-
-Do not assume that someone who can modify a resource can also modify **who has access to the resource**.
-
-### Reader vs Contributor
-
-```text
-Reader
-→ View
-
-Contributor
-→ Manage
-```
-
-Reader cannot modify Azure resources.
-
-### Contributor vs User Access Administrator
-
-```text
-Contributor
-→ Manage RESOURCES
-
-User Access Administrator
-→ Manage ACCESS
-```
-
-These solve different problems.
-
-### Role vs Scope
-
-Knowing the role is not always enough.
-
-Consider:
+Then ask:
 
 ```text
 WHAT can the user do?
 → Role
 
-WHERE can they do it?
+WHERE can the user do it?
 → Scope
+```
+
+---
+
+## RBAC vs Identity and Authentication
+
+Do not confuse identity, authentication, and authorization.
+
+```text
+Microsoft Entra ID
+→ manages identities
+
+Authentication
+→ verifies WHO YOU ARE
+
+Azure RBAC
+→ determines WHAT YOU CAN DO
+  to Azure resources
 ```
 
 Example:
 
 ```text
-Contributor
-at Resource Group A
+User successfully signs in
+→ Authentication
+
+User can restart a VM
+→ Authorization / Azure RBAC
 ```
 
-does not automatically mean:
+---
+
+## Exam Traps and Reasoning
+
+### Contributor vs Owner
 
 ```text
 Contributor
-across the entire Subscription
+→ manage resources
+→ CANNOT manage RBAC role assignments
+
+Owner
+→ manage resources
+→ CAN manage RBAC role assignments
 ```
 
-## Exam Reasoning
+Do not assume that permission to modify a resource also means permission to modify **who has access** to it.
 
-For RBAC questions, use three questions:
+### Role vs Scope
+
+A correct role at the wrong scope may not satisfy the requirement.
+
+For every RBAC scenario, ask:
 
 ```text
 1. WHO needs access?
-
 2. WHAT must they be able to do?
-
 3. WHERE must they be able to do it?
 ```
 
-Mental model:
-
-```text
-WHO
-+
-ROLE
-+
-SCOPE
-=
-ACCESS
-```
-
-For the fundamental roles:
+Quick selection:
 
 ```text
 View only
 → Reader
 
 Manage resources
-but NOT access
 → Contributor
 
-Manage resources
-AND access
+Manage resources + access
 → Owner
 
-Manage access / role assignments
+Manage role assignments
 → User Access Administrator
   or RBAC Administrator
 ```
 
-### High-Value Exam Trap
-
-If the scenario says:
+For an existing role assignment:
 
 ```text
-User has Contributor role
-+
-User can modify Azure resources
+Who created it?
+→ usually irrelevant
+
+Who can manage it?
+→ check role-assignment permission
+
+Where can they manage it?
+→ check scope
 ```
 
-do **not** conclude:
-
-```text
-User can modify role assignments
-```
-
-Contributor does not have that permission.
-
-If the question asks:
-
-> Who can assign or manage Azure RBAC roles?
-
-Think:
-
-```text
-Owner
-User Access Administrator
-Role Based Access Control Administrator
-```
-
-Then check the **scope** at which the role was assigned.
-
-> **Resource management permission does not automatically mean access-management permission.**
+> **RBAC = WHO + ROLE + SCOPE**
