@@ -2,150 +2,103 @@
 
 ## Definition
 
-Azure Resource Tags are name-value pairs that help organize, classify, and manage Azure resources, resource groups, and subscriptions.
+Azure Resource Tags are name-value pairs used to organize, classify, and report on Azure resources.
 
-Tags provide metadata that makes it easier to identify, group, and report on Azure resources.
+Examples:
 
-Tags do not control access or enforce governance rules.
-
-## Why Resource Tags Exist
-
-As Azure environments grow, managing hundreds or thousands of resources becomes increasingly difficult.
-
-Resource Tags help organizations:
-
-- Organize resources
-- Track costs
-- Identify resource ownership
-- Simplify reporting
-- Improve governance
-
-Tags make Azure environments easier to manage without changing the resources themselves.
-
-## Characteristics
-
-Azure Resource Tags provide:
-
-- Resource classification
-- Cost tracking
-- Metadata organization
-- Flexible naming
-- Improved reporting
-
-A tag consists of:
-
-- Name
-- Value
-
-Example:
-
+```text
 Environment = Production
-
 Department = Finance
+Project = Website
+CostCenter = CC-1001
+```
 
-Owner = IT
+Tags provide metadata. They do not provide access control or resource protection.
 
+## What Problem Do They Solve?
 
-## Typical Use Cases
+Tags are useful for:
 
-Resource Tags are commonly used for:
+- organization and classification;
+- identifying ownership or environment;
+- filtering and reporting;
+- cost allocation and grouping.
 
-- Cost allocation
-- Environment classification
-- Department ownership
-- Project identification
-- Automation
+## Tags Are Not Inherited by Default
 
-## Common Tag Examples
+This is an important exam distinction.
 
-| Tag Name | Example Value |
-|----------|---------------|
-| Environment | Production |
-| Department | Finance |
-| Project | Website |
-| Owner | IT Team |
-| CostCenter | CC-1001 |
+```text
+Tag applied to Resource Group
+        ↓
+Do resources automatically receive the tag?
+        ↓
+NO
+```
 
-## Microsoft Trigger Words
+Azure Policy can be used when an organization needs to require or apply tag-related rules.
 
-If a question contains words such as:
+## Decision Factors
 
-- organize resources
-- cost tracking
-- metadata
-- department
-- owner
-- environment
-- classification
+```mermaid
+flowchart TD
+    A["What is the requirement?"]
+
+    A --> B["Label / organize / classify resources"]
+    A --> C["Require or enforce tag rules"]
+
+    B --> TAGS["Resource Tags"]
+    C --> POLICY["Azure Policy"]
+```
 
 Think:
 
-> Resource Tags
+```text
+Metadata / organization
+→ Tags
 
-## Common Exam Questions
+Enforcement
+→ Policy
+```
 
-Microsoft frequently asks questions such as:
+## Tags vs Policy
 
-- Which Azure feature helps organize resources?
-- Which Azure feature supports cost tracking?
-- Which Azure feature uses name-value pairs?
-- Which Azure feature helps identify resource ownership?
+| Decision Factor | Resource Tags | Azure Policy |
+|---|---|---|
+| Purpose | Metadata and organization | Governance enforcement |
+| Example | Department = Finance | Require Department tag |
+| Access control | No | No |
+| Protect from deletion | No | No |
 
-## Common Mistakes
+## Common Exam Traps
 
-❌ Thinking Resource Tags control permissions.
+```text
+Tags
+≠ RBAC
 
-Azure RBAC controls permissions.
+Tags
+≠ Resource Locks
 
-Tags provide organization and metadata only.
+Tags
+≠ automatic inheritance
+```
 
-❌ Thinking Resource Tags enforce governance.
+A tag on a Resource Group does not automatically appear on every resource in that group.
 
-Azure Policy can require specific tags.
+## Exam Reasoning
 
-Resource Tags themselves do not enforce rules.
+```text
+Organize / classify / cost grouping
+→ Resource Tags
 
-❌ Thinking tags are automatically inherited.
+Require a tag or enforce a configuration
+→ Azure Policy
 
-Resources do not automatically inherit tags from their Resource Group or Subscription.
+Control permissions
+→ Azure RBAC
 
-Azure Policy can be used to apply or enforce tag inheritance.
+Prevent delete / modify
+→ Resource Locks
+```
 
----
-
-## Compare With
-
-| Resource Tags | Azure Policy |
-|---------------|--------------|
-| Organize resources | Enforce governance |
-| Name-value metadata | Policy rules |
-| Cost tracking | Compliance |
-| Classification | Enforcement |
-
-## Exam Tip
-
-Ask:
-
-> "Is the question about organizing resources, or about enforcing a rule?"
-
-If the requirement is to:
-
-- organize resources;
-- track costs;
-- identify ownership;
-- classify workloads;
-
-→ **Resource Tags**
-
-If the requirement is to:
-
-- require tags;
-- enforce tag values;
-- apply tags automatically during deployment;
-
-→ **Azure Policy**
-
-Remember:
-
-> **Tags = metadata**  
-> **Policy = enforcement**
+> **Tags = metadata, not enforcement.**

@@ -2,130 +2,130 @@
 
 ## Definition
 
-Azure Resource Locks help protect Azure resources from accidental deletion or modification.
+Azure Resource Locks protect Azure resources from accidental deletion or modification.
 
-A Resource Lock does not control who has permissions to access a resource. Instead, it protects the resource even if a user has sufficient permissions to modify or delete it.
-
-## Why Resource Locks Exist
-
-Accidental deletion or modification of production resources can cause service outages and data loss.
-
-Examples include:
-
-- Accidentally deleting a production Virtual Machine.
-- Deleting a Resource Group that contains critical resources.
-- Modifying production resources by mistake.
-
-Resource Locks provide an additional layer of protection against these accidental operations.
+A lock does **not** determine who is authorized to access a resource. It adds protection even when a user already has sufficient permissions to perform an operation.
 
 ## Lock Types
 
-Azure provides two lock types.
+| Lock | Read | Modify | Delete |
+|---|:---:|:---:|:---:|
+| **CanNotDelete** | ✅ | ✅ | ❌ |
+| **ReadOnly** | ✅ | ❌ | ❌ |
 
 ### CanNotDelete
 
-Resources can be modified.
+Use when authorized users should still be able to modify the resource but must not delete it.
 
-Resources cannot be deleted.
+```text
+Modify
+→ YES
 
-Typical scenario:
-
-- Prevent accidental deletion of production resources.
+Delete
+→ NO
+```
 
 ### ReadOnly
 
-Resources cannot be modified.
+Use when authorized users should be able to read the resource but must not modify or delete it.
 
-Resources cannot be deleted.
+```text
+Read
+→ YES
 
-The resource becomes read-only until the lock is removed.
+Modify
+→ NO
 
-Typical scenario:
+Delete
+→ NO
+```
 
-- Protect critical production resources from any changes.
+## Scope and Inheritance
 
-## Characteristics
+Locks can be applied at scopes such as:
 
-Resource Locks provide:
+```text
+Subscription
+        ↓
+Resource Group
+        ↓
+Resource
+```
 
-- Protection against accidental deletion
-- Protection against accidental modification
-- Support for Subscription, Resource Group, and individual Resource scopes
-- Inheritance to child resources when applied at a parent scope
+A lock applied at a parent scope is inherited by resources below that scope.
 
-## Typical Use Cases
+Example:
 
-Resource Locks are commonly used for:
+```text
+CanNotDelete lock on Resource Group
+        ↓
+Resources in the group
+        ↓
+Cannot be deleted while the lock applies
+```
 
-- Production Virtual Machines
-- Critical databases
-- Resource Groups
-- Storage Accounts
-- Business-critical Azure resources
+## Decision Factors
 
-## Microsoft Trigger Words
+Ask what protection is required:
 
-If a question contains words such as:
+```mermaid
+flowchart TD
+    A["Protect an existing resource"]
 
-- accidental deletion
-- prevent deletion
-- read-only
-- lock
-- protect resources
-- cannot modify
+    A --> B{"What must be prevented?"}
 
-Think:
+    B -->|"Deletion only"| C["CanNotDelete"]
+    B -->|"Modification + deletion"| D["ReadOnly"]
+```
 
-> Resource Locks
+## Resource Locks vs RBAC vs Policy
 
-## Common Exam Questions
+| Requirement | Best Fit |
+|---|---|
+| Control who can perform actions | **Azure RBAC** |
+| Enforce or audit configuration | **Azure Policy** |
+| Prevent deletion or modification | **Resource Locks** |
 
-Microsoft frequently asks questions such as:
+## Common Exam Trap — Administrative Actions
 
-- Which Azure feature prevents accidental deletion?
-- Which Azure feature makes a resource read-only?
-- Which Azure governance feature protects production resources?
+A phrase such as:
 
-## Common Mistakes
+> **protect resources from accidental administrative actions**
 
-❌ Thinking Resource Locks control user permissions.
+does not automatically mean RBAC.
 
-Azure RBAC controls permissions.
+First ask:
 
-Resource Locks protect resources after permissions have already been granted.
+```text
+Control WHO is authorized?
+→ RBAC
 
-❌ Thinking Resource Locks enforce organizational standards.
+Protect the RESOURCE from delete/update operations?
+→ Resource Lock
+```
 
-Azure Policy enforces standards.
+Then distinguish the lock type:
 
-Resource Locks protect existing resources.
+```text
+Prevent deletion but allow modification
+→ CanNotDelete
 
-## Compare With
+Prevent modification and deletion
+→ ReadOnly
+```
 
-| Resource Locks | Azure Policy |
-|----------------|--------------|
-| Protect existing resources | Controls future deployments |
-| Prevent accidental deletion or modification | Enforces governance standards |
-| Uses CanNotDelete and ReadOnly locks | Uses policies |
+## Exam Reasoning
 
-## Exam Tip
+```text
+CanNotDelete
+→ read YES
+→ modify YES
+→ delete NO
 
-Ask:
+ReadOnly
+→ read YES
+→ modify NO
+→ delete NO
+```
 
-> "Is the requirement to prevent changes to an existing resource?"
-
-If the goal is to stop accidental deletion:
-
-→ **CanNotDelete**
-
-If the goal is to prevent any modifications:
-
-→ **ReadOnly**
-
-If the question is about enforcing standards or allowed configurations:
-
-→ **Azure Policy**
-
-If the question is about permissions:
-
-→ **Azure RBAC**
+> **Locks protect resources; RBAC controls permissions; Policy controls configuration.**

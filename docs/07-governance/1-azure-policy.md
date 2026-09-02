@@ -2,119 +2,121 @@
 
 ## Definition
 
-Azure Policy is an Azure governance service that helps organizations enforce standards and assess compliance across Azure resources.
+Azure Policy is an Azure governance service used to enforce standards and assess compliance across Azure resources.
 
-Policies define rules that determine what resources can be created, how they must be configured, and whether they comply with organizational requirements.
+It answers:
 
-## Why Azure Policy Exists
+> **What resource configurations are allowed or required?**
 
-Organizations often need to ensure that Azure resources comply with internal standards and regulatory requirements.
+Azure Policy is different from Azure RBAC. RBAC controls **who can perform actions**; Policy controls **resource configuration and compliance**.
+
+## What Problem Does It Solve?
+
+Organizations may need to ensure that resources follow corporate or regulatory requirements.
 
 Examples include:
 
-- Allowing resources only in approved Azure regions
-- Requiring specific resource tags
-- Restricting virtual machine sizes
-- Requiring encryption
-- Preventing the deployment of non-compliant resources
+- allow resources only in approved Azure regions;
+- require specific tags;
+- restrict virtual machine sizes;
+- require particular configurations;
+- audit resources for compliance;
+- prevent creation of non-compliant resources.
 
-Azure Policy helps automate these governance requirements.
+## Scope and Inheritance
 
-## Characteristics
+Policies can be assigned at Azure scopes such as:
 
-Azure Policy provides:
+```text
+Management Group
+        ↓
+Subscription
+        ↓
+Resource Group
+        ↓
+Resources
+```
 
-- Governance enforcement
-- Compliance evaluation
-- Automatic policy assignment
-- Resource auditing
-- Policy inheritance through Azure scopes
+A policy assigned at a higher scope can apply to resources below that scope.
 
-Policies can be assigned at different scopes:
+The important distinction is:
 
-- Management Group
-- Subscription
-- Resource Group
+```text
+RBAC scope
+→ where PERMISSIONS apply
 
-## Common Use Cases
+Policy scope
+→ where GOVERNANCE RULES apply
+```
 
-Azure Policy is commonly used for:
+## Decision Factors
 
-- Restricting allowed Azure Regions
-- Requiring mandatory resource tags
-- Restricting Virtual Machine SKUs
-- Enforcing encryption
-- Auditing compliance
+Choose Azure Policy when the requirement is to **evaluate, require, restrict, or enforce resource configuration**.
 
-## Microsoft Trigger Words
+```mermaid
+flowchart TD
+    A["What must be controlled?"]
 
-If a question contains words such as:
+    A --> B["Who can perform actions?"]
+    A --> C["What configuration is allowed or required?"]
 
-- enforce
-- compliance
-- standards
-- only allow
-- require
-- deny
-- audit
-- mandatory tags
+    B --> RBAC["Azure RBAC"]
+    C --> POLICY["Azure Policy"]
+```
 
-Think:
+Examples:
 
-> Azure Policy
+```text
+Only approved Azure regions
+→ Azure Policy
 
-## Common Exam Questions
+Restrict VM sizes
+→ Azure Policy
 
-Microsoft frequently asks questions such as:
+Require specific tags
+→ Azure Policy
 
-- Which Azure service enforces company standards?
-- Which Azure service restricts where resources can be deployed?
-- Which Azure service requires tags on all resources?
-- Which Azure service audits resource compliance?
+Audit resource compliance
+→ Azure Policy
+```
 
-## Common Mistakes
+## Azure Policy vs Azure RBAC
 
-❌ Thinking Azure Policy controls user permissions.
+| Decision Factor | Azure Policy | Azure RBAC |
+|---|---|---|
+| Primary question | What configuration is allowed or required? | Who can perform which actions? |
+| Focus | Governance and compliance | Authorization |
+| Controls | Resource configuration | User/identity permissions |
+| Example | Restrict deployment regions | Give user Reader access |
 
-Azure Policy controls **what** can be deployed.
+## Common Exam Trap
 
-Azure RBAC controls **who** can perform actions.
+Do not choose Policy merely because the scenario involves an administrator.
 
-❌ Thinking Azure Policy organizes subscriptions.
+Ask what is being controlled:
 
-Management Groups organize subscriptions.
+```text
+WHO can do it?
+→ RBAC
 
-Azure Policy enforces governance rules.
+WHAT configuration is allowed?
+→ Policy
+```
 
-## Compare With
+## Exam Reasoning
 
-| Azure Policy | Azure RBAC |
-|---------------|------------|
-| Controls what can be deployed | Controls who can perform actions |
-| Governance | Authorization |
-| Uses policies | Uses roles |
+```text
+Require / restrict / audit resource configuration
+→ Azure Policy
 
-## Exam Tip
+Control user permissions
+→ Azure RBAC
 
-Ask:
+Prevent accidental deletion or modification
+→ Resource Locks
 
-> "Is the requirement about who can do something, or what can be deployed?"
+Organize with metadata
+→ Resource Tags
+```
 
-If the requirement is about:
-
-- allowed regions;
-- required tags;
-- approved VM sizes;
-- encryption;
-- compliance;
-
-→ **Azure Policy**
-
-If the requirement is about permissions on Azure resources:
-
-→ **Azure RBAC**
-
-Remember:
-
-> **Azure Policy = what can be deployed**  
-> **Azure RBAC = who can perform actions**
+> **Policy = configuration and compliance, not user permissions.**
