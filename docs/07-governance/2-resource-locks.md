@@ -6,8 +6,6 @@ Azure Resource Locks protect Azure resources from accidental deletion or modific
 
 They control **what can happen to a resource**, even when a user otherwise has permission to manage that resource.
 
----
-
 ## Lock Types
 
 | Lock | Read | Modify | Delete |
@@ -24,8 +22,6 @@ Modification and deletion
 must both be prevented
 → ReadOnly
 ```
-
----
 
 ## Scope and Inheritance
 
@@ -56,8 +52,6 @@ Resources in the group
 inherit the lock
 ```
 
----
-
 ## Resource Locks vs Azure RBAC
 
 Azure RBAC and Resource Locks solve different problems.
@@ -76,8 +70,6 @@ CanNotDelete lock
         ↓
 Deletion blocked
 ```
-
----
 
 ## Exam Trap & Reasoning
 
