@@ -2,125 +2,114 @@
 
 ## Definition
 
-Infrastructure as a Service (IaaS) is a cloud service model in which the cloud provider manages the physical infrastructure while the customer manages the operating system, applications, and data.
+Infrastructure as a Service (IaaS) provides virtualized computing infrastructure in the cloud.
 
-IaaS provides the greatest level of control among the three main cloud service models.
+Microsoft manages the physical infrastructure, while the customer keeps significant control over the virtual machine environment, including the operating system.
 
-## Why IaaS Exists
+---
 
-Some workloads require more control than managed cloud platforms provide.
+## What Problem Does It Solve?
 
-Organizations may need to:
+Use IaaS when you need cloud infrastructure but still require control over the operating system and installed software.
 
-- Configure the operating system
-- Install custom software
-- Run legacy applications
-- Control networking and security settings
-- Migrate existing servers to the cloud
+```text
+Need virtual server
++
+Need OS control / custom configuration
+        ↓
+IaaS
+```
 
-IaaS provides this flexibility without requiring organizations to purchase and maintain physical servers.
+A common Azure example is **Azure Virtual Machines**.
 
-## Customer Responsibilities
+---
 
-With IaaS, the customer manages areas such as:
+## Responsibilities
 
-- Operating system
-- Operating system updates and patches
-- Applications
-- Network controls
-- Application configuration
-- Data
-- Identities and access
+With IaaS:
 
-Microsoft manages the underlying cloud infrastructure, including:
+**Microsoft manages:**
 
-- Physical datacenter
-- Physical network
-- Physical hosts
-- Virtualization layer
+- physical datacenter
+- physical servers
+- physical networking
 
-## Azure Examples
+**Customer manages:**
 
-Common Azure IaaS services include:
+- operating system
+- installed applications and software
+- data
+- identities and access
 
-- Azure Virtual Machines
-- Virtual Machine Scale Sets
-- Azure Virtual Network
-- Azure Managed Disks
+The key AZ-900 distinction is:
 
-The most important AZ-900 example is:
+> **IaaS gives the customer more control, but also more management responsibility than PaaS or SaaS.**
 
-> **Azure Virtual Machines**
+---
 
-## Typical Use Cases
+## Decision Factors
 
-IaaS is commonly used for:
+Choose IaaS when the scenario requires:
 
-- Lift-and-shift migrations
-- Legacy applications
-- Custom server configurations
-- Development and testing environments
-- Workloads requiring operating system control
+- control over the operating system;
+- custom server configuration;
+- installation of software that requires OS-level access;
+- a virtual server similar to an on-premises server.
 
-## Microsoft Trigger Words
+```text
+Need to manage the OS?
+→ IaaS
+```
 
-If a question contains words such as:
+---
 
-- manage the operating system
-- full administrative control
-- install custom software
-- Virtual Machine
-- infrastructure
-- legacy application
+## IaaS vs PaaS
 
-Think:
+| Requirement | IaaS | PaaS |
+|---|:---:|:---:|
+| Customer manages OS | ✅ | ❌ |
+| OS-level customization | ✅ | ❌ |
+| Provider manages physical infrastructure | ✅ | ✅ |
+| Focus mainly on application code | ❌ | ✅ |
 
-> Infrastructure as a Service (IaaS)
+Example:
 
-## Common Exam Questions
+```text
+Web application + custom OS configuration
+→ Azure VM / IaaS
 
-Microsoft frequently asks questions such as:
+Web application + minimize OS administration
+→ App Service / PaaS
+```
 
-- Which cloud service model provides the most control?
-- In which service model does the customer manage the operating system?
-- Which cloud service model includes Azure Virtual Machines?
-- Which service model is suitable for lift-and-shift migration?
+---
 
 ## Common Mistakes
 
-❌ Thinking Microsoft manages the operating system in IaaS.
+Do not choose IaaS simply because the workload runs in Azure.
 
-Microsoft manages the physical infrastructure and virtualization layer.
+Ask whether the customer needs to manage the operating system.
 
-The customer manages the operating system.
+```text
+Azure Virtual Machine
+→ IaaS
 
-❌ Thinking IaaS provides the least customer responsibility.
+Azure App Service
+→ NOT IaaS
+```
 
-Among IaaS, PaaS, and SaaS, IaaS gives the customer the most management responsibility.
+---
 
-## Compare With
+## Exam Reasoning
 
-| IaaS | PaaS |
-|------|------|
-| Customer manages the OS | Microsoft manages the OS |
-| Greater control | Less infrastructure management |
-| Install custom software | Deploy application code |
-| Azure Virtual Machines | Azure App Service |
+For IaaS questions, ask:
 
-## Exam Tip
+```text
+1. Does the customer need a virtual server?
+2. Does the customer need OS control?
 
-Ask:
+YES
+→ IaaS
+```
 
-> "Does the customer need control of the operating system?"
-
-If yes:
-
-→ **IaaS**
-
-If Microsoft manages the operating system and the customer focuses on deploying an application:
-
-→ **PaaS**
-
-For AZ-900:
-
-> **Azure Virtual Machines = IaaS**
+> **IaaS = cloud infrastructure with customer control of the operating system.**

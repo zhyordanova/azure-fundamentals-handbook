@@ -2,119 +2,108 @@
 
 ## Definition
 
-Platform as a Service (PaaS) is a cloud service model in which the cloud provider manages the infrastructure, operating system, and platform while the customer focuses on applications and data.
+Platform as a Service (PaaS) provides a managed platform for building, deploying, and running applications without requiring the customer to manage the underlying operating system or physical infrastructure.
 
-PaaS reduces infrastructure management compared with IaaS.
+---
 
-## Why PaaS Exists
+## What Problem Does It Solve?
 
-Developers often want to build and deploy applications without managing:
+Use PaaS when developers want to focus on the application and data instead of maintaining servers and operating systems.
 
-- Physical servers
-- Virtual Machines
-- Operating systems
-- Operating system updates
-- Platform maintenance
+```text
+Build / deploy application
++
+Do not manage underlying OS
+        ↓
+PaaS
+```
 
-PaaS provides a managed application platform so developers can focus primarily on application development.
+---
 
-## Shared Responsibilities
+## Responsibilities
 
-With PaaS, Microsoft manages:
+With PaaS, Microsoft manages more of the technology stack than with IaaS, including the underlying operating system and platform infrastructure.
 
-- Physical infrastructure
-- Virtualization
-- Operating system
-- Operating system patching
-- Platform services and runtime
+The customer primarily focuses on:
 
-The customer remains responsible for:
+- applications
+- application configuration
+- data
+- identities and access
 
-- Customer data
-- Identities and users
-- Configuration and settings
-- Access management
+The key distinction is:
 
-Some responsibilities, including application and network controls, are shared depending on the service.
+> **The customer builds or deploys the application, but does not manage the underlying operating system.**
+
+---
 
 ## Azure Examples
 
-Common Azure PaaS examples include:
+Common AZ-900 examples include:
 
-- Azure App Service
-- Azure SQL Database
+| Azure Service | Model |
+|---|---|
+| Azure App Service | **PaaS** |
+| Azure SQL Database | **PaaS** |
+| Azure Functions | **PaaS / serverless compute** |
 
-For AZ-900, a particularly important example is:
+---
 
-> **Azure App Service**
+## Decision Factors
 
-## Typical Use Cases
+Choose PaaS when the scenario requires:
 
-PaaS is commonly used for:
+- building or hosting an application;
+- reduced infrastructure administration;
+- no customer management of the underlying OS;
+- a managed application or database platform.
 
-- Web applications
-- APIs
-- Application development
-- Managed databases
-- Rapid application deployment
+```text
+Building the application
++
+Provider manages OS/platform
+→ PaaS
+```
 
-## Microsoft Trigger Words
+---
 
-If a question contains words such as:
+## PaaS vs IaaS vs SaaS
 
-- Microsoft manages the operating system
-- deploy application code
-- managed platform
-- web application
-- no operating system management
-- PaaS
+| Question | Best Fit |
+|---|---|
+| Need OS control? | **IaaS** |
+| Need a managed platform to build/deploy an app? | **PaaS** |
+| Need to use a finished application? | **SaaS** |
 
-Think:
+The PaaS vs SaaS distinction is especially useful:
 
-> Platform as a Service (PaaS)
+```text
+BUILD / DEPLOY application
+→ PaaS
 
-## Common Exam Questions
+USE finished application
+→ SaaS
+```
 
-Microsoft frequently asks questions such as:
-
-- Which service model allows developers to focus on application code?
-- Which service model does not require customers to manage the operating system?
-- Which service model includes Azure App Service?
-- Which service model provides a managed application platform?
+---
 
 ## Common Mistakes
 
-❌ Thinking PaaS means the customer has no responsibilities.
+PaaS does not mean that Microsoft manages the customer's application data or business logic for them.
 
-The customer still manages application code, configuration, and data.
+Also, do not classify a service as IaaS merely because computing infrastructure exists underneath it. The question is **what the customer manages**.
 
-❌ Thinking Azure Virtual Machines are PaaS.
+---
 
-Azure Virtual Machines are IaaS because the customer manages the operating system.
+## Exam Reasoning
 
-## Compare With
+```text
+Need to build/deploy an application?
+        ↓
+Do you need OS control?
 
-| PaaS | IaaS |
-|------|------|
-| Microsoft manages the OS | Customer manages the OS |
-| Focus on applications | Focus on infrastructure and applications |
-| Less administrative control | Greater administrative control |
-| Azure App Service | Azure Virtual Machines |
+YES → IaaS
+NO  → PaaS
+```
 
-## Exam Tip
-
-Ask:
-
-> "Does the customer need to manage the operating system?"
-
-If yes:
-
-→ **IaaS**
-
-If Microsoft manages the operating system and platform while the customer focuses on the application:
-
-→ **PaaS**
-
-For AZ-900:
-
-> **Azure App Service = PaaS**
+> **PaaS = build applications without managing the underlying OS.**
