@@ -1,23 +1,92 @@
-# Cost Decision Tree
+# Cost Management Decision Tree
+
+Start with the **goal**, not a product name or a trigger word.
 
 ```mermaid
 flowchart TD
+    A["What is the cost-management goal?"]
 
-    A["Need Cost Management?"] --> B{"What do you need?"}
+    A --> B["Estimate planned cost"]
+    A --> C["Analyze actual spending"]
+    A --> D["Track spending threshold / notify"]
+    A --> E["Get optimization recommendation"]
+    A --> F["Reduce cost through purchasing model"]
 
-    B -->|Estimate before deployment| C["Azure Pricing Calculator"]
+    B --> PC["Azure Pricing Calculator"]
+    C --> CM["Microsoft Cost Management"]
+    D --> BA["Budget + Alert"]
+    E --> ADV["Azure Advisor"]
+    F --> OPT{"Workload characteristics?"}
 
-    B -->|Analyze actual spending| D["Microsoft Cost Management"]
+    OPT -->|"Interruptible"| SPOT["Spot VMs"]
+    OPT -->|"Predictable + long-term + stable"| RES["Reservation"]
+    OPT -->|"Predictable compute spend + more flexibility"| SAVE["Savings Plan for Compute"]
+    OPT -->|"Uncertain / variable usage"| PAYG["Pay-as-you-go"]
+```
 
-    B -->|Budget / spending alert| D
+## High-Value Distinctions
 
-    B -->|Optimize cost| E{"Workload pattern?"}
+```text
+PLANNED cost
+→ Pricing Calculator
 
-    E -->|Predictable long-term usage| F["Azure Reservations"]
+ACTUAL spending
+→ Microsoft Cost Management
 
-    E -->|Predictable compute spend + flexibility| G["Azure Savings Plan for Compute"]
+THRESHOLD notification
+→ Budget + Alert
 
-    E -->|Can tolerate interruption| H["Azure Spot Virtual Machines"]
+OPTIMIZATION recommendation
+→ Azure Advisor
+```
 
-    B -->|Optimization recommendations| I["Azure Advisor"]
+## Optimization Decision
+
+When the question is about reducing compute cost, identify the workload constraints before choosing the discount model.
+
+```text
+Can tolerate interruption
+→ Spot
+
+Predictable long-term stable usage
+→ Reservation
+
+Predictable compute spend + greater flexibility
+→ Savings Plan
+
+Uncertain / variable usage
+→ Pay-as-you-go
+```
+
+## Common Cost Traps
+
+### Budget Is Not a Hard Limit
+
+```text
+Budget reached
+→ alert / visibility
+→ resources do NOT automatically stop
+```
+
+### Cheapest Is Not Automatically Best
+
+A lower-cost option is incorrect if it violates a workload requirement, such as choosing Spot for a workload that cannot tolerate interruption.
+
+### Cost Management vs Advisor
+
+```text
+What are we spending?
+→ Cost Management
+
+What should we improve?
+→ Advisor
+```
+
+## Final Decision Rule
+
+```text
+1. Identify the goal.
+2. Identify whether the cost is planned or actual.
+3. If optimizing, identify workload constraints.
+4. Choose the option that satisfies all requirements without unnecessary commitment or risk.
 ```

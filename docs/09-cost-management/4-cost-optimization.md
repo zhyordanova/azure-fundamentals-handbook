@@ -2,158 +2,135 @@
 
 ## Definition
 
-Azure provides several pricing and purchasing options that can help organizations reduce cloud costs when workloads have predictable, flexible, or interruptible requirements.
+Cost optimization means selecting an appropriate purchasing and resource strategy so Azure spending matches workload requirements.
 
-Important cost optimization options for Azure Fundamentals include:
+The best option depends on factors such as:
 
-- Azure Reservations
-- Azure Savings Plans
-- Azure Spot Virtual Machines
+- workload predictability;
+- required flexibility;
+- ability to tolerate interruption;
+- length and stability of expected usage.
 
-Each option is designed for a different workload pattern.
+---
 
-## Azure Reservations
+## Cost Optimization Options
 
-Azure Reservations provide discounted pricing in exchange for a one-year or three-year commitment for eligible Azure resources.
+### Azure Reservations
 
-Reservations are best suited for stable and predictable workloads where the expected resource usage is well understood.
-
-### Typical Scenario
-
-A company expects a production workload to use the same eligible resource configuration continuously for a long period.
+Reservations can reduce cost for eligible resources when usage is **stable and predictable** and the organization can make a longer-term commitment.
 
 Think:
 
-> **Azure Reservations**
+> **Predictable long-term usage + less need for flexibility → Reservation**
 
-### Typical Scenario
+### Azure Savings Plan for Compute
 
-A company knows that a production workload will run continuously for a long period.
+Azure savings plans for compute provide discounted eligible compute usage in exchange for a commitment to a consistent amount of compute spend over time.
 
-Instead of relying entirely on pay-as-you-go pricing, the company can use a reservation to reduce the cost of eligible resources.
-
-### Microsoft Trigger Words
-
-- predictable workload
-- long-term usage
-- commitment
-- reservation
-- stable workload
+Compared with a reservation, the key exam-level idea is **greater flexibility across eligible compute usage**.
 
 Think:
 
-> Azure Reservations
+> **Predictable compute spend + more flexibility → Savings Plan**
 
-## Azure Savings Plan for Compute
+### Azure Spot Virtual Machines
 
-Azure savings plan for compute provides discounted pricing in exchange for committing to a fixed hourly spend on eligible compute services for one or three years.
-
-Unlike a reservation that is more closely associated with specific eligible resource usage, a savings plan can apply automatically across participating compute services and regions within its scope.
-
-Savings plans are useful for dynamic or evolving compute workloads where usage may move between eligible services, instance families, or regions.
-
-### Typical Scenario
-
-An organization has consistent compute usage/spend but expects its compute usage to change between eligible services or regions.
+Spot VMs use available Azure compute capacity at a discount, but the workload can be interrupted or evicted when Azure needs the capacity.
 
 Think:
 
-> Azure savings plan for compute
+> **Interruptible workload → Spot VM**
 
-## Azure Spot Virtual Machines
+Examples can include batch processing, testing, or other workloads that can tolerate interruption.
 
-Azure Spot Virtual Machines provide access to unused Azure compute capacity at discounted, variable pricing.
+### Pay-As-You-Go
 
-Azure can evict Spot VMs when capacity is needed elsewhere or when configured pricing conditions are no longer met.
+Pay-as-you-go provides flexibility without a long-term usage commitment.
 
-Spot VMs:
+It can be appropriate when usage is uncertain or highly variable and interruption is not acceptable.
 
-- Can be evicted
-- Have no SLA
-- Use variable pricing
-- Are suitable for interruptible workloads
+---
 
-### Typical Use Cases
+## Decision Factors
 
-- Batch processing
-- Development and testing
-- Large parallel workloads
-- Fault-tolerant workloads
+```mermaid
+flowchart TD
+    A["Need to reduce compute cost"]
+    A --> B{"Can the workload tolerate interruption?"}
+    B -->|Yes| SPOT["Spot VMs"]
+    B -->|No| C{"Is usage predictable and long-term?"}
+    C -->|No| PAYG["Pay-as-you-go / optimize usage"]
+    C -->|Yes| D{"Need greater flexibility across eligible compute usage?"}
+    D -->|Yes| SAVINGS["Savings Plan for Compute"]
+    D -->|No| RES["Reservation"]
+```
 
-They are generally not suitable for workloads that must run continuously without interruption.
+Do not automatically choose the option with the largest possible discount. Choose the option that satisfies the workload requirements.
 
-## Compare With
+---
 
-| Option | Best For | Main Trade-off |
-|--------|----------|----------------|
-| Reservations | Stable, predictable long-term usage | Less flexibility |
-| Savings Plan | Consistent compute spend with changing compute usage | Hourly spending commitment |
-| Spot VMs | Interruptible and fault-tolerant workloads | Can be evicted; no SLA |
-| Pay-as-you-go | Uncertain or flexible usage | No commitment-based discount |
+## Compare the Options
 
-## Microsoft Trigger Words
+| Option | Best Fit | Key Trade-off |
+|---|---|---|
+| **Pay-as-you-go** | Uncertain or variable usage | Highest flexibility, no long-term commitment |
+| **Reservation** | Stable, predictable long-term usage | Commitment for lower cost |
+| **Savings Plan for Compute** | Predictable compute spend needing more flexibility | Spend commitment |
+| **Spot VMs** | Interruptible workloads | Can be evicted/interrupted |
 
-### Reservations
+---
 
-- predictable usage
-- long-term
-- commitment
-- reservation
+## Azure Advisor and Cost Optimization
 
-### Savings Plan
+Purchasing options are not the only way to reduce cost.
 
-- consistent hourly spend
-- compute
-- flexible compute usage
+Azure Advisor can provide optimization recommendations, such as identifying underutilized resources that could be resized or shut down.
 
-### Spot VMs
+```text
+Analyze actual spending
+→ Microsoft Cost Management
 
-- unused capacity
-- lowest cost
-- interruptible
-- can be evicted
+Recommend how to improve resource cost efficiency
+→ Azure Advisor
+```
 
-## Common Exam Questions
-
-Microsoft may ask questions such as:
-
-- Which pricing option is appropriate for predictable long-term workloads?
-- Which option provides savings for a consistent amount of compute usage?
-- Which VM pricing option can be interrupted by Azure?
-- Which option is suitable for fault-tolerant workloads that can tolerate eviction?
+---
 
 ## Common Mistakes
 
-❌ Thinking Spot VMs are appropriate for every workload.
+### Choosing Spot Only Because It Is Cheaper
 
-Spot VMs can be evicted and should be used only when the workload can tolerate interruptions.
+If the workload cannot tolerate interruption, Spot VMs are not the best fit.
 
-❌ Thinking Reservations and savings plans are identical.
+### Choosing a Commitment for Unpredictable Usage
 
-Both can reduce costs through commitment, but they provide different levels of flexibility.
+Reservations and savings plans are most useful when the relevant usage or spend is sufficiently predictable.
 
-## Exam Tip
+### Confusing Analysis With Recommendations
 
-Identify the workload pattern.
+Cost Management analyzes spending; Azure Advisor recommends improvements.
 
-**Stable and predictable resource usage**
+---
 
-→ **Azure Reservations**
+## Exam Reasoning
 
-**Consistent compute spend, but usage may change across eligible compute services or regions**
+Use this order:
 
-→ **Azure Savings Plan for Compute**
+```text
+1. Can the workload be interrupted?
+   → Yes: consider Spot
 
-**Workload can tolerate interruption or eviction**
+2. Is usage predictable and long-term?
+   → Yes: consider commitment-based savings
 
-→ **Azure Spot Virtual Machines**
+3. Is greater eligible compute flexibility important?
+   → Savings Plan
 
-**Usage is uncertain and you do not want a commitment**
+4. Is the workload stable and suited to a reservation?
+   → Reservation
 
-→ **Pay-as-you-go**
+5. Is usage uncertain?
+   → Pay-as-you-go may be the better fit
+```
 
-Remember:
-
-> **Reservation = stable**  
-> **Savings Plan = flexible commitment**  
-> **Spot = interruptible**
+> **Workload requirements first; discount second.**

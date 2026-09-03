@@ -2,147 +2,143 @@
 
 ## Definition
 
-The cost of using Microsoft Azure depends on several factors, including the resources deployed, how much they are used, where they are deployed, and the pricing options selected.
+Azure costs vary according to **what you deploy, how much you use, where it runs, and how it is purchased**.
 
-Azure generally follows a consumption-based model, which means organizations pay based on the resources and services they consume.
+Understanding these factors helps explain why two technically similar Azure solutions can have different costs.
 
-## Why Azure Costs Vary
+---
 
-Two organizations using Azure may have very different costs even when they use similar services.
+## Main Cost Factors
 
-Azure pricing can vary based on:
+### Resource Type and Size
 
-- Resource type
-- Resource size
-- Resource consumption
-- Azure Region
-- Data transfer
-- Pricing and purchasing options
+Different Azure services use different pricing meters, and larger or higher-performance configurations generally cost more.
 
-Understanding these factors helps organizations estimate and optimize their Azure spending.
+```text
+Different service / SKU / size
+→ different price
+```
 
-## Resource Type
+### Consumption
 
-Different Azure services have different pricing models.
+Azure commonly uses a consumption-based model.
 
-For example:
+```text
+More usage
+→ higher cost
 
-- Virtual Machines are priced based on factors such as VM size and usage.
-- Storage is priced based on capacity, redundancy, access tier, and operations.
-- Serverless services may be priced based on executions or resource consumption.
+Less usage
+→ lower cost
+```
 
-The type of Azure resource therefore directly affects cost.
+The exact meter depends on the service, such as compute time, storage consumed, operations, or data transfer.
 
-## Resource Size
+### Azure Region
 
-Larger or more powerful resources generally cost more.
+Prices can differ between Azure regions because operating costs vary by location.
 
-For example, a Virtual Machine with:
+```text
+Same resource
++
+different Azure region
+→ price may differ
+```
 
-- More vCPUs
-- More memory
-- Higher performance
+Region selection can therefore affect both technical requirements and cost.
 
-typically costs more than a smaller VM.
+### Data Transfer
 
-## Resource Consumption
+Network traffic can affect Azure costs.
 
-The amount of a service that is consumed affects the total cost.
+For AZ-900, remember the general pattern:
 
-Examples include:
+```text
+Inbound data transfer to Azure
+→ often free
 
-- How long a Virtual Machine runs
-- How much storage is used
-- Number of operations or requests
-- Amount of data processed
+Outbound data transfer from Azure
+→ may incur charges
+```
 
-More consumption generally results in higher cost.
+Actual charges depend on the service, destination, and billing zone.
 
-## Azure Region
+### Pricing and Purchasing Options
 
-The price of an Azure service can vary between Azure Regions.
-
-The same resource may have different prices depending on where it is deployed.
-
-Region selection can therefore affect both:
-
-- Technical requirements
-- Cost
-
-## Data Transfer
-
-Network traffic can also affect Azure costs.
-
-In particular, transferring data out of Azure or between certain locations can generate additional charges.
-
-The exact cost depends on the service and networking scenario.
-
-## Pricing and Purchasing Options
-
-Organizations can reduce costs by choosing appropriate purchasing options.
+The purchasing model can also affect cost.
 
 Examples include:
 
-- Pay-as-you-go pricing
-- Azure Reservations
-- Azure savings plan for compute
-- Azure Spot Virtual Machines
+- pay-as-you-go pricing;
+- reservations;
+- Azure savings plans for compute;
+- Spot Virtual Machines.
 
-These options are covered in more detail in the Cost Optimization section.
+These options solve different workload and commitment requirements and are covered in [Cost Optimization](4-cost-optimization.md).
 
-## Microsoft Trigger Words
+### Marketplace Solutions
 
-If a question contains words such as:
+Azure Marketplace solutions can include charges from third-party providers in addition to Azure infrastructure charges.
 
-- resource type
-- resource size
-- consumption
-- region
-- data transfer
-- usage
-- Azure cost
+The third-party provider determines the pricing model for its offering.
 
-Think:
+---
 
-> Factors Affecting Azure Costs
+## Decision Factors
 
-## Common Exam Questions
+When a question asks **why Azure costs differ**, identify which variable changed:
 
-Microsoft may ask questions such as:
+```text
+WHAT was deployed?
+→ resource type / size
 
-- Can the Azure Region affect the price of a resource?
-- Does resource consumption affect Azure cost?
-- Which factors can influence the cost of an Azure deployment?
-- Can the size of a Virtual Machine affect its price?
+HOW MUCH was used?
+→ consumption
+
+WHERE was it deployed?
+→ region
+
+WHERE is data moving?
+→ network transfer
+
+HOW is it purchased?
+→ pricing / purchasing option
+```
+
+---
 
 ## Common Mistakes
 
-❌ Thinking the same Azure service always has the same price in every region.
+### Assuming the Same Service Costs the Same Everywhere
 
-Pricing can vary between Azure Regions.
+Azure pricing can vary by region.
 
-❌ Thinking Azure cost depends only on how long a resource runs.
+### Assuming All Network Transfer Is Free
 
-Cost depends on multiple factors, including the service, configuration, consumption, region, and data transfer.
+Inbound transfer is often free, while outbound transfer may be charged.
 
-## Exam Tip
+### Confusing Cost Factors With Cost Tools
 
-When Microsoft asks what affects Azure cost, think:
+Cost factors explain **what influences the price**.
 
-> **What + How Much + Where + Pricing Model**
+They do not replace tools used to estimate or analyze spending:
 
-**What**
+```text
+Estimate planned cost
+→ Azure Pricing Calculator
 
-→ Resource type and size
+Analyze actual spending
+→ Microsoft Cost Management
+```
 
-**How Much**
+---
 
-→ Consumption and usage
+## Exam Reasoning
 
-**Where**
+For cost-factor questions, use:
 
-→ Azure Region and data transfer
+```text
+WHAT + HOW MUCH + WHERE + HOW PURCHASED
+→ Azure cost
+```
 
-**Pricing Model**
-
-→ Pay-as-you-go, Reservations, Savings Plans, or Spot pricing
+If the question instead asks for a tool, determine whether the requirement is about **planned cost** or **actual spending**.

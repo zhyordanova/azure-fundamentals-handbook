@@ -2,146 +2,123 @@
 
 ## Definition
 
-Microsoft Cost Management is a set of tools that helps organizations monitor, analyze, manage, and optimize their Azure spending.
+Microsoft Cost Management provides tools to **analyze, monitor, and manage Azure spending**.
 
-It provides visibility into actual cloud costs and helps organizations understand where money is being spent.
+It focuses on costs associated with resources that are already being used.
 
-## Why Microsoft Cost Management Exists
+---
 
-As organizations deploy more Azure resources, cloud spending can become difficult to track.
+## What Problem Does It Solve?
 
-Organizations need to answer questions such as:
+Organizations need visibility into actual cloud spending so they can understand:
 
-- How much are we spending?
-- Which resources generate the highest costs?
-- Which department is responsible for the spending?
-- Are we approaching our budget?
+- how much they are spending;
+- which resources or areas drive the cost;
+- how spending changes over time;
+- whether spending is approaching expected thresholds.
 
-Microsoft Cost Management provides tools for answering these questions.
+---
 
-## Core Capabilities
+## Key Capabilities
 
-Microsoft Cost Management provides:
+### Cost Analysis
 
-- Cost Analysis
-- Budgets
-- Cost alerts
-- Anomaly alerts
-- Scheduled alerts
-- Cost allocation
-- Cost reporting
-- Cost optimization insights
-
-## Cost Analysis
-
-Cost Analysis allows organizations to explore and analyze Azure spending.
-
-Costs can be viewed and grouped by dimensions such as:
-
-- Subscription
-- Resource Group
-- Resource
-- Service
-- Location
-- Tags
-
-This helps identify where Azure spending originates.
-
-## Budgets
-
-Budgets allow organizations to define spending thresholds.
-
-For example:
-
-```mermaid
-flowchart TD
-    Budget["Monthly Budget: $1,000"]
-    Cost["Actual Cost reaches 80%"]
-    Alert["Budget Alert"]
-
-    Budget --> Cost
-    Cost --> Alert
-```
-
-Budgets help monitor spending but do not automatically stop Azure resources when the budget is reached.
-
-## Cost Alerts
-
-Cost alerts notify users when spending reaches configured thresholds.
-
-They help organizations react before spending exceeds expected limits.
-
-## Resource Tags and Cost Management
-
-Resource Tags can help categorize resources for cost reporting.
-
-For example:
-
-```mermaid
-flowchart TD
-    Tags["Department = Finance<br>Environment = Production<br>Project = Website"]
-```
-
-Cost Management can use this metadata to help analyze spending across different organizational categories.
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- actual spending
-- cost analysis
-- budget
-- spending alert
-- cost report
-- analyze Azure costs
+Cost Analysis provides views of actual spending and helps identify trends and cost drivers.
 
 Think:
 
-> Microsoft Cost Management
+> **Analyze actual Azure costs → Cost Analysis**
 
-## Common Exam Questions
+### Budgets and Alerts
 
-Microsoft frequently asks questions such as:
+A budget defines a spending threshold for monitoring purposes.
 
-- Which Azure tool analyzes actual cloud spending?
-- Which Azure tool can create budgets?
-- Which Azure tool provides cost analysis?
-- Which Azure feature can notify users when spending reaches a threshold?
+Alerts can notify relevant users when configured budget thresholds are reached.
+
+```text
+Budget
+→ define expected spending threshold
+
+Alert
+→ notify when threshold is reached
+```
+
+> **A budget is not a hard spending limit.** Reaching a budget threshold does not automatically stop Azure resources.
+
+### Tags and Cost Analysis
+
+Resource tags can help group and filter cost information, for example by department, environment, or project.
+
+Tags themselves are covered in [Resource Tags](../07-governance/3-resource-tags.md).
+
+---
+
+## Decision Factors
+
+Ask what the organization needs to do with **actual spending**:
+
+```text
+Understand current / historical cost
+→ Cost Analysis
+
+Track spending against a threshold
+→ Budget
+
+Receive threshold notification
+→ Alert
+```
+
+If the resources do not exist yet and the requirement is only to estimate expected cost, use the Azure Pricing Calculator instead.
+
+---
+
+## Microsoft Cost Management vs Azure Pricing Calculator
+
+| Requirement | Best Fit |
+|---|---|
+| Estimate a planned Azure solution | **Azure Pricing Calculator** |
+| Analyze actual Azure spending | **Microsoft Cost Management** |
+| Investigate cost trends and drivers | **Microsoft Cost Management** |
+| Configure a spending threshold and notification | **Budget / Alert in Cost Management** |
+
+---
 
 ## Common Mistakes
 
-❌ Thinking reaching an Azure budget automatically stops resources.
+### Budget vs Spending Limit
 
-A budget monitors costs and can trigger notifications when configured thresholds are reached.
+```text
+Budget threshold reached
+→ alert / visibility
+→ NOT automatic resource shutdown
+```
 
-The budget itself does not automatically shut down Azure resources.
+### Cost Management vs Azure Advisor
 
-However, budget notifications can be integrated with automation, such as Action Groups, to trigger additional actions.
+```text
+Analyze what you are spending
+→ Microsoft Cost Management
 
-## Compare With
+Receive recommendations to improve cost efficiency
+→ Azure Advisor
+```
 
-| Microsoft Cost Management | Azure Pricing Calculator |
-|---------------------------|--------------------------|
-| Actual spending | Estimated spending |
-| Cost analysis | Cost planning |
-| Budgets and alerts | Expected configuration |
-| Used with Azure consumption | Used before deployment |
+---
 
-## Exam Tip
+## Exam Reasoning
 
-Ask:
+Start with the goal:
 
-> "Am I estimating future cost or analyzing real cloud spending?"
+```text
+PLANNED cost?
+→ Pricing Calculator
 
-Estimate expected Azure cost:
+ACTUAL spending?
+→ Microsoft Cost Management
 
-→ **Azure Pricing Calculator**
+SPENDING THRESHOLD?
+→ Budget + Alert
 
-Analyze actual costs, budgets, or spending trends:
-
-→ **Microsoft Cost Management**
-
-Remember:
-
-> **Estimate = Pricing Calculator**  
-> **Analyze and control = Cost Management**
+OPTIMIZATION RECOMMENDATION?
+→ Azure Advisor
+```
