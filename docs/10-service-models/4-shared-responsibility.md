@@ -2,9 +2,9 @@
 
 ## Definition
 
-The Shared Responsibility Model explains how security and management responsibilities are divided between the cloud provider and the customer.
+The shared responsibility model explains how security, management, and operational responsibilities are divided between the cloud provider and the customer.
 
-The amount of customer responsibility changes depending on the service model.
+As you move from on-premises infrastructure toward more managed cloud services, Microsoft manages more of the underlying technology and the customer manages less of the infrastructure stack.
 
 ```text
 MORE CUSTOMER RESPONSIBILITY
@@ -20,143 +20,128 @@ SaaS
 LESS CUSTOMER RESPONSIBILITY
 ```
 
+---
+
 ## Responsibility Comparison
 
 | Responsibility | On-premises | IaaS | PaaS | SaaS |
 |---|:---:|:---:|:---:|:---:|
 | Physical datacenter | Customer | Microsoft | Microsoft | Microsoft |
-| Physical network / hosts | Customer | Microsoft | Microsoft | Microsoft |
+| Physical network | Customer | Microsoft | Microsoft | Microsoft |
+| Physical hosts | Customer | Microsoft | Microsoft | Microsoft |
 | Operating system | Customer | **Customer** | **Microsoft** | **Microsoft** |
-| Application platform | Customer | Customer | Microsoft | Microsoft |
-| Application software | Customer | Customer | Customer | Microsoft |
+| Application | Customer | Customer | **Customer** | Microsoft |
 | Data | Customer | Customer | Customer | Customer responsibility remains |
-| Identities / access | Customer | Customer | Customer | Customer responsibility remains |
+| Identities and access | Customer | Customer | Customer | Customer responsibility remains |
 
-For AZ-900, the most important shift is the operating system:
+The most useful AZ-900 distinction is operating-system responsibility:
 
 ```text
-On-premises / IaaS
-→ Customer manages OS
+Customer manages OS
+→ On-premises / IaaS
 
-PaaS / SaaS
-→ Provider manages OS
+Microsoft manages OS
+→ PaaS / SaaS
 ```
 
-## Responsibilities That Remain with the Customer
+---
 
-Moving to a managed cloud service does not remove all customer responsibility.
+## Responsibilities That Remain With the Customer
 
-Customers continue to have responsibilities involving areas such as:
+Using a more managed service does **not** remove all customer responsibility.
+
+Even with SaaS, customers still have responsibilities related to areas such as:
 
 - data;
 - identities and users;
 - access management;
-- devices/endpoints where applicable;
-- appropriate configuration of the services they use.
+- endpoints and devices.
 
-The provider managing more infrastructure does not mean the customer stops protecting its data and identities.
+Therefore:
 
-## Service Model Classification
+> **SaaS does not mean Microsoft is responsible for everything.**
 
-For exam questions, classify the service by asking what the customer receives and manages.
+---
+
+## Quick Service Model Classification
+
+Use this table as a fast classification reference.
 
 | Example | Service Model |
 |---|---|
 | Azure Virtual Machines | **IaaS** |
 | Azure App Service | **PaaS** |
 | Azure SQL Database | **PaaS** |
-| Azure Functions | **PaaS / serverless compute** |
+| Azure Functions | **PaaS** |
 | Microsoft 365 | **SaaS** |
 
-Scenario classification:
+For scenario questions:
 
 ```text
-Virtual server + manage OS
+Virtual server + customer manages OS
 → IaaS
 
-Build/deploy app + provider manages OS
+Build/deploy application + provider manages OS
 → PaaS
 
-Use finished application
+Use a finished application
 → SaaS
 ```
 
-## Decision Factors
-
-Use these questions in order:
-
-```text
-1. Is the customer simply using a finished application?
-   → SaaS
-
-2. Does the customer need to build/deploy an application
-   without managing the OS?
-   → PaaS
-
-3. Does the customer need control over the OS?
-   → IaaS
-```
-
-Then check the responsibility being tested.
-
-```text
-Who manages the OS?
-Who manages the application?
-Who remains responsible for data and access?
-```
+---
 
 ## Common Exam Traps
 
 ### SaaS Does Not Mean Zero Customer Responsibility
 
-```text
-Provider manages most of stack
-≠
-Provider owns every responsibility
-```
+Microsoft manages most of the service stack, but the customer still has responsibilities for data, identities, access, and endpoints.
 
-Data, identities, and access still require customer responsibility.
+### More Managed Does Not Mean More Customer Control
 
-### PaaS vs SaaS
+Moving from IaaS to PaaS to SaaS generally means:
 
 ```text
-BUILD
-→ PaaS
-
-USE
-→ SaaS
+Less infrastructure responsibility
++
+Less infrastructure control
 ```
 
-### IaaS vs PaaS
+### Operating System Responsibility
+
+If a question asks who manages the operating system, remember:
 
 ```text
-Customer manages OS
-→ IaaS
+IaaS
+→ Customer
 
-Provider manages OS
-→ PaaS
+PaaS / SaaS
+→ Microsoft
 ```
+
+---
 
 ## Exam Reasoning
 
-When asked to classify a service or scenario:
+For shared-responsibility questions, first identify **which layer is being discussed**.
 
 ```text
-CONTROL OS
-→ IaaS
+Physical infrastructure?
+→ Microsoft in IaaS / PaaS / SaaS
 
-BUILD APP, NOT INFRASTRUCTURE
-→ PaaS
+Operating system?
+→ Customer in IaaS
+→ Microsoft in PaaS / SaaS
 
-USE FINISHED APP
-→ SaaS
+Application?
+→ Customer in IaaS / PaaS
+→ Provider in SaaS
+
+Data / identities / access?
+→ Customer responsibility remains
 ```
 
-When asked about responsibility:
+Then remember the overall direction:
 
-```text
-More managed service
-→ less infrastructure responsibility for customer
-
-But customer responsibility for data / identities / access remains
-```
+> **IaaS → more customer control and responsibility**  
+> **PaaS → provider manages the platform**  
+> **SaaS → provider manages most of the service stack**
