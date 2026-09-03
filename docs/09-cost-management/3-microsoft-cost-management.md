@@ -6,8 +6,6 @@ Microsoft Cost Management provides tools to **analyze, monitor, and manage Azure
 
 It focuses on costs associated with resources that are already being used.
 
----
-
 ## What Problem Does It Solve?
 
 Organizations need visibility into actual cloud spending so they can understand:
@@ -16,8 +14,6 @@ Organizations need visibility into actual cloud spending so they can understand:
 - which resources or areas drive the cost;
 - how spending changes over time;
 - whether spending is approaching expected thresholds.
-
----
 
 ## Key Capabilities
 
@@ -51,8 +47,6 @@ Resource tags can help group and filter cost information, for example by departm
 
 Tags themselves are covered in [Resource Tags](../07-governance/3-resource-tags.md).
 
----
-
 ## Decision Factors
 
 Ask what the organization needs to do with **actual spending**:
@@ -70,8 +64,6 @@ Receive threshold notification
 
 If the resources do not exist yet and the requirement is only to estimate expected cost, use the Azure Pricing Calculator instead.
 
----
-
 ## Microsoft Cost Management vs Azure Pricing Calculator
 
 | Requirement | Best Fit |
@@ -80,8 +72,6 @@ If the resources do not exist yet and the requirement is only to estimate expect
 | Analyze actual Azure spending | **Microsoft Cost Management** |
 | Investigate cost trends and drivers | **Microsoft Cost Management** |
 | Configure a spending threshold and notification | **Budget / Alert in Cost Management** |
-
----
 
 ## Common Mistakes
 
@@ -102,8 +92,6 @@ Analyze what you are spending
 Receive recommendations to improve cost efficiency
 → Azure Advisor
 ```
-
----
 
 ## Exam Reasoning
 

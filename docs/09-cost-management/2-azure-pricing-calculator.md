@@ -8,8 +8,6 @@ It helps answer:
 
 > **What might this Azure solution cost before I deploy it?**
 
----
-
 ## What Problem Does It Solve?
 
 Before deploying Azure resources, an organization may need to compare configurations and estimate expected spending.
@@ -25,8 +23,6 @@ The Pricing Calculator can model factors such as:
 - eligible pricing options.
 
 The result is an **estimate**, not the final Azure bill.
-
----
 
 ## Decision Factors
 
@@ -51,8 +47,6 @@ RUNNING resources / ACTUAL spending
 → Microsoft Cost Management
 ```
 
----
-
 ## Pricing Calculator vs Microsoft Cost Management
 
 | Decision Factor | Azure Pricing Calculator | Microsoft Cost Management |
@@ -61,8 +55,6 @@ RUNNING resources / ACTUAL spending
 | Typical timing | Before deployment | During / after usage |
 | Uses actual Azure consumption data | No | Yes |
 | Typical question | "What might this solution cost?" | "Why are we spending this amount?" |
-
----
 
 ## Common Mistakes
 
@@ -73,8 +65,6 @@ The Pricing Calculator provides an estimate based on the configuration and expec
 ### Using It to Analyze Existing Spending
 
 If the requirement is to investigate actual Azure charges or spending trends, use Microsoft Cost Management instead.
-
----
 
 ## Exam Reasoning
 

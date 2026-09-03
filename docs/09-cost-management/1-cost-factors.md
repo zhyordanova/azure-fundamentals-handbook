@@ -6,8 +6,6 @@ Azure costs vary according to **what you deploy, how much you use, where it runs
 
 Understanding these factors helps explain why two technically similar Azure solutions can have different costs.
 
----
-
 ## Main Cost Factors
 
 ### Resource Type and Size
@@ -81,8 +79,6 @@ Azure Marketplace solutions can include charges from third-party providers in ad
 
 The third-party provider determines the pricing model for its offering.
 
----
-
 ## Decision Factors
 
 When a question asks **why Azure costs differ**, identify which variable changed:
@@ -103,8 +99,6 @@ WHERE is data moving?
 HOW is it purchased?
 → pricing / purchasing option
 ```
-
----
 
 ## Common Mistakes
 
@@ -129,8 +123,6 @@ Estimate planned cost
 Analyze actual spending
 → Microsoft Cost Management
 ```
-
----
 
 ## Exam Reasoning
 

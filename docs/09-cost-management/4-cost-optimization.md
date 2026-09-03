@@ -11,8 +11,6 @@ The best option depends on factors such as:
 - ability to tolerate interruption;
 - length and stability of expected usage.
 
----
-
 ## Cost Optimization Options
 
 ### Azure Reservations
@@ -49,8 +47,6 @@ Pay-as-you-go provides flexibility without a long-term usage commitment.
 
 It can be appropriate when usage is uncertain or highly variable and interruption is not acceptable.
 
----
-
 ## Decision Factors
 
 ```mermaid
@@ -67,8 +63,6 @@ flowchart TD
 
 Do not automatically choose the option with the largest possible discount. Choose the option that satisfies the workload requirements.
 
----
-
 ## Compare the Options
 
 | Option | Best Fit | Key Trade-off |
@@ -77,8 +71,6 @@ Do not automatically choose the option with the largest possible discount. Choos
 | **Reservation** | Stable, predictable long-term usage | Commitment for lower cost |
 | **Savings Plan for Compute** | Predictable compute spend needing more flexibility | Spend commitment |
 | **Spot VMs** | Interruptible workloads | Can be evicted/interrupted |
-
----
 
 ## Azure Advisor and Cost Optimization
 
@@ -94,8 +86,6 @@ Recommend how to improve resource cost efficiency
 → Azure Advisor
 ```
 
----
-
 ## Common Mistakes
 
 ### Choosing Spot Only Because It Is Cheaper
@@ -109,8 +99,6 @@ Reservations and savings plans are most useful when the relevant usage or spend 
 ### Confusing Analysis With Recommendations
 
 Cost Management analyzes spending; Azure Advisor recommends improvements.
-
----
 
 ## Exam Reasoning
 
