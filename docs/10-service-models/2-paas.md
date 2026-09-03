@@ -4,8 +4,6 @@
 
 Platform as a Service (PaaS) provides a managed platform for building, deploying, and running applications without requiring the customer to manage the underlying operating system or physical infrastructure.
 
----
-
 ## What Problem Does It Solve?
 
 Use PaaS when developers want to focus on the application and data instead of maintaining servers and operating systems.
@@ -17,8 +15,6 @@ Do not manage underlying OS
         ↓
 PaaS
 ```
-
----
 
 ## Responsibilities
 
@@ -35,8 +31,6 @@ The key distinction is:
 
 > **The customer builds or deploys the application, but does not manage the underlying operating system.**
 
----
-
 ## Azure Examples
 
 Common AZ-900 examples include:
@@ -46,8 +40,6 @@ Common AZ-900 examples include:
 | Azure App Service | **PaaS** |
 | Azure SQL Database | **PaaS** |
 | Azure Functions | **PaaS / serverless compute** |
-
----
 
 ## Decision Factors
 
@@ -64,8 +56,6 @@ Building the application
 Provider manages OS/platform
 → PaaS
 ```
-
----
 
 ## PaaS vs IaaS vs SaaS
 
@@ -85,15 +75,11 @@ USE finished application
 → SaaS
 ```
 
----
-
 ## Common Mistakes
 
 PaaS does not mean that Microsoft manages the customer's application data or business logic for them.
 
 Also, do not classify a service as IaaS merely because computing infrastructure exists underneath it. The question is **what the customer manages**.
-
----
 
 ## Exam Reasoning
 

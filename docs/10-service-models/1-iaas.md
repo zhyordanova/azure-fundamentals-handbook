@@ -6,8 +6,6 @@ Infrastructure as a Service (IaaS) provides virtualized computing infrastructure
 
 Microsoft manages the physical infrastructure, while the customer keeps significant control over the virtual machine environment, including the operating system.
 
----
-
 ## What Problem Does It Solve?
 
 Use IaaS when you need cloud infrastructure but still require control over the operating system and installed software.
@@ -21,8 +19,6 @@ IaaS
 ```
 
 A common Azure example is **Azure Virtual Machines**.
-
----
 
 ## Responsibilities
 
@@ -45,8 +41,6 @@ The key AZ-900 distinction is:
 
 > **IaaS gives the customer more control, but also more management responsibility than PaaS or SaaS.**
 
----
-
 ## Decision Factors
 
 Choose IaaS when the scenario requires:
@@ -60,8 +54,6 @@ Choose IaaS when the scenario requires:
 Need to manage the OS?
 → IaaS
 ```
-
----
 
 ## IaaS vs PaaS
 
@@ -82,8 +74,6 @@ Web application + minimize OS administration
 → App Service / PaaS
 ```
 
----
-
 ## Common Mistakes
 
 Do not choose IaaS simply because the workload runs in Azure.
@@ -97,8 +87,6 @@ Azure Virtual Machine
 Azure App Service
 → NOT IaaS
 ```
-
----
 
 ## Exam Reasoning
 

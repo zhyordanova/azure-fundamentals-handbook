@@ -20,8 +20,6 @@ SaaS
 LESS CUSTOMER RESPONSIBILITY
 ```
 
----
-
 ## Responsibility Comparison
 
 | Responsibility | On-premises | IaaS | PaaS | SaaS |
@@ -44,8 +42,6 @@ PaaS / SaaS
 → Provider manages OS
 ```
 
----
-
 ## Responsibilities That Remain with the Customer
 
 Moving to a managed cloud service does not remove all customer responsibility.
@@ -59,8 +55,6 @@ Customers continue to have responsibilities involving areas such as:
 - appropriate configuration of the services they use.
 
 The provider managing more infrastructure does not mean the customer stops protecting its data and identities.
-
----
 
 ## Service Model Classification
 
@@ -87,8 +81,6 @@ Use finished application
 → SaaS
 ```
 
----
-
 ## Decision Factors
 
 Use these questions in order:
@@ -112,8 +104,6 @@ Who manages the OS?
 Who manages the application?
 Who remains responsible for data and access?
 ```
-
----
 
 ## Common Exam Traps
 
@@ -146,8 +136,6 @@ Customer manages OS
 Provider manages OS
 → PaaS
 ```
-
----
 
 ## Exam Reasoning
 

@@ -4,8 +4,6 @@
 
 Software as a Service (SaaS) provides a complete application that users access and use without managing the underlying infrastructure or application platform.
 
----
-
 ## What Problem Does It Solve?
 
 Use SaaS when the requirement is to consume a finished software application rather than build or manage the platform that runs it.
@@ -17,8 +15,6 @@ Minimal infrastructure management
         ↓
 SaaS
 ```
-
----
 
 ## Responsibilities
 
@@ -38,8 +34,6 @@ The customer still has responsibilities such as:
 
 SaaS does **not** mean the customer has zero responsibility.
 
----
-
 ## Examples
 
 A common Microsoft example is:
@@ -50,8 +44,6 @@ Microsoft 365
 ```
 
 Cloud-hosted email and productivity applications are typical SaaS scenarios.
-
----
 
 ## Decision Factors
 
@@ -72,8 +64,6 @@ USE the application?
 → SaaS
 ```
 
----
-
 ## SaaS vs PaaS
 
 | Requirement | PaaS | SaaS |
@@ -83,15 +73,11 @@ USE the application?
 | Provider manages underlying OS | ✅ | ✅ |
 | Provider manages application software | ❌ | ✅ |
 
----
-
 ## Common Mistakes
 
 Do not assume SaaS means Microsoft is responsible for everything.
 
 Customers still remain responsible for their data, identities, access, and appropriate service configuration.
-
----
 
 ## Exam Reasoning
 
