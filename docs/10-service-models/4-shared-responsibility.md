@@ -92,10 +92,6 @@ Use a finished application
 
 ## Common Exam Traps
 
-### SaaS Does Not Mean Zero Customer Responsibility
-
-Microsoft manages most of the service stack, but the customer still has responsibilities for data, identities, access, and endpoints.
-
 ### More Managed Does Not Mean More Customer Control
 
 Moving from IaaS to PaaS to SaaS generally means:
@@ -105,20 +101,6 @@ Less infrastructure responsibility
 +
 Less infrastructure control
 ```
-
-### Operating System Responsibility
-
-If a question asks who manages the operating system, remember:
-
-```text
-IaaS
-→ Customer
-
-PaaS / SaaS
-→ Microsoft
-```
-
----
 
 ## Exam Reasoning
 
