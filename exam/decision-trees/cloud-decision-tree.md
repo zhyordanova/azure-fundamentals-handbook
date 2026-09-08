@@ -1,25 +1,62 @@
-# Cloud Decision Tree
+# Cloud Concepts Decision Tree
+
+Start with **what type of cloud concept the scenario is testing**, not a trigger word.
 
 ```mermaid
 flowchart TD
+    A["What is the scenario describing?"]
+    A --> B["Deployment model"]
+    A --> C["Capacity"]
+    A --> D["Availability / geography"]
+    A --> E["Financial model"]
 
-    A["Need Cloud?"] --> B{"What is the question about?"}
+    B --> B1{"Which environment?"}
+    B1 -->|"Provider-operated cloud"| PUB["Public Cloud"]
+    B1 -->|"Dedicated to one organization"| PRI["Private Cloud"]
+    B1 -->|"Private/on-prem + public cloud"| HYB["Hybrid Cloud"]
 
-    B -->|Deployment Model| C{"Which environment?"}
+    C --> C1{"What capacity behavior?"}
+    C1 -->|"Ability to change capacity"| SCALE["Scalability"]
+    C1 -->|"Dynamic response to demand"| ELASTIC["Elasticity"]
 
-    C -->|Public provider| D["Public Cloud"]
-    C -->|Own infrastructure| E["Private Cloud"]
-    C -->|On-premises + Cloud| F["Hybrid Cloud"]
+    D --> D1{"What is the goal?"}
+    D1 -->|"Remain available despite failures"| HA["High Availability"]
+    D1 -->|"Distribute geographically"| GEO["Geo-distribution"]
 
-    B -->|Cloud Benefit| G{"Which benefit?"}
+    E --> E1{"How is it paid for?"}
+    E1 -->|"Upfront asset purchase"| CAPEX["CapEx"]
+    E1 -->|"Ongoing / consumption spending"| OPEX["OpEx"]
+```
 
-    G -->|Keep services available| H["High Availability"]
-    G -->|Increase capacity| I["Scalability"]
-    G -->|Automatic scaling| J["Elasticity"]
-    G -->|Global users| K["Geo-distribution"]
+## High-Value Distinctions
 
-    B -->|Pricing Model| L{"How do you pay?"}
+```text
+Public / Private / Hybrid
+→ deployment model
 
-    L -->|Upfront investment| M["CapEx"]
-    L -->|Pay-as-you-go| N["OpEx"]
+Scalability
+→ capacity CAN change
+
+Elasticity
+→ capacity dynamically follows demand
+
+High Availability
+→ reduce downtime / survive failures
+
+Geo-distribution
+→ geographic placement
+
+CapEx
+→ upfront investment
+
+OpEx
+→ ongoing / consumption-based spending
+```
+
+## Final Decision Rule
+
+```text
+1. Identify the category: deployment, capacity, availability/geography, or finance.
+2. Identify the actual requirement.
+3. Choose the concept that directly describes that requirement.
 ```

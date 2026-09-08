@@ -1,110 +1,32 @@
 # High Availability
 
 ## Definition
+High availability is the ability of a service to remain available despite failures or disruptions.
 
-High Availability is the ability of a system or service to remain operational and accessible even when failures occur.
+## What Problem Does It Solve?
+Applications and services may experience hardware, datacenter, or infrastructure failures. High-availability designs reduce downtime by avoiding a single point of failure.
 
-The goal is to minimize downtime and ensure that users can continue accessing applications and services.
+## Azure Context
+Azure can support high availability through capabilities such as redundancy, availability zones, load distribution, and resilient architectures.
 
-## Why High Availability Matters
+## SLA Context
+A Service Level Agreement (SLA) describes availability commitments for a service. A solution that depends on multiple components must consider the availability of the complete architecture, not just one component.
 
-Business applications often need to be available 24 hours a day.
+## High Availability vs Geo-distribution
+```text
+Keep service available despite failures
+→ High Availability
 
-Unexpected downtime can result in:
+Place workloads/data across geographic locations
+→ Geo-distribution
+```
 
-- Financial loss
-- Reduced productivity
-- Poor customer experience
-- Loss of business reputation
+Geo-distribution can contribute to resiliency, but the two concepts are not synonyms.
 
-Cloud platforms such as Microsoft Azure provide built-in features that help organizations design highly available solutions.
+## Exam Reasoning
+Ask what the scenario is optimizing:
 
-## How Azure Supports High Availability
-
-Azure provides several features that improve availability, including:
-
-- Availability Zones
-- Region Pairs
-- Load Balancers
-- Geo-redundant Storage
-- Virtual Machine Scale Sets
-
-Each feature protects against a different type of failure.
-
-## Service-Level Agreements (SLAs)
-
-Microsoft defines the expected availability of Azure services by using a **Service-Level Agreement (SLA)**.
-
-An SLA specifies the percentage of uptime that Microsoft commits to provide for a service.
-
-Examples include:
-
-- 99.9%
-- 99.95%
-- 99.99%
-
-Higher availability generally requires designing solutions that use multiple resources instead of relying on a single instance.
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- uptime
-- availability
-- SLA
-- service interruption
-- minimize downtime
-- remain available
-
-Think:
-
-> High Availability
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- What does an SLA define?
-- Which cloud benefit keeps applications available?
-- Which Azure feature protects against datacenter failure?
-- Which Azure feature protects against regional failure?
-
-## Common Mistakes
-
-❌ Thinking High Availability and Scalability are the same.
-
-High Availability ensures a service remains available.
-
-Scalability ensures a service can handle increased workload.
-
-❌ Thinking a higher SLA is achieved automatically.
-
-Many Azure services require multiple instances or additional configuration to achieve higher SLAs.
-
-## Compare With
-
-| High Availability | Scalability |
-|-------------------|-------------|
-| Keeps services available | Handles increasing workload |
-| Focuses on uptime | Focuses on capacity |
-| Measured by SLA | Measured by resource growth |
-
-## Exam Tip
-
-Ask what problem the requirement is trying to solve.
-
-If the goal is:
-
-> Keep the service running and minimize downtime
-
-→ **High Availability**
-
-If the goal is:
-
-> Handle increasing workload or demand
-
-→ **Scalability**
-
-High Availability is about **continuity**.
-
-Scalability is about **capacity**.
+```text
+Reduce downtime / survive component failure
+→ High Availability
+```

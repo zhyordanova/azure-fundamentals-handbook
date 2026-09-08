@@ -1,130 +1,43 @@
 # Azure Resource Manager (ARM)
 
 ## Definition
+Azure Resource Manager (ARM) is the deployment and management layer for Azure resources.
 
-Azure Resource Manager (ARM) is the deployment and management service for Microsoft Azure.
+## What Problem Does It Solve?
+ARM provides a consistent management layer through which Azure resources can be created, updated, and deleted.
 
-Every request to create, update, or delete an Azure resource passes through Azure Resource Manager.
-
-ARM provides a consistent management layer regardless of whether resources are deployed using the Azure Portal, Azure CLI, Azure PowerShell, REST API, or Infrastructure as Code (ARM Templates or Bicep).
-
-## Why Azure Resource Manager Exists
-
-Azure provides hundreds of services.
-
-Without a centralized management layer, every service would require its own deployment and management mechanism.
-
-Azure Resource Manager provides a single, consistent interface for deploying, managing, organizing, and securing Azure resources.
-
-## How ARM Works
-
-Azure Resource Manager receives requests from Azure management tools and communicates with the appropriate Azure service.
-
-For example:
-
-```mermaid
-flowchart TD
-    Portal["Azure Portal"]
-    ARM["Azure Resource Manager (ARM)"]
-    VM["Virtual Machine"]
-
-    Portal --> ARM --> VM
+## Management Flow
+```text
+Azure Portal
+Azure CLI
+PowerShell
+REST API
+      ↓
+Azure Resource Manager
+      ↓
+Resource Provider
+      ↓
+Azure Resource
 ```
 
-The same process applies when using:
+## Key Capabilities
+ARM supports resource deployment and management, consistent access control and governance integration, and declarative infrastructure deployment through templates.
 
-- Azure Portal
-- Azure CLI
-- Azure PowerShell
-- Azure REST API
-- ARM Templates
-- Bicep
+## Decision Factors
+```text
+Create / update / delete / manage Azure resources
+through Azure's common management layer
+→ Azure Resource Manager
+```
 
-Regardless of the tool used, Azure Resource Manager performs the deployment.
+## ARM vs Resource Group
+```text
+ARM
+→ management/deployment layer
 
-## Core Capabilities
+Resource Group
+→ logical container for resources
+```
 
-Azure Resource Manager provides:
-
-- Resource deployment
-- Resource updates
-- Resource deletion
-- Resource organization
-- Dependency management
-- Role-Based Access Control (RBAC) integration
-- Azure Policy integration
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- deployment
-- management layer
-- create resources
-- update resources
-- delete resources
-- ARM
-- Azure Portal
-- Azure CLI
-
-Think:
-
-> Azure Resource Manager
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- What is Azure Resource Manager?
-- Which Azure service manages resource deployment?
-- Which management layer accepts requests from Azure tools?
-- Which service deploys resources regardless of the management tool used?
-
-## Common Mistakes
-
-❌ Thinking Azure CLI deploys resources directly.
-
-Azure CLI sends requests to Azure Resource Manager.
-
-❌ Thinking Azure Portal deploys resources directly.
-
-Azure Portal is only one of several management tools.
-
-Azure Resource Manager performs the actual deployment.
-
-❌ Thinking ARM Templates replace Azure Resource Manager.
-
-ARM Templates are deployment definitions.
-
-Azure Resource Manager performs the deployment.
-
-## Compare With
-
-| Azure Resource Manager | Azure Portal |
-|------------------------|--------------|
-| Deployment and management service | Web-based management interface |
-| Processes deployment requests | Sends requests to ARM |
-| Used by all Azure management tools | One management tool |
-
-## Exam Tip
-
-Microsoft often hides the answer by mentioning a management tool.
-
-Examples include:
-
-- Azure Portal
-- Azure CLI
-- Azure PowerShell
-- ARM Templates
-
-All of these tools send deployment requests to:
-
-> **Azure Resource Manager (ARM)**
-
-If the question contains the phrase:
-
-> **deployment and management service**
-
-the correct answer is almost always:
-
-> **Azure Resource Manager**
+## Exam Reasoning
+Do not confuse the management layer with a resource container. Portal, CLI, PowerShell, and REST operations ultimately interact with Azure through ARM.

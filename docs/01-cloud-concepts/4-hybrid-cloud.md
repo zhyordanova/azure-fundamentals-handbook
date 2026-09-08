@@ -1,105 +1,27 @@
 # Hybrid Cloud
 
 ## Definition
+Hybrid cloud combines a private or on-premises environment with public cloud services.
 
-A hybrid cloud is a cloud deployment model that combines on-premises infrastructure with public cloud services.
+## What Problem Does It Solve?
+It allows an organization to keep selected workloads or data in its existing/private environment while using public cloud services for other requirements.
 
-Organizations can run workloads across both environments while allowing data and applications to move between them when appropriate.
+## Decision Factors
+```text
+Some workloads remain on-premises/private
++
+Other workloads use public cloud
+→ Hybrid Cloud
+```
 
-Hybrid cloud enables organizations to modernize gradually instead of migrating all systems to the cloud at once.
-
-## Why Organizations Choose Hybrid Cloud
-
-Many organizations cannot immediately move every workload to the cloud.
-
-Common reasons include:
-
-- Existing investments in on-premises infrastructure.
-- Regulatory or compliance requirements.
-- Legacy applications that cannot easily be migrated.
-- Business continuity and disaster recovery requirements.
-
-Hybrid cloud allows organizations to combine the advantages of both environments.
-
-## Key Characteristics
-
-A hybrid cloud environment:
-
-- Combines on-premises infrastructure with public cloud services.
-- Allows workloads to run in different environments.
-- Supports gradual cloud adoption.
-- Enables integration between local datacenters and Azure.
-
-## Advantages
-
-Hybrid cloud provides:
-
-- Flexibility to choose where workloads run.
-- Gradual migration to the cloud.
-- Better support for compliance requirements.
-- Ability to continue using existing infrastructure.
-- Improved disaster recovery options.
-
-## Limitations
-
-Compared to using only the public cloud:
-
-- More complex architecture.
-- Requires management of multiple environments.
-- Network connectivity between environments must be maintained.
-- Governance and security become more complex.
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- on-premises and Azure
-- migrate some servers
-- keep existing datacenter
-- combine local infrastructure and cloud
-- gradual migration
-
-Think:
-
-> Hybrid Cloud
-
-## Common Exam Questions
-
-Microsoft frequently asks questions such as:
-
-- Which deployment model combines on-premises infrastructure with Azure?
-- Which cloud model allows gradual migration to the cloud?
-- Which deployment model keeps some workloads on-premises?
-
-## Common Mistakes
-
-❌ Thinking Hybrid Cloud means "half public cloud."
-
-Hybrid cloud is defined by the integration of on-premises infrastructure with cloud services.
-
-❌ Thinking Hybrid Cloud is a temporary migration stage.
-
-Many organizations permanently operate hybrid environments because of business or regulatory requirements.
+Typical reasons include migration in stages, regulatory requirements, existing systems, or combining local and cloud capacity.
 
 ## Compare With
+| Requirement | Model |
+|---|---|
+| Public provider cloud only | **Public Cloud** |
+| Dedicated cloud environment | **Private Cloud** |
+| Combination of private/on-premises + public cloud | **Hybrid Cloud** |
 
-| Hybrid Cloud | Public Cloud |
-|---------------|--------------|
-| Mix of on-premises and cloud | Cloud only |
-| Existing datacenter remains | No local infrastructure required |
-| Gradual migration | Cloud-first deployment |
-
-## Exam Tip
-
-Hybrid Cloud requires **both environments**.
-
-If an organization:
-
-- keeps some workloads on-premises or in a private cloud;
-- uses public cloud services at the same time;
-
-think:
-
-> **Hybrid Cloud**
-
-The key is coexistence or integration between private/on-premises infrastructure and public cloud services.
+## Exam Reasoning
+The defining characteristic is the **combination of environments**, not simply having multiple cloud resources.
