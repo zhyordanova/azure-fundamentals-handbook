@@ -2,92 +2,124 @@
 
 ## Definition
 
-Azure Global Infrastructure is Microsoft's worldwide network of datacenters, networking infrastructure, and cloud services that deliver Azure resources to customers across the globe.
+Azure global infrastructure is the worldwide physical and logical foundation that supports Microsoft Azure services.
 
-It provides the physical foundation on which all Azure services operate.
+It allows Azure resources and services to be deployed across different geographic locations while supporting requirements such as:
 
-## Why It Matters
+- availability
+- resiliency
+- performance
+- data residency
+- compliance
 
-Every Azure resource is deployed somewhere within Microsoft's global infrastructure.
-
-Understanding how Azure is organized helps explain:
-
-- where resources are deployed;
-- how Azure provides high availability and resilience;
-- how organizations choose deployment locations;
-- how Microsoft delivers cloud services worldwide.
-
-Azure's global infrastructure is designed to provide reliable, secure, and low-latency access to cloud services.
+---
 
 ## Core Components
 
-Azure Global Infrastructure consists of several architectural layers.
+Azure global infrastructure can be understood as a hierarchy of geographic concepts:
 
-From the highest level to the lowest:
+```mermaid
+flowchart TD
 
-1. Geographies
-2. Regions
-3. Availability Zones
-4. Datacenters
+    A["Azure Global Infrastructure"]
 
-Each layer has a different purpose and provides different capabilities.
+    A --> B["Geographies"]
+    B --> C["Regions"]
+    C --> D["Availability Zones"]
 
-These concepts are explained in the following sections of this chapter.
+    C -. "regional relationship" .-> E["Region Pairs"]
+```
 
-## Why Microsoft Built a Global Infrastructure
+### Geography
 
-Microsoft operates datacenters across many countries and regions to:
-
-- reduce network latency;
-- improve application availability;
-- support disaster recovery;
-- meet regional compliance requirements;
-- provide cloud services close to customers.
-
-Without a global infrastructure, Azure would not be able to deliver scalable cloud services worldwide.
-
-## Microsoft Trigger Words
-
-If a question contains words such as:
-
-- worldwide
-- global infrastructure
-- Microsoft datacenters
-- global network
-- Azure regions
-- worldwide cloud platform
+A **geography** is a broad market or geographic boundary that contains one or more Azure regions.
 
 Think:
 
-> Azure Global Infrastructure
+> **Broad geographic / data residency boundary**
 
-## Common Exam Questions
+### Region
 
-Microsoft may ask questions such as:
+An Azure **region** is a geographic area containing one or more datacenters connected through a low-latency network.
 
-- What is Azure Global Infrastructure?
-- What is Azure built upon?
-- Which Azure components make up Microsoft's worldwide cloud platform?
+Think:
 
-## Common Mistakes
+> **Where Azure resources are deployed**
 
-❌ Thinking Azure Global Infrastructure is a single datacenter.
+### Availability Zone
 
-Azure consists of hundreds of datacenters organized into multiple architectural layers.
+An **Availability Zone** is a physically separate datacenter location within an Azure region.
 
-❌ Confusing Azure Global Infrastructure with Azure Regions.
+Think:
 
-Regions are only one component of Azure's global infrastructure.
+> **Datacenter-level isolation inside a region**
 
-## Exam Tip
+### Region Pair
 
-This concept is rarely tested directly.
+Azure regions can be paired with another region within the same geography.
 
-Instead, Microsoft usually tests the individual components that make up Azure Global Infrastructure, such as:
+Think:
 
-- Geographies
-- Regions
-- Availability Zones
-- Region Pairs
+> **Relationship between two Azure regions**
 
-Understanding the overall structure makes these concepts much easier to understand.
+The individual topics later in this chapter explain these concepts in more detail.
+
+---
+
+## Why Global Infrastructure Matters
+
+Different infrastructure levels solve different problems.
+
+| Requirement | Think About |
+|---|---|
+| Geographic or data residency boundary | **Geography** |
+| Where to deploy an Azure resource | **Region** |
+| Protection from datacenter-level failure within a region | **Availability Zone** |
+| Relationship between two Azure regions | **Region Pair** |
+
+The important distinction is the **scope** of the requirement.
+
+```text
+Broad geographic boundary
+→ Geography
+
+Deployment location
+→ Region
+
+Datacenter isolation inside a region
+→ Availability Zone
+
+Relationship between regions
+→ Region Pair
+```
+
+---
+
+## Exam Reasoning
+
+Do not treat Geography, Region, Availability Zone, and Region Pair as interchangeable terms.
+
+Ask:
+
+```text
+What SCOPE is the question describing?
+```
+
+Then identify:
+
+```text
+GEOGRAPHIC / RESIDENCY BOUNDARY
+→ Geography
+
+DEPLOYMENT LOCATION
+→ Region
+
+DATACENTER-LEVEL ISOLATION
+within one region
+→ Availability Zone
+
+RELATIONSHIP BETWEEN TWO REGIONS
+→ Region Pair
+```
+
+> **Geography → Region → Availability Zone describes geographic scope. Region Pair describes a relationship between regions.**
