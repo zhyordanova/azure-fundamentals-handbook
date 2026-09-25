@@ -20,6 +20,7 @@ flowchart TD
     C1 -->|"Deployment location"| REGION["Region"]
     C1 -->|"Datacenter isolation within region"| AZ["Availability Zone"]
     C1 -->|"Azure paired-region concept"| PAIR["Region Pair"]
+    C1 -->|"Special regulatory / national cloud"| SOV["Sovereign Region"]
 
     D --> ARM["Azure Resource Manager"]
 ```
@@ -59,6 +60,9 @@ Datacenter isolation within a region
 
 Relationship between two Azure regions
 → Region Pair
+
+Special national / regulatory cloud environment
+→ Sovereign Region
 
 Deployment and management layer
 → Azure Resource Manager

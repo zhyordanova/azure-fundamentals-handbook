@@ -9,6 +9,7 @@ flowchart TD
     A --> C["Capacity"]
     A --> D["Availability / geography"]
     A --> E["Financial model"]
+    A --> F["Execution model"]
 
     B --> B1{"Which environment?"}
     B1 -->|"Provider-operated cloud"| PUB["Public Cloud"]
@@ -26,6 +27,9 @@ flowchart TD
     E --> E1{"How is it paid for?"}
     E1 -->|"Upfront asset purchase"| CAPEX["CapEx"]
     E1 -->|"Ongoing / consumption spending"| OPEX["OpEx"]
+
+    F --> F1{"Manage servers?"}
+    F1 -->|"No - run code without server management"| SERVERLESS["Serverless"]
 ```
 
 ## High-Value Distinctions
@@ -51,6 +55,9 @@ CapEx
 
 OpEx
 → ongoing / consumption-based spending
+
+Serverless
+→ run code without managing servers
 ```
 
 ## Final Decision Rule

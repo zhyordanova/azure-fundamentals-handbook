@@ -15,6 +15,22 @@ Region(s)
 Availability Zones / datacenters
 ```
 
+## Sovereign Regions
+Some Azure regions belong to sovereign or national cloud environments designed for specific regulatory, jurisdictional, or compliance requirements.
+
+Examples include Azure Government and Azure in China.
+
+```text
+Standard Azure regions
+→ global/public Azure environment
+
+Sovereign cloud regions
+→ separate cloud environment
+→ specific regulatory / jurisdictional requirements
+```
+
+Sovereign regions still use familiar Azure concepts, but service availability and operational boundaries can differ from global Azure.
+
 ## Decision Factors
 ```text
 Worldwide market / residency boundary
@@ -22,7 +38,12 @@ Worldwide market / residency boundary
 
 Specific Azure deployment location
 → Region
+
+Special isolated cloud for regulatory / jurisdictional requirements
+→ Sovereign cloud / sovereign region
 ```
 
 ## Exam Reasoning
 Do not confuse a geography with a region. A geography is the broader boundary; resources are deployed to Azure regions.
+
+If the scenario emphasizes government, national-cloud, or special jurisdictional requirements, consider **sovereign regions**.

@@ -10,7 +10,7 @@ ARM provides a consistent management layer through which Azure resources can be 
 ```text
 Azure Portal
 Azure CLI
-PowerShell
+Azure PowerShell
 REST API
       ↓
 Azure Resource Manager
@@ -20,14 +20,37 @@ Resource Provider
 Azure Resource
 ```
 
-## Key Capabilities
-ARM supports resource deployment and management, consistent access control and governance integration, and declarative infrastructure deployment through templates.
+## ARM Templates
+An ARM template is a **declarative JSON file** that defines the Azure resources and configuration to deploy.
+
+ARM templates support Infrastructure as Code (IaC):
+
+```text
+Define desired infrastructure in code
+        ↓
+Deploy repeatedly and consistently
+        ↓
+Azure Resource Manager
+```
+
+Think:
+
+```text
+ARM
+→ management / deployment layer
+
+ARM template
+→ declarative infrastructure definition
+```
 
 ## Decision Factors
 ```text
 Create / update / delete / manage Azure resources
 through Azure's common management layer
 → Azure Resource Manager
+
+Repeatable declarative Azure deployment
+→ ARM template / Infrastructure as Code
 ```
 
 ## ARM vs Resource Group
@@ -40,4 +63,15 @@ Resource Group
 ```
 
 ## Exam Reasoning
-Do not confuse the management layer with a resource container. Portal, CLI, PowerShell, and REST operations ultimately interact with Azure through ARM.
+Do not confuse the management layer with a resource container or deployment definition.
+
+```text
+MANAGE Azure resources
+→ ARM
+
+DEFINE repeatable infrastructure in JSON
+→ ARM template
+
+GROUP related Azure resources
+→ Resource Group
+```

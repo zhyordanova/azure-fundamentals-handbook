@@ -1,7 +1,6 @@
 # Multifactor Authentication (MFA)
 
 ## Definition
-
 Multifactor Authentication (MFA) requires two or more authentication factors to verify an identity.
 
 Authentication factors include:
@@ -11,23 +10,42 @@ Authentication factors include:
 - something you are, such as a fingerprint or facial recognition.
 
 ## What Problem Does It Solve?
-
 A password alone can be compromised. MFA strengthens authentication by requiring additional proof of identity.
 
-## Decision Factors
+## Passwordless Authentication
+Passwordless authentication verifies identity without requiring a traditional password.
 
-Ask whether the requirement is for **additional authentication** or a **policy that decides when additional authentication is required**.
+Examples can include:
+
+- Windows Hello for Business;
+- Microsoft Authenticator phone sign-in;
+- FIDO2 security keys / passkeys.
+
+```text
+Two or more authentication factors
+→ MFA
+
+Authenticate without a traditional password
+→ Passwordless
+```
+
+Passwordless and MFA are related security approaches, but they are not the same concept.
+
+## Decision Factors
+Ask whether the requirement is for **additional authentication**, **passwordless sign-in**, or a **policy that decides when an access control is required**.
 
 ```text
 Require multiple authentication factors
 → MFA
+
+Remove traditional password from sign-in
+→ Passwordless authentication
 
 Require MFA only under certain conditions
 → Conditional Access
 ```
 
 ## MFA vs Conditional Access
-
 | MFA | Conditional Access |
 |---|---|
 | Provides additional identity verification | Decides when access controls apply |
@@ -36,19 +54,13 @@ Require MFA only under certain conditions
 
 > Conditional Access can require MFA, but Conditional Access is not MFA.
 
-## Common Mistakes
-
-MFA does not decide whether a user is in a trusted location or using a compliant device.
-
-Those conditions can be evaluated by Conditional Access.
-
-MFA also does not necessarily mean password + code. It requires multiple factors, and modern authentication can include passwordless methods.
-
 ## Exam Reasoning
-
 ```text
 MORE AUTHENTICATION FACTORS?
 → MFA
+
+NO TRADITIONAL PASSWORD?
+→ Passwordless
 
 IF location/device/risk condition THEN require MFA?
 → Conditional Access

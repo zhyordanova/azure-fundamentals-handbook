@@ -1,7 +1,6 @@
 # Microsoft Entra ID
 
 ## Definition
-
 Microsoft Entra ID is Microsoft's cloud-based identity and access management (IAM) service.
 
 It manages identities such as users and groups and supports secure sign-in to Microsoft cloud services, third-party applications, and custom applications.
@@ -9,13 +8,11 @@ It manages identities such as users and groups and supports secure sign-in to Mi
 Microsoft Entra ID was formerly known as Azure Active Directory (Azure AD).
 
 ## What Problem Does It Solve?
-
 Organizations need a central identity platform instead of maintaining separate identities for every application.
 
 Microsoft Entra ID provides identity management and authentication capabilities for cloud environments.
 
 ## Key Characteristics
-
 Microsoft Entra ID provides:
 
 - user and group management;
@@ -24,46 +21,59 @@ Microsoft Entra ID provides:
 - support for MFA and Conditional Access;
 - support for external collaboration.
 
-## Decision Factors
+## Microsoft Entra Domain Services
+Microsoft Entra Domain Services provides **managed domain services** for workloads that need traditional domain capabilities without requiring the organization to deploy and maintain domain controllers.
 
-First determine whether the requirement is about **identity** or **permissions on Azure resources**.
+It supports capabilities such as:
+
+- domain join;
+- Group Policy;
+- LDAP;
+- Kerberos / NTLM authentication.
+
+```text
+Cloud identity and modern authentication
+→ Microsoft Entra ID
+
+Managed traditional domain capabilities
+without managing domain controllers
+→ Microsoft Entra Domain Services
+```
+
+A common scenario is supporting legacy applications that depend on traditional domain protocols.
+
+## Decision Factors
+First determine whether the requirement is about **identity**, **traditional managed domain capabilities**, or **permissions on Azure resources**.
 
 ```text
 Manage users, groups, identities, or sign-in
 → Microsoft Entra ID
+
+Need managed domain join / LDAP / Kerberos / NTLM
+→ Microsoft Entra Domain Services
 
 Control what an authenticated identity can do to Azure resources
 → Azure RBAC
 ```
 
 ## Compare With
-
-| Microsoft Entra ID | Azure RBAC |
+| Service | Best fit |
 |---|---|
-| Manages identities | Manages Azure resource permissions |
-| Supports authentication | Provides authorization |
-| Users, groups, sign-in | Roles and scopes |
+| Microsoft Entra ID | Cloud identity and authentication |
+| Microsoft Entra Domain Services | Managed traditional domain services |
+| Azure RBAC | Authorization to Azure resources |
 
 ## Common Mistakes
-
-Microsoft Entra ID does not replace Azure RBAC.
-
-```text
-WHO ARE YOU?
-→ Authentication / Microsoft Entra ID
-
-WHAT CAN YOU DO TO AN AZURE RESOURCE?
-→ Authorization / Azure RBAC
-```
-
-Microsoft Entra roles and Azure RBAC roles are also different: Entra roles manage Entra administrative capabilities, while Azure RBAC roles manage access to Azure resources.
+Microsoft Entra ID does not replace Azure RBAC, and Microsoft Entra Domain Services is not the same service as Microsoft Entra ID.
 
 ## Exam Reasoning
+```text
+WHO ARE YOU / manage cloud identities?
+→ Microsoft Entra ID
 
-If the scenario asks for centralized cloud identity management, authentication, users, groups, or sign-in:
+Legacy domain capabilities without managing DCs?
+→ Microsoft Entra Domain Services
 
-→ **Microsoft Entra ID**
-
-If it asks which authenticated user can perform which action on an Azure resource:
-
-→ **Azure RBAC**
+WHAT CAN YOU DO TO AN AZURE RESOURCE?
+→ Azure RBAC
+```

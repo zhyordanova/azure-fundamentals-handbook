@@ -1,17 +1,20 @@
-# Governance Decision Tree
+# Governance and Management Decision Tree
 
 Start with the **problem**, not a trigger word.
 
 ```mermaid
 flowchart TD
-    A["What governance problem must be solved?"]
+    A["What management or governance problem must be solved?"]
 
-    A --> B["Control user permissions"]
-    A --> C["Enforce / audit resource configuration"]
+    A --> B["Control permissions"]
+    A --> C["Enforce resource configuration"]
     A --> D["Prevent deletion / modification"]
-    A --> E["Organize resources with metadata"]
-    A --> F["Govern and understand data estate"]
-    A --> G["Find Microsoft compliance / audit documentation"]
+    A --> E["Organize with metadata"]
+    A --> F["Govern data estate"]
+    A --> G["Microsoft compliance documentation"]
+    A --> H["Interact with Azure resources"]
+    A --> I["Manage resources outside Azure"]
+    A --> J["Repeatable deployment from code"]
 
     B --> RBAC["Azure RBAC"]
     C --> POLICY["Azure Policy"]
@@ -19,6 +22,9 @@ flowchart TD
     E --> TAGS["Resource Tags"]
     F --> PURVIEW["Microsoft Purview"]
     G --> TRUST["Service Trust Portal"]
+    H --> H1["Portal / Cloud Shell / CLI / PowerShell"]
+    I --> ARC["Azure Arc"]
+    J --> IAC["Infrastructure as Code / ARM templates"]
 ```
 
 ## High-Value Distinctions
@@ -30,54 +36,33 @@ WHO can perform actions?
 WHAT configuration is allowed or required?
 → Azure Policy
 
-Prevent DELETE only?
-→ CanNotDelete lock
-
-Prevent MODIFY + DELETE?
-→ ReadOnly lock
+Prevent DELETE / MODIFY?
+→ Resource Locks
 
 LABEL / ORGANIZE resources?
 → Resource Tags
 
-GOVERN DATA across environments?
+GOVERN DATA?
 → Microsoft Purview
 
-MICROSOFT COMPLIANCE / AUDIT DOCUMENTS?
+MICROSOFT COMPLIANCE DOCUMENTS?
 → Service Trust Portal
-```
 
-## Scope and Inheritance Traps
+GUI management?
+→ Azure Portal
 
-```text
-RBAC at parent scope
-→ permissions can apply below
+Browser-hosted shell?
+→ Azure Cloud Shell
 
-Policy at parent scope
-→ governance rules can apply below
+Cross-platform command line?
+→ Azure CLI
 
-Lock at parent scope
-→ child resources inherit the lock
+PowerShell administration?
+→ Azure PowerShell
 
-Tag at parent scope
-→ NOT automatically inherited by child resources
-```
+MANAGE non-Azure / on-prem resources through Azure?
+→ Azure Arc
 
-## Administrative Actions Trap
-
-Do not choose RBAC merely because a question mentions an administrator.
-
-```text
-Control whether the administrator is AUTHORIZED?
-→ RBAC
-
-Protect an existing resource even from an authorized delete/update operation?
-→ Resource Locks
-```
-
-## Final Decision Rule
-
-```text
-1. What is being controlled?
-2. Is it permissions, configuration, protection, metadata, data governance, or documentation?
-3. Choose the service that directly solves that problem.
+REPEATABLE infrastructure defined in code?
+→ IaC / ARM templates
 ```

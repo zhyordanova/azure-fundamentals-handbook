@@ -7,3 +7,4 @@
 5. [Conditional Access](5-conditional-access.md)
 6. [Hybrid Identity](6-hybrid-identity.md)
 7. [External Identities](7-external-identities.md)
+8. [Azure Security Fundamentals](8-security-fundamentals.md)
