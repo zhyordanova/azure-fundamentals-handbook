@@ -2,187 +2,566 @@
 
 > Quick reference for recognizing common AZ-900 question patterns.
 
-Microsoft exam questions often describe a requirement without directly naming the Azure service or concept.
+Trigger words are **confirmation clues**, not a substitute for
+understanding the requirement.
 
-Use the trigger words below to quickly identify what the question is asking about.
-
-## Cloud Concepts
-
-| Trigger Words | Think |
-|---|---|
-| on-demand, pay-as-you-go, consumption-based, provision | **Cloud Computing** |
-| provider-owned infrastructure, public provider, Internet, pay-as-you-go | **Public Cloud** |
-| dedicated infrastructure, one organization, own hardware, on-site datacenter | **Private Cloud** |
-| on-premises + Azure, keep existing datacenter, gradual migration | **Hybrid Cloud** |
-| uptime, SLA, minimize downtime, remain available | **High Availability** |
-| increase capacity, more instances, growing workload | **Scalability** |
-| automatically scale, demand, dynamic scaling, add/remove resources automatically | **Elasticity** |
-| worldwide users, multiple regions, global deployment | **Geo-distribution** |
-| upfront investment, buy servers, hardware purchase | **CapEx** |
-| monthly cost, pay-as-you-go, ongoing cost, consumption | **OpEx** |
-
-## Azure Architecture
-
-| Trigger Words | Think |
-|---|---|
-| worldwide infrastructure, Microsoft datacenters, global network | **Azure Global Infrastructure** |
-| compliance boundary, data residency, geography | **Azure Geography** |
-| deployment location, geographic area, one or more datacenters | **Azure Region** |
-| separate datacenters within one region, datacenter failure, fault isolation | **Availability Zones** |
-| paired regions, regional disaster recovery, regional outage | **Region Pair** |
-| multiple subscriptions, hierarchy, policies across subscriptions | **Management Group** |
-| billing, quota, consumption boundary, subscription | **Azure Subscription** |
-| logical container, related resources, manage together | **Resource Group** |
-| VM, Storage Account, SQL Database, deployed Azure service | **Azure Resource** |
-| deployment, create/update/delete resources, ARM, management layer | **Azure Resource Manager** |
-
-## Compute
-
-| Trigger Words | Think |
-|---|---|
-| manage OS, full control, install software, legacy application | **Azure Virtual Machines** |
-| multiple VMs, autoscale, scale out, scale in, VM instances | **Virtual Machine Scale Sets** |
-| web application, PaaS, Microsoft manages OS, deploy application code | **Azure App Service** |
-| serverless, event-driven, trigger, execute code | **Azure Functions** |
-| simple container workload, no VM management, no Kubernetes cluster | **Azure Container Instances (ACI)** |
-| Kubernetes, orchestrate containers, microservices, container cluster | **Azure Kubernetes Service (AKS)** |
-
-## Networking
-
-| Trigger Words | Think |
-|---|---|
-| private Azure network, IP address space, Azure resources communicate | **Virtual Network (VNet)** |
-| allow/deny traffic, inbound/outbound rules, ports, security rules | **Network Security Group (NSG)** |
-| connect two VNets, Microsoft backbone, private VNet-to-VNet | **Virtual Network Peering** |
-| encrypted VPN, Site-to-Site, Point-to-Site, on-premises over Internet | **Azure VPN Gateway** |
-| private connection, no public Internet, circuit, predictable latency | **ExpressRoute** |
-| secure RDP/SSH, VM administration, no public IP on VM | **Azure Bastion** |
-| represents on-premises network, remote VPN site, address prefixes | **Local Network Gateway** |
-
-## Storage
-
-| Trigger Words | Think |
-|---|---|
-| Blob, Files, Queue, Table, Azure Storage namespace | **Storage Account** |
-| images, videos, backups, unstructured data, object storage | **Blob Storage** |
-| frequently accessed, active data | **Hot Tier** |
-| infrequently accessed, online, 30+ days | **Cool Tier** |
-| rarely accessed, online, 90+ days | **Cold Tier** |
-| offline, long-term retention, rehydration, retrieval takes hours | **Archive Tier** |
-| SMB, NFS, mounted drive, shared file system | **Azure Files** |
-| VM disk, OS disk, data disk, block storage | **Managed Disks** |
-| messages, asynchronous processing, process later, decouple applications | **Queue Storage** |
-| NoSQL, key-value, Partition Key, Row Key, flexible schema | **Table Storage** |
-
-## Identity
-
-| Trigger Words | Think |
-|---|---|
-| identity, users, groups, authentication, sign-in, Azure AD | **Microsoft Entra ID** |
-| permissions, roles, authorization, least privilege, Reader/Contributor/Owner | **Azure RBAC** |
-| second factor, verification code, Authenticator, additional authentication | **MFA** |
-| sign in once, one login, multiple applications | **Single Sign-On (SSO)** |
-| require MFA based on condition, compliant device, location, block access | **Conditional Access** |
-| on-premises Active Directory + Entra ID, synchronization, common identity | **Hybrid Identity** |
-
-## Governance
-
-| Trigger Words | Think |
-|---|---|
-| enforce, compliance, standards, require, deny, audit, mandatory tags | **Azure Policy** |
-| prevent deletion, accidental deletion, read-only, cannot modify | **Resource Locks** |
-| metadata, department, owner, environment, cost tracking, classification | **Resource Tags** |
-
-## Monitoring
-
-| Trigger Words | Think |
-|---|---|
-| metrics, logs, alerts, CPU utilization, telemetry | **Azure Monitor** |
-| application performance, failed requests, response time, dependencies | **Application Insights** |
-| query logs, KQL, Log Analytics workspace, investigate logs | **Log Analytics** |
-| recommendations, optimize, best practices, underutilized resources | **Azure Advisor** |
-| Azure outage, service incident, planned maintenance, health advisory | **Azure Service Health** |
-
-## Cost Management
-
-| Trigger Words | Think |
-|---|---|
-| resource type, size, consumption, region, data transfer | **Factors Affecting Azure Costs** |
-| estimate, planned solution, expected monthly cost | **Azure Pricing Calculator** |
-| actual spending, budget, cost analysis, spending alert | **Microsoft Cost Management** |
-| stable predictable long-term usage, commitment | **Azure Reservations** |
-| consistent hourly compute spend, flexible compute usage | **Azure Savings Plan for Compute** |
-| unused capacity, interruptible workload, eviction | **Azure Spot Virtual Machines** |
-
-## Service Models
-
-| Trigger Words | Think |
-|---|---|
-| manage OS, full administrative control, install software, VM | **IaaS** |
-| Microsoft manages OS, managed platform, deploy application code | **PaaS** |
-| ready-to-use application, Microsoft 365, provider manages application | **SaaS** |
-| who manages, customer responsibility, Microsoft responsibility | **Shared Responsibility Model** |
-
-## High-Value Distinctions
-
-| If the question says... | Think |
-|---|---|
-| Keep service running | **High Availability** |
-| Increase capacity | **Scalability** |
-| Automatically adjust capacity | **Elasticity** |
-| Failure inside one Region | **Availability Zones** |
-| Multiple subscriptions | **Management Groups** |
-| Related Azure resources | **Resource Group** |
-| One VM with OS control | **Virtual Machine** |
-| Multiple scalable VMs | **VM Scale Sets** |
-| Web application without OS management | **App Service** |
-| Event-driven code | **Azure Functions** |
-| Run containers without Kubernetes | **ACI** |
-| Kubernetes orchestration | **AKS** |
-| Filter network traffic | **NSG** |
-| Connect two Azure VNets | **VNet Peering** |
-| On-premises over encrypted VPN | **VPN Gateway** |
-| Private connection without public Internet | **ExpressRoute** |
-| Secure RDP / SSH to VM | **Azure Bastion** |
-| Object storage | **Blob Storage** |
-| Shared file system | **Azure Files** |
-| VM disk | **Managed Disks** |
-| Messages | **Queue Storage** |
-| NoSQL key-value data | **Table Storage** |
-| Who are you? | **Microsoft Entra ID** |
-| What can you do? | **Azure RBAC** |
-| Additional authentication | **MFA** |
-| Decide when MFA is required | **Conditional Access** |
-| One sign-in for many apps | **SSO** |
-| Same identity on-premises + cloud | **Hybrid Identity** |
-| Who can perform actions? | **Azure RBAC** |
-| What configurations are allowed? | **Azure Policy** |
-| Prevent accidental deletion | **Resource Locks** |
-| Organize / classify resources | **Resource Tags** |
-| Observe resources | **Azure Monitor** |
-| Analyze application performance | **Application Insights** |
-| Query logs | **Log Analytics** |
-| Optimization recommendations | **Azure Advisor** |
-| Azure platform incident | **Service Health** |
-| Estimate future cost | **Pricing Calculator** |
-| Analyze actual cost | **Cost Management** |
-| Stable long-term usage | **Reservations** |
-| Flexible compute commitment | **Savings Plan** |
-| Interruptible workload | **Spot VMs** |
-| Customer manages OS | **IaaS** |
-| Microsoft manages OS, customer deploys app | **PaaS** |
-| Customer uses finished application | **SaaS** |
-
-## Exam Strategy
-
-Do not choose an answer because you recognize only one keyword.
-
-First identify the requirement:
+Use this file after asking:
 
 > **What is the company actually trying to achieve?**
 
-Then use the trigger words to confirm the Azure concept or service.
+------------------------------------------------------------------------
 
-A useful pattern is:
+## Cloud Concepts
 
-> **Requirement → Trigger Words → Azure Service**
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  on-demand resources,                **Cloud Computing**
+  consumption-based, provision when   
+  needed                              
+
+  provider-owned infrastructure,      **Public Cloud**
+  public provider, shared cloud       
+  environment                         
+
+  dedicated to one organization,      **Private Cloud**
+  private environment                 
+
+  on-premises + public cloud, keep    **Hybrid Cloud**
+  some workloads locally              
+
+  uptime, SLA, minimize downtime,     **High Availability**
+  remain available                    
+
+  capacity can increase or decrease   **Scalability**
+
+  more CPU / RAM, bigger or smaller   **Vertical Scaling --- Up / Down**
+  resource                            
+
+  more or fewer instances / machines  **Horizontal Scaling --- Out / In**
+
+  capacity dynamically adapts to      **Elasticity**
+  demand                              
+
+  worldwide users, geographic         **Geo-distribution**
+  distribution, multiple locations    
+
+  upfront investment, purchase        **CapEx**
+  infrastructure                      
+
+  ongoing / consumption expense, pay  **OpEx**
+  for usage                           
+
+  pay only for what is consumed       **Consumption-based model**
+
+  event-driven execution, no server   **Serverless**
+  management                          
+  -----------------------------------------------------------------------
+
+### Cloud Concept Traps
+
+``` text
+Capacity CAN change
+→ Scalability
+
+Capacity dynamically changes with demand
+→ Elasticity
+
+CPU / RAM changes
+→ Vertical scaling
+
+Number of instances changes
+→ Horizontal scaling
+```
+
+------------------------------------------------------------------------
+
+## Azure Architecture
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  worldwide Azure infrastructure,     **Azure Global Infrastructure**
+  global datacenter footprint         
+
+  broad geographic / data residency   **Azure Geography**
+  boundary                            
+
+  special isolated cloud for national **Sovereign Region / Sovereign
+  or regulatory requirements          Cloud**
+
+  deployment location, geographic     **Azure Region**
+  area containing datacenters         
+
+  isolated datacenter locations       **Availability Zones**
+  inside one region, datacenter       
+  failure                             
+
+  relationship between two Azure      **Region Pair**
+  regions, paired regions             
+
+  organize multiple subscriptions     **Management Group**
+
+  billing, quota, subscription        **Azure Subscription**
+  boundary                            
+
+  logical container for related       **Resource Group**
+  resources                           
+
+  deployed instance of an Azure       **Azure Resource**
+  service                             
+
+  create/update/delete resources,     **Azure Resource Manager (ARM)**
+  Azure management layer              
+
+  declarative JSON deployment,        **ARM Template / Infrastructure as
+  repeatable Azure infrastructure     Code**
+  -----------------------------------------------------------------------
+
+### Architecture Traps
+
+``` text
+Datacenter-level isolation inside one region
+→ Availability Zone
+
+Relationship between two regions
+→ Region Pair
+
+Resources in one Resource Group
+→ can be in different Azure regions
+
+Resource Group location
+→ does NOT force all contained resources into that location
+```
+
+------------------------------------------------------------------------
+
+## Compute
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  manage OS, full control, install    **Azure Virtual Machines**
+  custom software                     
+
+  VM disk, NIC, public IP, supporting **VM Supporting Resources**
+  VM resources                        
+
+  multiple VM instances, autoscale VM **Virtual Machine Scale Sets**
+  fleet                               
+
+  fault/update domains, protect VMs   **Availability Sets**
+  from host/rack maintenance failures 
+
+  virtual desktops / applications     **Azure Virtual Desktop**
+  delivered to users                  
+
+  host web app, deploy code, no OS    **Azure App Service**
+  management                          
+
+  serverless, event-driven, trigger,  **Azure Functions**
+  short code execution                
+
+  package application + dependencies, **Containers**
+  portable runtime                    
+
+  run containers without managing VMs **Azure Container Instances (ACI)**
+  or Kubernetes                       
+
+  Kubernetes orchestration, container **Azure Kubernetes Service (AKS)**
+  cluster                             
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## Networking
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  private Azure network, IP address   **Virtual Network (VNet)**
+  space                               
+
+  divide VNet address space           **Subnet**
+
+  allow/deny inbound or outbound      **Network Security Group (NSG)**
+  traffic, ports, security rules      
+
+  connect two VNets privately over    **VNet Peering**
+  Microsoft backbone                  
+
+  encrypted connection over public    **VPN Gateway**
+  Internet, Site-to-Site /            
+  Point-to-Site                       
+
+  dedicated private connection,       **ExpressRoute**
+  predictable connectivity, no public 
+  Internet path                       
+
+  public IP vs private access to a    **Public / Private Endpoint**
+  service                             
+
+  domain-name resolution              **Azure DNS**
+
+  secure browser-based RDP/SSH, VM    **Azure Bastion**
+  does not need public IP             
+
+  represent on-premises VPN site /    **Local Network Gateway**
+  address prefixes                    
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## Storage
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  Blob, Files, Queue, Table namespace **Storage Account**
+
+  unstructured objects, images,       **Blob Storage**
+  videos, backups                     
+
+  frequent access                     **Hot Tier**
+
+  infrequent but online               **Cool Tier**
+
+  rare access but still online        **Cold Tier**
+
+  offline, long-term retention,       **Archive Tier**
+  rehydration required                
+
+  SMB / NFS shared file system        **Azure Files**
+
+  VM OS/data disk, block storage      **Managed Disks**
+
+  messages, asynchronous processing,  **Queue Storage**
+  decouple applications               
+
+  NoSQL key-value, PartitionKey /     **Table Storage**
+  RowKey                              
+
+  command-line file copy to/from      **AzCopy**
+  Azure Storage                       
+
+  graphical storage management / file **Storage Explorer**
+  transfer                            
+
+  synchronize Windows file server     **Azure File Sync**
+  with Azure Files                    
+
+  discover, assess, plan, track       **Azure Migrate**
+  migration                           
+
+  very large data transfer when       **Azure Data Box**
+  network is impractical, physical    
+  appliance                           
+  -----------------------------------------------------------------------
+
+### Storage Redundancy
+
+  Requirement                          Think
+  ------------------------------------ ----------
+  local infrastructure protection      **LRS**
+  availability-zone protection         **ZRS**
+  secondary-region replication         **GRS**
+  zone + secondary-region protection   **GZRS**
+
+------------------------------------------------------------------------
+
+## Identity & Security
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  cloud identities, users, groups,    **Microsoft Entra ID**
+  sign-in                             
+
+  domain join, Group Policy, LDAP,    **Microsoft Entra Domain Services**
+  Kerberos / NTLM                     
+
+  what actions can a user perform,    **Azure RBAC**
+  roles, permissions, least privilege 
+
+  multiple authentication factors,    **MFA**
+  additional verification             
+
+  authenticate without a traditional  **Passwordless authentication**
+  password                            
+
+  sign in once, multiple applications **Single Sign-On (SSO)**
+
+  location/device/risk conditions,    **Conditional Access**
+  require MFA or block access         
+
+  same identity across on-premises    **Hybrid Identity**
+  and cloud                           
+
+  partner/vendor/external             **External Identities / B2B**
+  organization access                 
+
+  verify explicitly, least privilege, **Zero Trust**
+  assume breach                       
+
+  multiple security layers            **Defense in Depth**
+
+  cloud security posture, security    **Microsoft Defender for Cloud**
+  recommendations                     
+  -----------------------------------------------------------------------
+
+### Identity Traps
+
+``` text
+WHO ARE YOU?
+→ Authentication
+
+WHAT CAN YOU DO?
+→ Authorization / RBAC
+
+Multiple factors
+→ MFA
+
+No traditional password
+→ Passwordless
+
+Decide WHEN MFA is required
+→ Conditional Access
+```
+
+------------------------------------------------------------------------
+
+## Governance & Management
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  enforce standards, audit            **Azure Policy**
+  configuration, restrict locations / 
+  VM sizes, require tags              
+
+  prevent deletion, prevent           **Resource Locks**
+  modification, read-only             
+
+  metadata, department, owner,        **Resource Tags**
+  environment, cost grouping          
+
+  govern / discover / understand data **Microsoft Purview**
+  estate                              
+
+  Microsoft audit reports, compliance **Service Trust Portal**
+  documentation                       
+
+  graphical browser-based Azure       **Azure Portal**
+  management                          
+
+  browser-hosted command environment  **Azure Cloud Shell**
+
+  cross-platform Azure command line   **Azure CLI**
+
+  PowerShell-based Azure              **Azure PowerShell**
+  administration                      
+
+  manage on-premises / multicloud     **Azure Arc**
+  resources through Azure             
+
+  declarative, repeatable             **Infrastructure as Code (IaC)**
+  infrastructure definition           
+
+  Azure declarative JSON              **ARM Template**
+  infrastructure deployment           
+  -----------------------------------------------------------------------
+
+### Governance & Management Traps
+
+``` text
+WHO can perform an action?
+→ RBAC
+
+WHAT configuration is allowed / required?
+→ Azure Policy
+
+Protect resource from delete / modify?
+→ Resource Lock
+
+Cloud Shell
+→ environment
+
+Azure CLI / Azure PowerShell
+→ tools
+```
+
+------------------------------------------------------------------------
+
+## Monitoring
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  metrics, logs, alerts, telemetry,   **Azure Monitor**
+  resource monitoring                 
+
+  application performance, requests,  **Application Insights**
+  failures, dependencies              
+
+  query logs, KQL, Log Analytics      **Log Analytics**
+  workspace                           
+
+  recommendations, best practices,    **Azure Advisor**
+  underutilized resources             
+
+  Azure outage, service incident,     **Azure Service Health**
+  planned maintenance, health         
+  advisory                            
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## Cost Management
+
+  -----------------------------------------------------------------------
+  Trigger Words / Scenario            Think
+  ----------------------------------- -----------------------------------
+  resource type, size, consumption,   **Factors Affecting Azure Costs**
+  region, outbound data transfer      
+
+  estimate planned / future solution  **Azure Pricing Calculator**
+  cost                                
+
+  analyze actual spending, cost       **Microsoft Cost Management**
+  trends, budgets                     
+
+  spending threshold, notification    **Budget + Alert**
+
+  optimization recommendation,        **Azure Advisor**
+  underutilized resource              
+
+  stable predictable long-term usage  **Azure Reservations**
+
+  predictable compute spend + more    **Savings Plan for Compute**
+  flexibility                         
+
+  interruptible workload, eviction,   **Spot VMs**
+  unused capacity                     
+
+  uncertain usage, no commitment,     **Pay-as-you-go**
+  maximum flexibility                 
+  -----------------------------------------------------------------------
+
+### Cost Trap
+
+``` text
+Budget
+→ threshold / notification
+
+Budget
+≠ hard spending limit
+≠ automatic resource shutdown
+```
+
+------------------------------------------------------------------------
+
+## Service Models
+
+  ------------------------------------------------------------------------
+  Trigger Words / Scenario             Think
+  ------------------------------------ -----------------------------------
+  manage OS, virtual server, full      **IaaS**
+  administrative control               
+
+  build/deploy application, provider   **PaaS**
+  manages OS/platform                  
+
+  use finished cloud application       **SaaS**
+
+  who manages                          **Shared Responsibility Model**
+  OS/application/infrastructure/data   
+  ------------------------------------------------------------------------
+
+### Classification Examples
+
+  Example                  Model
+  ------------------------ ----------
+  Azure Virtual Machines   **IaaS**
+  Azure App Service        **PaaS**
+  Azure Functions          **PaaS**
+  Azure SQL Database       **PaaS**
+  Microsoft 365            **SaaS**
+
+------------------------------------------------------------------------
+
+## High-Value Distinctions
+
+  If the requirement is...                  Think
+  ----------------------------------------- ----------------------------
+  Keep service available                    **High Availability**
+  Capacity can change                       **Scalability**
+  Capacity dynamically follows demand       **Elasticity**
+  More CPU / RAM                            **Vertical scaling**
+  More instances                            **Horizontal scaling**
+  Datacenter failure inside one region      **Availability Zones**
+  Multiple subscriptions                    **Management Groups**
+  Billing / quota boundary                  **Subscription**
+  Related resources                         **Resource Group**
+  OS control                                **Virtual Machine / IaaS**
+  VM fleet autoscaling                      **VM Scale Sets**
+  Web app without OS management             **App Service / PaaS**
+  Event-driven code                         **Functions**
+  Containers without Kubernetes             **ACI**
+  Kubernetes orchestration                  **AKS**
+  Filter network traffic                    **NSG**
+  Connect Azure VNets                       **VNet Peering**
+  On-premises over encrypted Internet VPN   **VPN Gateway**
+  Dedicated private connectivity            **ExpressRoute**
+  Secure RDP / SSH without VM public IP     **Bastion**
+  Objects                                   **Blob Storage**
+  Shared file system                        **Azure Files**
+  VM disk                                   **Managed Disks**
+  Messages                                  **Queue Storage**
+  Key-value NoSQL                           **Table Storage**
+  Rare but online blob data                 **Cold**
+  Offline archived blob data                **Archive**
+  Manage Azure resource permissions         **RBAC**
+  Enforce resource configuration            **Policy**
+  Prevent delete only, allow modification   **CanNotDelete**
+  Prevent modification + deletion           **ReadOnly**
+  Govern data                               **Purview**
+  Microsoft compliance evidence             **Service Trust Portal**
+  Browser command environment               **Cloud Shell**
+  Manage hybrid / multicloud resources      **Azure Arc**
+  Repeatable declarative infrastructure     **IaC / ARM Templates**
+  Estimate future cost                      **Pricing Calculator**
+  Analyze actual cost                       **Cost Management**
+  Optimization recommendation               **Advisor**
+  Interruptible compute                     **Spot**
+  Stable long-term commitment               **Reservation**
+  Flexible compute commitment               **Savings Plan**
+  Finished application                      **SaaS**
+
+------------------------------------------------------------------------
+
+## Exam Strategy
+
+Do **not** choose an answer because one keyword looks familiar.
+
+Use this sequence:
+
+``` text
+1. What PROBLEM must be solved?
+
+2. What SCOPE / ENDPOINTS are involved?
+
+3. What CONSTRAINTS matter?
+   - cost
+   - control
+   - availability
+   - connectivity
+   - management effort
+
+4. Which options are technically valid?
+
+5. Which option is the BEST FIT?
+```
+
+Then use trigger words only to **confirm** the answer.
+
+> **Requirement → Scope → Constraints → Best Fit**

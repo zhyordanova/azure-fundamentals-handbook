@@ -2,556 +2,476 @@
 
 > High-level map of the core concepts and services covered in AZ-900.
 
-Use this page to understand how the major Azure concepts relate to each other.
+Use this page to understand **how the major concepts relate to each other**. For detailed explanations, use the chapter files; for scenario selection, use the decision trees.
 
-## Cloud Fundamentals
-
-```mermaid
-flowchart TD
-
-    A["Cloud Computing"] --> B{"Deployment Model"}
-
-    B --> C["Public Cloud"]
-    B --> D["Private Cloud"]
-    B --> E["Hybrid Cloud"]
-
-    A --> F{"Cloud Benefits"}
-
-    F --> G["High Availability"]
-    F --> H["Scalability"]
-    F --> I["Elasticity"]
-    F --> J["Geo-distribution"]
-
-    A --> K{"Cost Model"}
-
-    K --> L["CapEx"]
-    K --> M["OpEx"]
-```
-
-### Cloud Benefits
-
-```mermaid
-flowchart LR
-
-    HA["High Availability"] --> HA1["Keep services available"]
-
-    SC["Scalability"] --> SC1["Increase capacity"]
-
-    EL["Elasticity"] --> EL1["Automatically adjust capacity"]
-
-    GEO["Geo-distribution"] --> GEO1["Serve users across geographic locations"]
-```
-
-## Azure Resource Hierarchy
+## 1. Cloud Fundamentals
 
 ```mermaid
 flowchart TD
+    A["Cloud Computing"] --> B{"Deployment model"}
+    B --> PUB["Public Cloud"]
+    B --> PRI["Private Cloud"]
+    B --> HYB["Hybrid Cloud"]
 
-    MG["Management Group"]
-    SUB["Subscription"]
-    RG["Resource Group"]
-    RES["Resource"]
+    A --> C{"Capacity / availability"}
+    C --> HA["High Availability"]
+    C --> SC["Scalability"]
+    C --> EL["Elasticity"]
+    C --> GEO["Geo-distribution"]
 
-    MG --> SUB
-    SUB --> RG
-    RG --> RES
+    A --> D{"Financial model"}
+    D --> CAPEX["CapEx"]
+    D --> OPEX["OpEx / consumption-based"]
 ```
 
-### Responsibility of Each Level
+### High-Value Distinctions
+
+| Requirement | Think |
+|---|---|
+| Shared cloud-provider infrastructure | **Public Cloud** |
+| Environment dedicated to one organization | **Private Cloud** |
+| On-premises/private + public cloud | **Hybrid Cloud** |
+| Capacity can increase or decrease | **Scalability** |
+| Capacity dynamically follows demand | **Elasticity** |
+| More CPU/RAM on one resource | **Vertical scaling — Up/Down** |
+| More/fewer instances | **Horizontal scaling — Out/In** |
+| Upfront infrastructure investment | **CapEx** |
+| Pay for consumption over time | **OpEx** |
+
+Serverless services such as **Azure Functions** let you run code without managing servers and commonly use consumption-based execution.
+
+---
+
+## 2. Azure Global Infrastructure
+
+```mermaid
+flowchart TD
+    GEO["Geography"] --> REG["Region"]
+    REG --> AZ1["Availability Zone"]
+    REG --> AZ2["Availability Zone"]
+    REG -. "regional relationship" .-> RP["Region Pair"]
+    GEO --> SOV["Sovereign cloud / region context"]
+```
+
+| Concept | Main Idea |
+|---|---|
+| **Geography** | Broad geographic / data-residency boundary |
+| **Region** | Geographic Azure deployment location |
+| **Availability Zone** | Physically separate datacenter location within a region |
+| **Region Pair** | Relationship between two Azure regions used by some services for resiliency |
+| **Sovereign cloud/region** | Isolated environment for specific governmental or regulatory requirements |
+
+> **Zone failure → think Availability Zones. Regional resiliency → think multi-region design; a Region Pair is a relationship between regions, not an automatic DR solution for every workload.**
+
+---
+
+## 3. Azure Resource Hierarchy and Management
+
+```mermaid
+flowchart TD
+    MG["Management Group"] --> SUB["Subscription"]
+    SUB --> RG["Resource Group"]
+    RG --> RES["Resource"]
+```
 
 | Level | Main Purpose |
 |---|---|
-| Management Group | Organize multiple subscriptions |
-| Subscription | Billing, quotas, and governance boundary |
-| Resource Group | Organize related resources |
-| Resource | Actual Azure service instance |
+| **Management Group** | Organize multiple subscriptions |
+| **Subscription** | Billing, quotas, access/governance boundary |
+| **Resource Group** | Logical container for related resources |
+| **Resource** | Deployed Azure service instance |
 
-Azure Resource Manager provides the management layer used to create, update, and delete Azure resources.
+Important Resource Group facts:
 
-## Azure Global Infrastructure
+```text
+Every resource belongs to one Resource Group.
 
-```mermaid
-flowchart TD
+A Resource Group can contain different resource types.
 
-    GEO["Geography"] --> REG["Region"]
-
-    REG --> AZ1["Availability Zone"]
-    REG --> AZ2["Availability Zone"]
-    REG --> AZ3["Availability Zone"]
-
-    REG --> RP["Associated Region / Region Pair"]
+Resources in one Resource Group can be deployed in different Azure regions.
 ```
 
-### Infrastructure Concepts
+### Azure Resource Manager and IaC
 
 ```mermaid
 flowchart LR
-
-    GEO["Geography"] --> GEO1["Data residency / compliance boundary"]
-
-    REG["Region"] --> REG1["Deployment location"]
-
-    AZ["Availability Zone"] --> AZ1["Datacenter-level isolation within a Region"]
-
-    RP["Region Pair"] --> RP1["Associated Azure Regions used by some services for resiliency"]
+    P["Portal"] --> ARM["Azure Resource Manager"]
+    CLI["Azure CLI"] --> ARM
+    PS["Azure PowerShell"] --> ARM
+    API["REST API"] --> ARM
+    TEMPLATE["ARM Template"] --> ARM
+    ARM --> RES["Azure Resources"]
 ```
 
-Not every Azure Region has a Region Pair.
+```text
+ARM
+→ Azure management and deployment layer
 
-## Compute
+ARM Template
+→ declarative JSON infrastructure definition
+→ Infrastructure as Code
+```
+
+---
+
+## 4. Compute
 
 ```mermaid
 flowchart TD
-
-    A["Need Compute?"] --> B{"What type?"}
-
-    B -->|Full OS control| VM["Azure Virtual Machines"]
-
-    VM --> VMSS["VM Scale Sets"]
-
-    B -->|Managed web platform| APP["Azure App Service"]
-
-    B -->|Event-driven code| FUNC["Azure Functions"]
-
-    B -->|Containers| C{"Need Kubernetes?"}
-
-    C -->|No| ACI["Azure Container Instances"]
-
-    C -->|Yes| AKS["Azure Kubernetes Service"]
+    A["Need compute?"] --> B{"Requirement"}
+    B -->|"Full OS control"| VM["Virtual Machines"]
+    B -->|"Scalable VM fleet"| VMSS["VM Scale Sets"]
+    B -->|"Managed web platform"| APP["App Service"]
+    B -->|"Event-driven serverless code"| FUNC["Functions"]
+    B -->|"Simple container execution"| ACI["Container Instances"]
+    B -->|"Kubernetes orchestration"| AKS["AKS"]
+    B -->|"Virtual desktops"| AVD["Azure Virtual Desktop"]
 ```
 
-### Compute Selection
-
-| Requirement | Service |
+| Requirement | Best Fit |
 |---|---|
-| OS control | Azure Virtual Machines |
-| Scalable group of VMs | VM Scale Sets |
-| Managed web application platform | Azure App Service |
-| Event-driven serverless code | Azure Functions |
-| Simple container execution | Azure Container Instances |
-| Kubernetes orchestration | Azure Kubernetes Service |
+| OS-level control | Azure Virtual Machines |
+| Group of automatically scalable VMs | VM Scale Sets |
+| Managed web/API hosting | App Service |
+| Event-driven code | Azure Functions |
+| Run containers without managing orchestration | Azure Container Instances |
+| Kubernetes | Azure Kubernetes Service |
+| Desktop/app virtualization | Azure Virtual Desktop |
 
-## Networking
+---
+
+## 5. Networking
 
 ```mermaid
 flowchart TD
-
-    VNET["Virtual Network"]
-
-    VNET --> NSG["Network Security Group"]
-
-    VNET --> PEER["VNet Peering"]
-
-    VNET --> VPN["VPN Gateway"]
-
-    VNET --> BASTION["Azure Bastion"]
-
-    VPN --> LNG["Local Network Gateway"]
-
-    ONPREM["On-premises Network"] --> VPN
-
-    ONPREM --> ER["ExpressRoute"]
-
-    PEER --> VNET2["Another Virtual Network"]
+    A["What are the endpoints?"]
+    A --> VV["VNet ↔ VNet"]
+    A --> VS["VNet ↔ Azure Service"]
+    A --> VM["Administrator ↔ VM"]
+    A --> OA["On-premises ↔ Azure"]
+    VV --> PEER["VNet Peering"]
+    VS --> PE["Private Endpoint"]
+    VM --> BASTION["Azure Bastion"]
+    OA --> CONN["VPN Gateway / ExpressRoute"]
 ```
-
-### Networking Concepts
 
 | Requirement | Service |
 |---|---|
 | Private Azure network | Virtual Network |
-| Filter network traffic | Network Security Group |
-| Connect Azure VNets | VNet Peering |
-| Encrypted VPN connectivity | VPN Gateway |
-| Private connectivity without traversing the public Internet | ExpressRoute |
-| Secure RDP / SSH to VMs | Azure Bastion |
-| Represent remote or on-premises VPN site | Local Network Gateway |
+| Divide a VNet | Subnet |
+| Filter inbound/outbound traffic | Network Security Group |
+| Connect VNets privately | VNet Peering |
+| Private IP access to supported Azure service | Private Endpoint |
+| Secure RDP/SSH without public IP on VM | Azure Bastion |
+| Name resolution | Azure DNS |
+| Encrypted Internet-based on-prem connectivity | VPN Gateway |
+| Private connectivity that avoids public Internet | ExpressRoute |
 
-## Storage
+> **Private** is not enough to choose a service. Identify the two endpoints first.
 
-```mermaid
-flowchart TD
+---
 
-    SA["Storage Account"]
-
-    SA --> BLOB["Blob Storage"]
-
-    SA --> FILES["Azure Files"]
-
-    SA --> QUEUE["Queue Storage"]
-
-    SA --> TABLE["Table Storage"]
-
-    VM["Virtual Machine"] --> DISK["Managed Disks"]
-
-    BLOB --> HOT["Hot"]
-
-    BLOB --> COOL["Cool"]
-
-    BLOB --> COLD["Cold"]
-
-    BLOB --> ARCHIVE["Archive"]
-```
-
-### Storage Selection
-
-| Data Requirement | Service |
-|---|---|
-| Objects / unstructured data | Blob Storage |
-| Shared file system | Azure Files |
-| VM block storage | Managed Disks |
-| Messages | Queue Storage |
-| NoSQL key/attribute data | Table Storage |
-
-### Blob Access Tiers
+## 6. Storage
 
 ```mermaid
 flowchart TD
-    HOT["Hot - Frequently accessed"]
-    COOL["Cool - Infrequently accessed"]
-    COLD["Cold - Rarely accessed"]
-    ARCHIVE["Archive - Offline"]
+    A["Storage decision"] --> DATA{"What data?"}
+    A --> FAIL{"What failure?"}
+    A --> ACCESS{"How often accessed?"}
+    A --> MOVE{"How should it move?"}
 
-    HOT --> COOL
-    COOL --> COLD
-    COLD --> ARCHIVE
+    DATA --> BLOB["Blob"]
+    DATA --> FILES["Files"]
+    DATA --> DISK["Managed Disks"]
+    DATA --> QUEUE["Queue"]
+    DATA --> TABLE["Table"]
+
+    FAIL --> RED["LRS / ZRS / GRS / GZRS"]
+    ACCESS --> TIER["Hot / Cool / Cold / Archive"]
+    MOVE --> TOOLS["AzCopy / Storage Explorer / File Sync / Migrate / Data Box"]
 ```
 
-Hot, Cool, and Cold are online tiers.
-
-Archive is an offline tier and requires rehydration before the data can be accessed.
-
-## Identity and Access
-
-```mermaid
-flowchart TD
-
-    ENTRA["Microsoft Entra ID"]
-
-    ENTRA --> MFA["Multifactor Authentication"]
-
-    ENTRA --> SSO["Single Sign-On"]
-
-    ENTRA --> CA["Conditional Access"]
-
-    ENTRA --> HYBRID["Hybrid Identity"]
-
-    ENTRA --> RBAC["Azure RBAC"]
-
-    CA --> MFA
-```
-
-### Identity Concepts
-
-| Requirement | Service / Concept |
-|---|---|
-| Identity and authentication | Microsoft Entra ID |
-| Authorization to Azure resources | Azure RBAC |
-| Additional identity verification | MFA |
-| Decide when access controls apply | Conditional Access |
-| One sign-in for multiple applications | SSO |
-| Common identity across on-premises and cloud | Hybrid Identity |
-
-### Authentication vs Authorization
-
-```mermaid
-flowchart LR
-
-    AUTHN["Authentication"] --> WHO["Who are you?"]
-
-    AUTHZ["Authorization"] --> WHAT["What are you allowed to do?"]
-```
-
-## Governance
-
-```mermaid
-flowchart TD
-
-    GOV["Azure Governance"]
-
-    GOV --> RBAC["Azure RBAC"]
-
-    GOV --> POLICY["Azure Policy"]
-
-    GOV --> LOCKS["Resource Locks"]
-
-    GOV --> TAGS["Resource Tags"]
-```
-
-### Governance Selection
-
-| Requirement | Think |
-|---|---|
-| Who can perform actions? | Azure RBAC |
-| What configurations are allowed? | Azure Policy |
-| Prevent accidental deletion or modification? | Resource Locks |
-| Organize and classify resources? | Resource Tags |
-
-### Governance Mental Model
-
-```mermaid
-flowchart LR
-
-    RBAC["Azure RBAC"] --> PERM["Permissions"]
-
-    POLICY["Azure Policy"] --> ENF["Enforcement"]
-
-    LOCKS["Resource Locks"] --> PROT["Protection"]
-
-    TAGS["Resource Tags"] --> ORG["Organization"]
-```
-
-## Monitoring and Observability
-
-```mermaid
-flowchart TD
-
-    MON["Azure Monitor"]
-
-    MON --> AI["Application Insights"]
-
-    MON --> LOGS["Azure Monitor Logs"]
-
-    LOGS --> LA["Log Analytics"]
-
-    ADV["Azure Advisor"]
-
-    SH["Azure Service Health"]
-
-    RH["Resource Health"]
-```
-
-### Monitoring Selection
+### Storage Service Selection
 
 | Requirement | Service |
 |---|---|
-| Overall observability | Azure Monitor |
-| Application performance | Application Insights |
-| Query and analyze logs | Log Analytics |
-| Optimization recommendations | Azure Advisor |
-| Azure platform incidents and maintenance | Azure Service Health |
-| Health of one Azure resource | Resource Health |
+| Objects / unstructured data | Blob Storage |
+| Shared SMB/NFS files | Azure Files |
+| VM block storage | Managed Disks |
+| Asynchronous messages | Queue Storage |
+| NoSQL key/attribute data | Table Storage |
 
-### Monitoring Mental Model
+### Redundancy
 
-```mermaid
-flowchart LR
-
-    MON["Azure Monitor"] --> OBS["What is happening?"]
-
-    ADV["Azure Advisor"] --> IMP["What should I improve?"]
-
-    SH["Azure Service Health"] --> AZ["Does Azure have a platform problem?"]
+```text
+Local failure → LRS
+Zone failure → ZRS
+Regional replication → GRS
+Zone + regional resiliency → GZRS
 ```
 
-## Cost Management
+### Blob Access Tiers
+
+```text
+Frequent → Hot
+Infrequent + online → Cool
+Rare + online → Cold
+Long-term + offline acceptable → Archive
+```
+
+Archive requires **rehydration** before normal access.
+
+### Movement vs Migration
+
+```text
+CLI copy → AzCopy
+GUI management/copy → Storage Explorer
+Windows file-server synchronization → Azure File Sync
+Discover / assess / plan migration → Azure Migrate
+Very large transfer when network is impractical → Azure Data Box
+```
+
+---
+
+## 7. Identity, Authentication, and Security
 
 ```mermaid
 flowchart TD
-
-    COST["Azure Cost"]
-
-    COST --> PC["Pricing Calculator"]
-
-    COST --> CM["Microsoft Cost Management"]
-
-    COST --> OPT["Cost Optimization"]
-
-    OPT --> RES["Reservations"]
-
-    OPT --> SP["Savings Plan"]
-
-    OPT --> SPOT["Spot Virtual Machines"]
+    A["Identity / security requirement"]
+    A --> ID["Manage cloud identities → Entra ID"]
+    A --> DS["Managed traditional domain capabilities → Entra Domain Services"]
+    A --> AUTH["Verify identity → Authentication"]
+    A --> RBAC["Azure resource permissions → Azure RBAC"]
+    A --> MFA["Multiple factors → MFA"]
+    A --> PASS["No traditional password → Passwordless"]
+    A --> SSO["One sign-in → SSO"]
+    A --> CA["Signals + conditions → Conditional Access"]
+    A --> EXT["Partner/vendor access → External Identities / B2B"]
 ```
 
-### Cost Selection
+### Core Identity Distinctions
 
-| Requirement | Think |
+```text
+WHO ARE YOU?
+→ Authentication
+
+WHAT CAN YOU DO?
+→ Authorization / RBAC
+
+Same identity across on-premises + cloud
+→ Hybrid Identity
+
+One authentication for multiple apps
+→ SSO
+```
+
+### RBAC Mental Model
+
+```text
+WHO + ROLE + SCOPE
+→ ACCESS
+```
+
+```text
+Reader → view
+Contributor → manage resources, NOT role assignments
+Owner → manage resources + access
+User Access Administrator / RBAC Administrator → manage access
+```
+
+Who created an existing role assignment is usually not the deciding factor; **permission + scope** determine who can manage it.
+
+### Security Fundamentals
+
+| Concept | Main Idea |
 |---|---|
-| Estimate future cost | Azure Pricing Calculator |
-| Analyze actual spending | Microsoft Cost Management |
-| Stable predictable usage | Azure Reservations |
-| Flexible compute commitment | Azure Savings Plan |
-| Interruptible workload | Azure Spot Virtual Machines |
+| **Zero Trust** | Verify explicitly, use least privilege, assume breach |
+| **Defense in Depth** | Multiple security layers |
+| **Microsoft Defender for Cloud** | Cloud security posture, recommendations, and protection |
 
-## Cloud Service Models
+---
 
-```mermaid
-flowchart TD
-
-    A["Need a Cloud Service Model?"] --> B{"What do you need?"}
-
-    B -->|Full OS control| IAAS["IaaS"]
-
-    B -->|Managed platform for your application| PAAS["PaaS"]
-
-    B -->|Ready-to-use application| SAAS["SaaS"]
-```
-
-### Service Model Selection
-
-| Model | Example | Key Idea |
-|---|---|---|
-| IaaS | Azure Virtual Machines | Customer manages the OS |
-| PaaS | Azure App Service | Microsoft manages the OS and platform |
-| SaaS | Microsoft 365 | Customer uses a ready-to-use application |
-
-## Shared Responsibility
-
-```mermaid
-flowchart LR
-
-    MORE["More customer infrastructure responsibility"]
-
-    IAAS["IaaS"]
-
-    PAAS["PaaS"]
-
-    SAAS["SaaS"]
-
-    LESS["Less customer infrastructure responsibility"]
-
-    MORE --> IAAS
-
-    IAAS --> PAAS
-
-    PAAS --> SAAS
-
-    SAAS --> LESS
-```
-
-As you move from IaaS to PaaS to SaaS, customer infrastructure management responsibility decreases.
-
-Customer responsibility never becomes zero.
-
-### Customer Responsibilities
+## 8. Governance and Management Tools
 
 ```mermaid
 flowchart TD
-
-    CUSTOMER["Customer Responsibilities"]
-
-    CUSTOMER --> DATA["Data"]
-
-    CUSTOMER --> ID["Identities and Users"]
-
-    CUSTOMER --> ACCESS["Access Management"]
-
-    CUSTOMER --> CONFIG["Configurations and Settings"]
+    A["What must be controlled?"]
+    A --> WHO["Who can act? → RBAC"]
+    A --> CONF["Allowed/required configuration? → Policy"]
+    A --> PROT["Prevent delete/modify? → Resource Locks"]
+    A --> META["Organize/classify? → Tags"]
+    A --> DATA["Govern data estate? → Purview"]
+    A --> DOC["Microsoft compliance evidence? → Service Trust Portal"]
 ```
 
-These responsibilities remain important regardless of the cloud service model.
+### Governance Distinctions
+
+```text
+Permissions → RBAC
+Configuration enforcement → Azure Policy
+Resource protection → Resource Locks
+Metadata / categorization → Tags
+```
+
+```text
+CanNotDelete → modify YES, delete NO
+ReadOnly → modify NO, delete NO
+```
+
+Tags are **not automatically inherited** from a Resource Group to its resources.
+
+### Azure Management Tools
+
+| Requirement | Tool |
+|---|---|
+| Graphical browser management | Azure Portal |
+| Browser-hosted command environment | Cloud Shell |
+| Cross-platform command-line management | Azure CLI |
+| PowerShell-based administration | Azure PowerShell |
+| Manage hybrid / multicloud resources through Azure | Azure Arc |
+| Define infrastructure declaratively | Infrastructure as Code |
+| Azure declarative JSON deployment | ARM Template |
+
+> **Cloud Shell is an environment; Azure CLI and Azure PowerShell are tools that can run inside it.**
+
+---
+
+## 9. Monitoring and Optimization
+
+```mermaid
+flowchart TD
+    A["Operational requirement"]
+    A --> MON["Overall monitoring → Azure Monitor"]
+    A --> AI["Application telemetry → Application Insights"]
+    A --> LOG["Query logs → Log Analytics"]
+    A --> ADV["Recommendations → Azure Advisor"]
+    A --> SH["Azure platform issue affecting me → Service Health"]
+    A --> RH["Health of one resource → Resource Health"]
+```
+
+```text
+Azure Monitor → What is happening?
+Azure Advisor → What should I improve?
+Service Health → Is Azure having a platform/service issue affecting me?
+Resource Health → What is the health of this specific resource?
+```
+
+---
+
+## 10. Cost Management
+
+```mermaid
+flowchart TD
+    A["Cost requirement"]
+    A --> PLAN["Estimate planned cost → Pricing Calculator"]
+    A --> ACTUAL["Analyze actual spending → Cost Management"]
+    A --> BUD["Threshold notification → Budget + Alert"]
+    A --> OPT["Optimization recommendation → Advisor"]
+```
+
+### Purchasing / Optimization Choices
+
+```text
+Interruptible workload
+→ Spot VMs
+
+Stable predictable long-term usage
+→ Reservations
+
+Predictable compute spend + more flexibility
+→ Savings Plan for Compute
+
+Uncertain usage / no commitment
+→ Pay-as-you-go
+```
+
+> A budget is a threshold/monitoring mechanism, **not a hard spending limit that automatically stops resources**.
+
+---
+
+## 11. Cloud Service Models and Shared Responsibility
+
+```mermaid
+flowchart TD
+    A["What does the customer need?"] --> B{"Finished application?"}
+    B -->|Yes| SAAS["SaaS"]
+    B -->|No| C{"Need OS control?"}
+    C -->|Yes| IAAS["IaaS"]
+    C -->|No| PAAS["PaaS"]
+```
+
+| Example | Model |
+|---|---|
+| Azure Virtual Machines | **IaaS** |
+| Azure App Service | **PaaS** |
+| Azure Functions | **PaaS** |
+| Azure SQL Database | **PaaS** |
+| Microsoft 365 | **SaaS** |
+
+### Shared Responsibility
+
+```text
+MORE CUSTOMER INFRASTRUCTURE RESPONSIBILITY
+
+On-premises
+    ↓
+IaaS
+    ↓
+PaaS
+    ↓
+SaaS
+
+LESS CUSTOMER INFRASTRUCTURE RESPONSIBILITY
+```
+
+```text
+Guest OS in IaaS → Customer
+OS in PaaS/SaaS → Provider
+Application in PaaS → Customer
+Application/platform in SaaS → Provider
+```
+
+Customer responsibility does **not** become zero in SaaS; responsibilities around data, identities, access, and endpoints remain.
+
+---
 
 ## AZ-900 Big Picture
 
 ```mermaid
 flowchart TD
-
     AZ["AZ-900"]
-
     AZ --> CLOUD["Cloud Concepts"]
-
-    AZ --> ARCH["Azure Architecture"]
-
+    AZ --> ARCH["Architecture"]
     AZ --> SERVICES["Azure Services"]
-
-    AZ --> IAM["Identity and Access"]
-
-    AZ --> GOV["Governance"]
-
+    AZ --> ID["Identity & Security"]
+    AZ --> GOV["Management & Governance"]
     AZ --> MON["Monitoring"]
-
-    AZ --> COST["Cost Management"]
-
+    AZ --> COST["Cost"]
     AZ --> MODELS["Service Models"]
 
     SERVICES --> COMPUTE["Compute"]
-
     SERVICES --> NETWORK["Networking"]
-
     SERVICES --> STORAGE["Storage"]
-
-    IAM --> ENTRA["Microsoft Entra ID"]
-
-    IAM --> RBAC["Azure RBAC"]
-
-    GOV --> POLICY["Azure Policy"]
-
-    GOV --> LOCKS["Resource Locks"]
-
-    GOV --> TAGS["Resource Tags"]
-
-    MON --> MONITOR["Azure Monitor"]
-
-    MON --> ADVISOR["Azure Advisor"]
-
-    MON --> HEALTH["Azure Service Health"]
 ```
 
-## Final Mental Model
+## Final Exam Strategy
 
-```mermaid
-flowchart TD
+Do not start with the Azure product name you recognize.
 
-    A["What does the scenario need?"]
+Use:
 
-    A -->|Identity / Authentication| ENTRA["Microsoft Entra ID"]
-
-    A -->|Azure resource permissions| RBAC["Azure RBAC"]
-
-    A -->|Governance enforcement| POLICY["Azure Policy"]
-
-    A -->|Prevent deletion or modification| LOCKS["Resource Locks"]
-
-    A -->|OS-level compute control| VM["Azure Virtual Machines"]
-
-    A -->|Managed web application platform| APP["Azure App Service"]
-
-    A -->|Event-driven code| FUNC["Azure Functions"]
-
-    A -->|Kubernetes orchestration| AKS["Azure Kubernetes Service"]
-
-    A -->|Private Azure network| VNET["Virtual Network"]
-
-    A -->|Filter network traffic| NSG["Network Security Group"]
-
-    A -->|Private on-premises connectivity| ER["ExpressRoute"]
-
-    A -->|Object storage| BLOB["Blob Storage"]
-
-    A -->|Shared files| FILES["Azure Files"]
-
-    A -->|Monitoring / Telemetry| MON["Azure Monitor"]
-
-    A -->|Optimization recommendations| ADV["Azure Advisor"]
-
-    A -->|Azure platform incidents| SH["Azure Service Health"]
-
-    A -->|Estimate future cost| PC["Azure Pricing Calculator"]
-
-    A -->|Analyze actual spending| CM["Microsoft Cost Management"]
+```text
+1. What PROBLEM must be solved?
+2. What is the SCOPE / what are the endpoints?
+3. What CONSTRAINTS matter?
+4. Which options technically work?
+5. Which option is the BEST FIT without unnecessary capability?
 ```
-
-## Exam Strategy
-
-Do not start with:
-
-> "Which Azure service name do I recognize?"
-
-Start with:
-
-> **"What problem is the scenario trying to solve?"**
-
-Then follow this pattern:
 
 ```mermaid
 flowchart LR
-
     R["Requirement"] --> C["Concept"]
-
-    C --> S["Azure Service"]
+    C --> S["Best-fit Azure service / model"]
 ```
 
-Use the requirement to identify the concept first.
-
-Then map the concept to the correct Azure service.
+> **Requirement → Concept → Best fit**
