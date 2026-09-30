@@ -55,7 +55,7 @@ Use this file after asking:
   pay only for what is consumed       **Consumption-based model**
 
   event-driven execution, no server   **Serverless**
-  management                          
+  management              
   -----------------------------------------------------------------------
 
 ### Cloud Concept Traps
@@ -112,10 +112,10 @@ Number of instances changes
   service                             
 
   create/update/delete resources,     **Azure Resource Manager (ARM)**
-  Azure management layer              
+  Azure management layer
 
-  declarative JSON deployment,        **ARM Template / Infrastructure as
-  repeatable Azure infrastructure     Code**
+  declarative JSON deployment,        **ARM Template / Infrastructure** as
+  repeatable Azure infrastructure     Code
   -----------------------------------------------------------------------
 
 ### Architecture Traps
@@ -166,10 +166,10 @@ Resource Group location
   portable runtime                    
 
   run containers without managing VMs **Azure Container Instances (ACI)**
-  or Kubernetes                       
+  or Kubernetes
 
   Kubernetes orchestration, container **Azure Kubernetes Service (AKS)**
-  cluster                             
+  cluster
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
@@ -252,7 +252,7 @@ Resource Group location
   with Azure Files                    
 
   discover, assess, plan, track       **Azure Migrate**
-  migration                           
+  migration
 
   very large data transfer when       **Azure Data Box**
   network is impractical, physical    
@@ -307,8 +307,8 @@ Resource Group location
   multiple security layers            **Defense in Depth**
 
   cloud security posture, security    **Microsoft Defender for Cloud**
-  recommendations                     
-  -----------------------------------------------------------------------
+  recommendations       
+  ----------------------------------------------------------------------
 
 ### Identity Traps
 
@@ -366,10 +366,10 @@ Decide WHEN MFA is required
   resources through Azure             
 
   declarative, repeatable             **Infrastructure as Code (IaC)**
-  infrastructure definition           
+  infrastructure definition    
 
   Azure declarative JSON              **ARM Template**
-  infrastructure deployment           
+  infrastructure deployment
   -----------------------------------------------------------------------
 
 ### Governance & Management Traps
@@ -408,7 +408,7 @@ Azure CLI / Azure PowerShell
   workspace                           
 
   recommendations, best practices,    **Azure Advisor**
-  underutilized resources             
+  underutilized resources
 
   Azure outage, service incident,     **Azure Service Health**
   planned maintenance, health         
@@ -442,10 +442,10 @@ Azure CLI / Azure PowerShell
   flexibility                         
 
   interruptible workload, eviction,   **Spot VMs**
-  unused capacity                     
+  unused capacity
 
   uncertain usage, no commitment,     **Pay-as-you-go**
-  maximum flexibility                 
+  maximum flexibility                
   -----------------------------------------------------------------------
 
 ### Cost Trap
@@ -492,8 +492,8 @@ Budget
 
 ## High-Value Distinctions
 
-  If the requirement is...                  Think
-  ----------------------------------------- ----------------------------
+  If the requirement is...                  | Think
+  ----------------------------------------- | ----------------------------
   Keep service available                    **High Availability**
   Capacity can change                       **Scalability**
   Capacity dynamically follows demand       **Elasticity**
