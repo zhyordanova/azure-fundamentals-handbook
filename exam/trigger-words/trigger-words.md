@@ -56,7 +56,10 @@ Use this file after asking:
 
   event-driven execution, no server   **Serverless**
   management              
+    
   -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Cloud Concept Traps
 
