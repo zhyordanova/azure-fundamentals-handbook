@@ -48,7 +48,6 @@ Serverless services such as **Azure Functions** let you run code without managin
 flowchart TD
     GEO["Geography"] --> REG["Region"]
     REG --> AZ1["Availability Zone"]
-    REG --> AZ2["Availability Zone"]
     REG -. "regional relationship" .-> RP["Region Pair"]
     GEO --> SOV["Sovereign cloud / region context"]
 ```
