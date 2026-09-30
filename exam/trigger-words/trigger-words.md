@@ -204,10 +204,11 @@ Resource Group location
   domain-name resolution              **Azure DNS**
 
   secure browser-based RDP/SSH, VM    **Azure Bastion**
-  does not need public IP             
+  does not need public IP     
 
   represent on-premises VPN site /    **Local Network Gateway**
-  address prefixes                    
+  address prefixes        
+    
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
