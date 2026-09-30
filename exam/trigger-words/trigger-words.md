@@ -119,7 +119,10 @@ Number of instances changes
 
   declarative JSON deployment,        **ARM Template / Infrastructure** as
   repeatable Azure infrastructure     Code
+    
   -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Architecture Traps
 
@@ -173,6 +176,7 @@ Resource Group location
 
   Kubernetes orchestration, container **Azure Kubernetes Service (AKS)**
   cluster
+    
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
@@ -260,7 +264,10 @@ Resource Group location
   very large data transfer when       **Azure Data Box**
   network is impractical, physical    
   appliance                           
+    
   -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Storage Redundancy
 
@@ -311,7 +318,10 @@ Resource Group location
 
   cloud security posture, security    **Microsoft Defender for Cloud**
   recommendations       
-  ----------------------------------------------------------------------
+    
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Identity Traps
 
@@ -373,7 +383,10 @@ Decide WHEN MFA is required
 
   Azure declarative JSON              **ARM Template**
   infrastructure deployment
+    
   -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Governance & Management Traps
 
@@ -416,6 +429,7 @@ Azure CLI / Azure PowerShell
   Azure outage, service incident,     **Azure Service Health**
   planned maintenance, health         
   advisory                            
+    
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
@@ -449,7 +463,10 @@ Azure CLI / Azure PowerShell
 
   uncertain usage, no commitment,     **Pay-as-you-go**
   maximum flexibility                
+    
   -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Cost Trap
 
@@ -467,29 +484,29 @@ Budget
 ## Service Models
 
   ------------------------------------------------------------------------
-  Trigger Words / Scenario             Think
-  ------------------------------------ -----------------------------------
-  manage OS, virtual server, full      **IaaS**
+  Trigger Words / Scenario             | Think
+  ------------------------------------ | -----------------------------------
+  manage OS, virtual server, full      |  **IaaS**
   administrative control               
 
-  build/deploy application, provider   **PaaS**
+  build/deploy application, provider   |  **PaaS**
   manages OS/platform                  
 
-  use finished cloud application       **SaaS**
+  use finished cloud application       |  **SaaS**
 
-  who manages                          **Shared Responsibility Model**
+  who manages                          | **Shared Responsibility Model**
   OS/application/infrastructure/data   
   ------------------------------------------------------------------------
 
 ### Classification Examples
 
-  Example                  Model
-  ------------------------ ----------
-  Azure Virtual Machines   **IaaS**
-  Azure App Service        **PaaS**
-  Azure Functions          **PaaS**
-  Azure SQL Database       **PaaS**
-  Microsoft 365            **SaaS**
+  Example                  |  Model
+  ------------------------ |  ----------
+  Azure Virtual Machines   |  **IaaS**
+  Azure App Service        | **PaaS**
+  Azure Functions          | **PaaS**
+  Azure SQL Database       | **PaaS**
+  Microsoft 365            |  **SaaS**
 
 ------------------------------------------------------------------------
 
@@ -497,49 +514,49 @@ Budget
 
   If the requirement is...                  | Think
   ----------------------------------------- | ----------------------------
-  Keep service available                    **High Availability**
-  Capacity can change                       **Scalability**
-  Capacity dynamically follows demand       **Elasticity**
-  More CPU / RAM                            **Vertical scaling**
-  More instances                            **Horizontal scaling**
-  Datacenter failure inside one region      **Availability Zones**
-  Multiple subscriptions                    **Management Groups**
-  Billing / quota boundary                  **Subscription**
-  Related resources                         **Resource Group**
-  OS control                                **Virtual Machine / IaaS**
-  VM fleet autoscaling                      **VM Scale Sets**
-  Web app without OS management             **App Service / PaaS**
-  Event-driven code                         **Functions**
-  Containers without Kubernetes             **ACI**
-  Kubernetes orchestration                  **AKS**
-  Filter network traffic                    **NSG**
-  Connect Azure VNets                       **VNet Peering**
-  On-premises over encrypted Internet VPN   **VPN Gateway**
-  Dedicated private connectivity            **ExpressRoute**
-  Secure RDP / SSH without VM public IP     **Bastion**
-  Objects                                   **Blob Storage**
-  Shared file system                        **Azure Files**
-  VM disk                                   **Managed Disks**
-  Messages                                  **Queue Storage**
-  Key-value NoSQL                           **Table Storage**
-  Rare but online blob data                 **Cold**
-  Offline archived blob data                **Archive**
-  Manage Azure resource permissions         **RBAC**
-  Enforce resource configuration            **Policy**
-  Prevent delete only, allow modification   **CanNotDelete**
-  Prevent modification + deletion           **ReadOnly**
-  Govern data                               **Purview**
-  Microsoft compliance evidence             **Service Trust Portal**
-  Browser command environment               **Cloud Shell**
-  Manage hybrid / multicloud resources      **Azure Arc**
-  Repeatable declarative infrastructure     **IaC / ARM Templates**
-  Estimate future cost                      **Pricing Calculator**
-  Analyze actual cost                       **Cost Management**
-  Optimization recommendation               **Advisor**
-  Interruptible compute                     **Spot**
-  Stable long-term commitment               **Reservation**
-  Flexible compute commitment               **Savings Plan**
-  Finished application                      **SaaS**
+  Keep service available                    | **High Availability**
+  Capacity can change                       | **Scalability**
+  Capacity dynamically follows demand       |  **Elasticity**
+  More CPU / RAM                            | **Vertical scaling**
+  More instances                            | **Horizontal scaling**
+  Datacenter failure inside one region      | **Availability Zones**
+  Multiple subscriptions                    | **Management Groups**
+  Billing / quota boundary                  | **Subscription**
+  Related resources                         | **Resource Group**
+  OS control                                | **Virtual Machine / IaaS**
+  VM fleet autoscaling                      | **VM Scale Sets**
+  Web app without OS management             | **App Service / PaaS**
+  Event-driven code                         | **Functions**
+  Containers without Kubernetes             | **ACI**
+  Kubernetes orchestration                  | **AKS**
+  Filter network traffic                    | **NSG**
+  Connect Azure VNets                       | **VNet Peering**
+  On-premises over encrypted Internet VPN   | **VPN Gateway**
+  Dedicated private connectivity            | **ExpressRoute**
+  Secure RDP / SSH without VM public IP     | **Bastion**
+  Objects                                   | **Blob Storage**
+  Shared file system                        | **Azure Files**
+  VM disk                                   | **Managed Disks**
+  Messages                                  | **Queue Storage**
+  Key-value NoSQL                           | **Table Storage**
+  Rare but online blob data                 | **Cold**
+  Offline archived blob data                | **Archive**
+  Manage Azure resource permissions         | **RBAC**
+  Enforce resource configuration            | **Policy**
+  Prevent delete only, allow modification   | **CanNotDelete**
+  Prevent modification + deletion           | **ReadOnly**
+  Govern data                               | **Purview**
+  Microsoft compliance evidence             | **Service Trust Portal**
+  Browser command environment               | **Cloud Shell**
+  Manage hybrid / multicloud resources      | **Azure Arc**
+  Repeatable declarative infrastructure     | **IaC / ARM Templates**
+  Estimate future cost                      | **Pricing Calculator**
+  Analyze actual cost                       | **Cost Management**
+  Optimization recommendation               | **Advisor**
+  Interruptible compute                     | **Spot**
+  Stable long-term commitment               | **Reservation**
+  Flexible compute commitment               | **Savings Plan**
+  Finished application                      | **SaaS**
 
 ------------------------------------------------------------------------
 
