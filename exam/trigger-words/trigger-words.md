@@ -484,17 +484,17 @@ Budget
 ## Service Models
 
   ------------------------------------------------------------------------
-  Trigger Words / Scenario             | Think
-  ------------------------------------ | -----------------------------------
-  manage OS, virtual server, full      |  **IaaS**
+  Trigger Words / Scenario             Think
+  ------------------------------------ -----------------------------------
+  manage OS, virtual server, full      **IaaS**
   administrative control               
 
-  build/deploy application, provider   |  **PaaS**
+  build/deploy application, provider   **PaaS**
   manages OS/platform                  
 
-  use finished cloud application       |  **SaaS**
+  use finished cloud application       **SaaS**
 
-  who manages                          | **Shared Responsibility Model**
+  who manages                          **Shared Responsibility Model**
   OS/application/infrastructure/data   
     
   -----------------------------------------------------------------------
