@@ -9,8 +9,6 @@ Use this file after asking:
 
 > **What is the company actually trying to achieve?**
 
----
-
 ## Cloud Concepts
 
 | Trigger Words / Scenario                                                 | Think                             |
@@ -46,8 +44,6 @@ Number of instances changes
 → Horizontal scaling
 ```
 
----
-
 ## Azure Architecture
 
 | Trigger Words / Scenario                                            | Think                                     |
@@ -81,8 +77,6 @@ Resource Group location
 → does NOT force all contained resources into that location
 ```
 
----
-
 ## Compute
 
 | Trigger Words / Scenario                                              | Think                               |
@@ -98,8 +92,6 @@ Resource Group location
 | run containers without managing VMs or Kubernetes                     | **Azure Container Instances (ACI)** |
 | Kubernetes orchestration, container cluster                           | **Azure Kubernetes Service (AKS)**  |
 
----
-
 ## Networking
 
 | Trigger Words / Scenario                                                        | Think                            |
@@ -114,8 +106,6 @@ Resource Group location
 | domain-name resolution                                                          | **Azure DNS**                    |
 | secure browser-based RDP/SSH, VM does not need public IP                        | **Azure Bastion**                |
 | represent on-premises VPN site / address prefixes                               | **Local Network Gateway**        |
-
----
 
 ## Storage
 
@@ -145,8 +135,6 @@ Resource Group location
 | availability-zone protection       | **ZRS**  |
 | secondary-region replication       | **GRS**  |
 | zone + secondary-region protection | **GZRS** |
-
----
 
 ## Identity & Security
 
@@ -184,8 +172,6 @@ Decide WHEN MFA is required
 → Conditional Access
 ```
 
----
-
 ## Governance & Management
 
 | Trigger Words / Scenario                                                            | Think                            |
@@ -222,8 +208,6 @@ Azure CLI / Azure PowerShell
 → tools
 ```
 
----
-
 ## Monitoring
 
 | Trigger Words / Scenario                                             | Think                    |
@@ -233,8 +217,6 @@ Azure CLI / Azure PowerShell
 | query logs, KQL, Log Analytics workspace                             | **Log Analytics**        |
 | recommendations, best practices, underutilized resources             | **Azure Advisor**        |
 | Azure outage, service incident, planned maintenance, health advisory | **Azure Service Health** |
-
----
 
 ## Cost Management
 
@@ -261,8 +243,6 @@ Budget
 ≠ automatic resource shutdown
 ```
 
----
-
 ## Service Models
 
 | Trigger Words / Scenario                               | Think                           |
@@ -281,8 +261,6 @@ Budget
 | Azure Functions        | **PaaS** |
 | Azure SQL Database     | **PaaS** |
 | Microsoft 365          | **SaaS** |
-
----
 
 ## High-Value Distinctions
 
@@ -332,31 +310,11 @@ Budget
 | Flexible compute commitment             | **Savings Plan**           |
 | Finished application                    | **SaaS**                   |
 
----
+## How to Use Trigger Words
 
-## Exam Strategy
-
-Do **not** choose an answer because one keyword looks familiar.
-
-Use this sequence:
+Trigger words are **confirmation clues**, not the answer itself.
 
 ```text
-1. What PROBLEM must be solved?
-
-2. What SCOPE / ENDPOINTS are involved?
-
-3. What CONSTRAINTS matter?
-   - cost
-   - control
-   - availability
-   - connectivity
-   - management effort
-
-4. Which options are technically valid?
-
-5. Which option is the BEST FIT?
-```
-
-Then use trigger words only to **confirm** the answer.
-
-> **Requirement → Scope → Constraints → Best Fit**
+Requirement
+→ Identify the concept
+→ Use trigger words to confirm

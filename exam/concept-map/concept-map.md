@@ -40,8 +40,6 @@ flowchart TD
 
 Serverless services such as **Azure Functions** let you run code without managing servers and commonly use consumption-based execution.
 
----
-
 ## 2. Azure Global Infrastructure
 
 ```mermaid
@@ -61,8 +59,6 @@ flowchart TD
 | **Sovereign cloud/region** | Isolated environment for specific governmental or regulatory requirements |
 
 > **Zone failure → think Availability Zones. Regional resiliency → think multi-region design; a Region Pair is a relationship between regions, not an automatic DR solution for every workload.**
-
----
 
 ## 3. Azure Resource Hierarchy and Management
 
@@ -111,8 +107,6 @@ ARM Template
 → Infrastructure as Code
 ```
 
----
-
 ## 4. Compute
 
 ```mermaid
@@ -136,8 +130,6 @@ flowchart TD
 | Run containers without managing orchestration | Azure Container Instances |
 | Kubernetes | Azure Kubernetes Service |
 | Desktop/app virtualization | Azure Virtual Desktop |
-
----
 
 ## 5. Networking
 
@@ -167,8 +159,6 @@ flowchart TD
 | Private connectivity that avoids public Internet | ExpressRoute |
 
 > **Private** is not enough to choose a service. Identify the two endpoints first.
-
----
 
 ## 6. Storage
 
@@ -229,8 +219,6 @@ Windows file-server synchronization → Azure File Sync
 Discover / assess / plan migration → Azure Migrate
 Very large transfer when network is impractical → Azure Data Box
 ```
-
----
 
 ## 7. Identity, Authentication, and Security
 
@@ -333,8 +321,6 @@ Tags are **not automatically inherited** from a Resource Group to its resources.
 
 > **Cloud Shell is an environment; Azure CLI and Azure PowerShell are tools that can run inside it.**
 
----
-
 ## 9. Monitoring and Optimization
 
 ```mermaid
@@ -354,8 +340,6 @@ Azure Advisor → What should I improve?
 Service Health → Is Azure having a platform/service issue affecting me?
 Resource Health → What is the health of this specific resource?
 ```
-
----
 
 ## 10. Cost Management
 
@@ -385,8 +369,6 @@ Uncertain usage / no commitment
 ```
 
 > A budget is a threshold/monitoring mechanism, **not a hard spending limit that automatically stops resources**.
-
----
 
 ## 11. Cloud Service Models and Shared Responsibility
 
@@ -432,8 +414,6 @@ Application/platform in SaaS → Provider
 
 Customer responsibility does **not** become zero in SaaS; responsibilities around data, identities, access, and endpoints remain.
 
----
-
 ## AZ-900 Big Picture
 
 ```mermaid
@@ -452,25 +432,3 @@ flowchart TD
     SERVICES --> NETWORK["Networking"]
     SERVICES --> STORAGE["Storage"]
 ```
-
-## Final Exam Strategy
-
-Do not start with the Azure product name you recognize.
-
-Use:
-
-```text
-1. What PROBLEM must be solved?
-2. What is the SCOPE / what are the endpoints?
-3. What CONSTRAINTS matter?
-4. Which options technically work?
-5. Which option is the BEST FIT without unnecessary capability?
-```
-
-```mermaid
-flowchart LR
-    R["Requirement"] --> C["Concept"]
-    C --> S["Best-fit Azure service / model"]
-```
-
-> **Requirement → Concept → Best fit**
