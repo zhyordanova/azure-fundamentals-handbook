@@ -23,8 +23,6 @@ Use this together with:
 -   decision trees for service selection
 -   mock exams for practice
 
-------------------------------------------------------------------------
-
 ## 1. Best-Fit Scenario
 
 ### Pattern
@@ -68,8 +66,6 @@ avoid unnecessary cost
 GZRS provides more protection, but it exceeds the stated requirement.
 
 > **More capability does not automatically mean better fit.**
-
-------------------------------------------------------------------------
 
 ## 2. Matching / Classification
 
@@ -125,8 +121,6 @@ Use finished application
 → SaaS
 ```
 
-------------------------------------------------------------------------
-
 ## 3. Yes / No Statements
 
 ### Pattern
@@ -177,8 +171,6 @@ to resources in that Resource Group.
 → YES
 ```
 
-------------------------------------------------------------------------
-
 ## 4. Choose TWO / Choose THREE
 
 ### Pattern
@@ -225,8 +217,6 @@ Contributor
 ```
 
 Do not select an answer merely because it sounds more privileged.
-
-------------------------------------------------------------------------
 
 ## 5. Scope and Inheritance
 
@@ -301,8 +291,6 @@ Contributor at Subscription
 → still cannot manage RBAC role assignments
 ```
 
-------------------------------------------------------------------------
-
 ## 6. Who Created It? vs Who Can Manage It?
 
 ### Pattern
@@ -343,8 +331,6 @@ RBAC Administrator
 > **Permission + Scope matter more than who originally created the
 > assignment.**
 
-------------------------------------------------------------------------
-
 ## 7. Administrative Actions Wording
 
 ### Pattern
@@ -383,8 +369,6 @@ but must not delete it.
 
 → CanNotDelete
 ```
-
-------------------------------------------------------------------------
 
 ## 8. Can / Cannot Change After Creation
 
@@ -428,8 +412,6 @@ resource identity / placement
 
 Do not assume every creation-time choice is permanent.
 
-------------------------------------------------------------------------
-
 ## 9. Lowest Cost With Requirements
 
 ### Pattern
@@ -470,8 +452,6 @@ Uncertain workload
 
 > **Cheapest valid option, not simply cheapest option.**
 
-------------------------------------------------------------------------
-
 ## 10. Least Administrative Effort
 
 ### Pattern
@@ -508,8 +488,6 @@ without managing VM or Kubernetes cluster
 ```
 
 Do not choose a VM merely because it can technically host the workload.
-
-------------------------------------------------------------------------
 
 ## 11. Service vs Tool vs Environment
 
@@ -549,8 +527,6 @@ Cloud Shell
 Cloud Shell can provide an environment in which CLI or PowerShell is
 used.
 
-------------------------------------------------------------------------
-
 ## 12. Before vs After Deployment
 
 ### Pattern
@@ -583,8 +559,6 @@ when network is impractical
 
 Always identify **where in the lifecycle** the scenario occurs.
 
-------------------------------------------------------------------------
-
 ## 13. Notification vs Enforcement
 
 ### Pattern
@@ -614,8 +588,6 @@ Azure Policy
 ```
 
 Do not turn a monitoring feature into an enforcement mechanism.
-
-------------------------------------------------------------------------
 
 ## 14. Similar Service Names / Related Concepts
 
@@ -704,8 +676,6 @@ Service Health
 → Azure service issues relevant to you
 ```
 
-------------------------------------------------------------------------
-
 ## 15. More Resilient Is Not Automatically Better
 
 ### Pattern
@@ -735,8 +705,6 @@ The same principle applies broadly:
 
 > **Meet the requirement without adding unnecessary capability, cost, or
 > management.**
-
-------------------------------------------------------------------------
 
 ## 16. Customer vs Microsoft Responsibility
 
@@ -783,8 +751,6 @@ SaaS
 ≠ zero customer responsibility
 ```
 
-------------------------------------------------------------------------
-
 ## 17. Failure Scope
 
 ### Pattern
@@ -815,8 +781,6 @@ Zone + secondary region
 ```
 
 Do not treat Availability Zone and Region Pair as synonyms.
-
-------------------------------------------------------------------------
 
 ## 18. Requirement vs Trigger Word
 
@@ -857,8 +821,6 @@ Trigger word
 Requirement
 → decision
 ```
-
-------------------------------------------------------------------------
 
 # Final Exam-Solving Algorithm
 
