@@ -19,3 +19,5 @@
 9. [Azure Bastion](9-azure-bastion.md)
 
 10. [Local Network Gateway](10-local-network-gateway.md)
+
+11. [NSG vs Azure Firewall vs Azure DDoS Protection](11-network-security-comparison.md)

@@ -7,3 +7,5 @@
 3. [Microsoft Cost Management](3-microsoft-cost-management.md)
 
 4. [Cost Optimization](4-cost-optimization.md)
+
+5. [Total Cost of Ownership (TCO)](5-total-cost-of-ownership.md)

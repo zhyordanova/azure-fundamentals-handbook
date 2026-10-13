@@ -17,3 +17,5 @@
 8. [Geo-distribution](8-geo-distribution.md)
 
 9. [CapEx vs OpEx](9-capex-vs-opex.md)
+
+10. [Composite SLA](10-composite-sla.md)
