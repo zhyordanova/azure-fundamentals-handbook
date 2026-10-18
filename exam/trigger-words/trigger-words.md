@@ -318,3 +318,4 @@ Trigger words are **confirmation clues**, not the answer itself.
 Requirement
 → Identify the concept
 → Use trigger words to confirm
+```
