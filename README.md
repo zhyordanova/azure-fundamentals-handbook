@@ -32,13 +32,11 @@ azure-fundamentals-handbook
 │
 ├── diagrams/
 │
-├── images/
+├── CHANGELOG.md
 │
-├── assets/
+├── LICENSE
 │
-├── resources/
-│
-└── CHANGELOG.md
+└── README.md
 ```
 
 ## Learning

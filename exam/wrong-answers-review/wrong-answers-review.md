@@ -27,9 +27,15 @@ What distinction decides the answer?
 
 ## Active Weak Areas
 
-No active weak areas are currently recorded from the completed chapter mocks.
+```text
+ACTIVE
+→ none
 
-New mistakes from future mixed mocks should be added here first.
+RECURRING — UNRESOLVED
+→ none
+```
+
+All weaknesses identified during the completed Phase 6 mixed-mock sequence have passed targeted remediation.
 
 ## Corrected Weak Areas
 
@@ -275,6 +281,184 @@ Need normal access
 | Administrative actions | **Interpret the requirement, not the word administrator** |
 | CanNotDelete vs ReadOnly | **Delete only vs modify + delete protection** |
 | Storage changeability | **Configuration may change; identity/placement may not** |
+
+## Phase 6 Mixed-Mock Record
+
+| Assessment | Result | Main Outcome |
+|---|---:|---|
+| Mock 1 — Baseline | **34/40 — 85%** | Initial mixed weaknesses identified |
+| Trap Round 01 | **8/8 — 100%** | Mock 1 weaknesses corrected |
+| Mock 2 — Decision & Trap | **25/30 — 83.3%** | New best-fit traps identified |
+| Trap Round 02 | **5/6 — 83.3%** | Most Mock 2 weaknesses corrected |
+| Storage Micro-Trap | **3/3 — 100%** | Storage redundancy corrected |
+| Mock 3 — Final Readiness | **34/40 — 85%** | Final distinctions identified |
+| Final Targeted Trap | **7/8 — 87.5%** | Three final clusters corrected |
+| Tags vs Policy Micro-Trap | **3/3 — 100%** | Final recurring weakness corrected |
+
+Full question archives are stored in [`../mocks/`](../mocks/).
+
+## Phase 6 Corrected Reasoning Patterns
+
+### Service Models — IaaS Shared Responsibility
+
+```text
+IaaS
+→ Microsoft: physical infrastructure
+→ Customer: guest OS + applications + data
+```
+
+**History:** corrected after chapter work → incorrect again in Mock 1 → **RECURRING** → Trap Round 01 2/2 → later mixed retests correct.
+
+**Status:** **CORRECTED / STABLE**.
+
+### Networking — VPN Gateway vs ExpressRoute
+
+```text
+Encrypted connection over public Internet
+→ VPN Gateway
+
+Dedicated private connectivity
+→ ExpressRoute
+```
+
+**Status:** Mock 1 incorrect → targeted and later mixed retests correct → **CORRECTED / STABLE**.
+
+### Architecture — Availability Zone vs Sovereign Region
+
+```text
+Datacenter-level failure + same region
+→ Availability Zone
+
+National / governmental / regulatory isolation
+→ Sovereign cloud / region
+```
+
+**History:** Mock 1 incorrect → corrected → Mock 2 incorrect again → **RECURRING** → Trap Round 02 and Mock 3 correct.
+
+**Status:** **CORRECTED**.
+
+### Management Tools — Cloud Shell vs Portal / CLI
+
+```text
+Graphical browser management
+→ Azure Portal
+
+Browser-hosted command environment
+→ Azure Cloud Shell
+
+Cross-platform command-line tool
+→ Azure CLI
+```
+
+**Status:** **CORRECTED / STABLE**.
+
+### Architecture — Resource Hierarchy
+
+```text
+Management Group
+↓
+Subscription
+↓
+Resource Group
+↓
+Resource
+```
+
+**Status:** Mock 1 incorrect → targeted and mixed retests correct → **CORRECTED / STABLE**.
+
+### Governance — Resource Tags vs Azure Policy
+
+```text
+STORE / USE metadata
+→ Resource Tags
+
+REQUIRE / ENFORCE / COMPLY
+→ Azure Policy
+```
+
+**History:** Mock 1 Tags incorrect → corrected → Mock 2 Tags/Policy correct → Mock 3 Tags incorrect → Final Trap Tags incorrect → **RECURRING** → Tags vs Policy Micro-Trap 3/3.
+
+**Status:** **CORRECTED**.
+
+### Management — Azure Arc vs Azure Migrate
+
+```text
+KEEP resources where they are + manage through Azure
+→ Azure Arc
+
+MOVE workloads to Azure + discover / assess / size / plan
+→ Azure Migrate
+```
+
+**Status:** Mock 2 confused in both directions → Trap Round 02 2/2 → Mock 3 both directions correct → **CORRECTED / STABLE**.
+
+### Cost — Spot / Reservations / Savings Plan / Pay-as-you-go
+
+```text
+Interruptible / eviction-tolerant
+→ Spot VMs
+
+Stable + specific configuration + commitment
+→ Azure Reservations
+
+Predictable compute spending + flexibility
+→ Savings Plan for Compute
+
+No commitment / uncertain usage
+→ Pay-as-you-go
+```
+
+**Status:** targeted after Mock 2 and Mock 3 → **CORRECTED**.
+
+### Storage — Redundancy Best Fit
+
+```text
+LRS → Local
+ZRS → Zones
+GRS → Secondary Region
+GZRS → Zones + Secondary Region
+```
+
+**History:** Mock 2 incorrect → Trap Round 02 incorrect → **RECURRING** → Storage Micro-Trap 3/3 → Mock 3 correct.
+
+**Status:** **CORRECTED**.
+
+### Compute / Service Models — VM / IaaS vs App Service / PaaS
+
+```text
+Need OS control
+→ VM / IaaS
+
+No OS management
+→ App Service / PaaS
+```
+
+**Status:** Mock 3 errors → Final Targeted Trap 2/2 → **CORRECTED**.
+
+### Governance — Microsoft Purview vs Service Trust Portal
+
+```text
+YOUR organization's data estate
+→ Microsoft Purview
+
+MICROSOFT audit / compliance evidence
+→ Service Trust Portal
+```
+
+**Status:** Mock 3 errors → Final Targeted Trap 2/2 → **CORRECTED**.
+
+## Final Patterns to Recheck
+
+| Pattern | Decision Rule |
+|---|---|
+| Tags vs Policy | **Store/use metadata → Tags; enforce/require → Policy** |
+| VM vs App Service | **Need OS control → VM; no OS management → App Service** |
+| Reservations vs Savings Plan | **Specific stable configuration → Reservation; flexible compute commitment → Savings Plan** |
+| Storage redundancy | **LRS local; ZRS zones; GRS region; GZRS zones + region** |
+| Arc vs Migrate | **Manage where it is → Arc; move/assess → Migrate** |
+| Zone vs Sovereign | **Datacenter isolation → Zone; national/regulatory isolation → Sovereign** |
+| Purview vs Service Trust Portal | **Your data → Purview; Microsoft's compliance evidence → Service Trust Portal** |
+| Shared responsibility | **IaaS guest OS → customer** |
 
 ## Update Rule for Future Mocks
 
