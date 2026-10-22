@@ -2,6 +2,14 @@
 
 All notable changes to the AZ-900 Azure Fundamentals Handbook are documented here.
 
+## [1.0.1] - 2026-10-22
+
+### Changed
+
+- Marked the AZ-900 learning project as complete after successfully passing the Microsoft Azure Fundamentals certification exam.
+- Added the certification outcome to the project overview and exam preparation navigation.
+- Preserved `v1.0.0` as the frozen handbook baseline; this patch contains documentation-only completion updates.
+
 ## [1.0.0] - 2026-10-19
 
 ### Added

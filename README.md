@@ -10,6 +10,14 @@ The purpose of this project is not only to prepare for the certification exam, b
 
 Rather than memorizing questions and answers, the goal is to understand how Azure services work and how Microsoft evaluates these concepts during the certification exam.
 
+## Project Outcome
+
+**Status:** Complete  
+**Release:** v1.0.0  
+**Certification outcome:** Microsoft Azure Fundamentals (AZ-900) — **Passed on October 22, 2026**
+
+The handbook is now maintained as a completed learning project and reusable Azure Fundamentals reference. The `v1.0.0` release represents the frozen baseline created through structured study, mock exams, targeted remediation, coverage reviews, and a final repository audit.
+
 ## Objectives
 
 This handbook aims to:

@@ -1,3 +1,7 @@
+# Exam Preparation
+
+> **Status:** Complete — AZ-900 certification passed on October 22, 2026.
+
 ## Table of Contents
 
 1. [Concept Map](concept-map/concept-map.md)
