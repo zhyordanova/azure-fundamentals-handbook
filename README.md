@@ -1,5 +1,7 @@
 # Azure Fundamentals Handbook
 
+![Azure Fundamentals Handbook Cover](./assets/cover.png)
+
 > A structured learning guide for Microsoft Azure Fundamentals (AZ-900).
 
 ## Introduction
